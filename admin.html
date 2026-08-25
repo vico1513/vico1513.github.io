@@ -512,17 +512,72 @@
     // CARREGAR PROPOSTAS
     // ==========================================
 
-    async function carregarPropostas() {
+async function carregarPropostas() {
 
-        const { data, error } =
-            await supabaseClient
-                .from("parcerias")
-                .select("*")
-                .order("id", {
-                    ascending: false
-                });
+    console.log("🔎 Buscando propostas...");
 
+    const { data, error } =
+        await supabaseClient
+            .from("parcerias")
+            .select("*");
 
+    console.log("📦 Dados recebidos:", data);
+    console.log("❌ Erro:", error);
+
+    if (error) {
+
+        alert(
+            "Erro ao carregar propostas:\n\n" +
+            JSON.stringify(error, null, 2)
+        );
+
+        return;
+    }
+
+    const analysisList =
+        document.getElementById("analysisList");
+
+    const approvedList =
+        document.getElementById("approvedList");
+
+    const rejectedList =
+        document.getElementById("rejectedList");
+
+    analysisList.innerHTML = "";
+    approvedList.innerHTML = "";
+    rejectedList.innerHTML = "";
+
+    data.forEach(proposta => {
+
+        console.log(
+            "📋 Proposta:",
+            proposta
+        );
+
+        const card =
+            criarCard(proposta);
+
+        if (proposta.status === "analise") {
+
+            analysisList.appendChild(card);
+
+        }
+
+        else if (proposta.status === "aprovada") {
+
+            approvedList.appendChild(card);
+
+        }
+
+        else if (proposta.status === "recusada") {
+
+            rejectedList.appendChild(card);
+
+        }
+
+    });
+
+}
         if (error) {
 
             console.error(
