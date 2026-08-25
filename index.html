@@ -11,7 +11,12 @@
     >
 
     <title>Vico1513 | Minecraft</title>
-<link rel="icon" type="image/jpeg" href="vico-comunity.jpeg">
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="favicon.png"
+    >
 
     <style>
 
@@ -21,476 +26,477 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
-
             font-family: Arial, sans-serif;
-
             background: #10091c;
-
             color: white;
-
         }
 
+        /* ======================================
+           HEADER
+        ====================================== */
 
         header {
-
             padding: 25px;
-
             text-align: center;
-
             background: #1b0d2e;
-
             border-bottom: 2px solid #8b5cf6;
-
+            position: relative;
         }
-
 
         header h1 {
-
             font-size: 38px;
-
             color: #c084fc;
-
         }
-
 
         header p {
-
             margin-top: 8px;
-
             color: #d8b4fe;
-
         }
-
 
         nav {
-
             margin-top: 20px;
-
         }
-
 
         nav a {
-
             color: white;
-
             text-decoration: none;
-
             margin: 0 10px;
-
             font-weight: bold;
-
+            transition: color 0.2s;
         }
-
 
         nav a:hover {
-
             color: #c084fc;
-
         }
 
+        /* ======================================
+           HERO
+        ====================================== */
 
         .hero {
-
             text-align: center;
-
-            padding: 80px 20px;
-
+            padding: 90px 20px;
             background:
                 linear-gradient(
                     135deg,
                     #1b0d2e,
                     #32105c
                 );
-
         }
-
 
         .hero h2 {
-
             font-size: 42px;
-
             margin-bottom: 15px;
-
         }
-
 
         .hero p {
-
             color: #ddd;
-
-            max-width: 600px;
-
+            max-width: 650px;
             margin: auto;
-
             line-height: 1.6;
-
         }
-
 
         .buttons {
-
             margin-top: 30px;
-
         }
-
 
         .button {
-
             display: inline-block;
-
             padding: 13px 22px;
-
             margin: 5px;
-
             border-radius: 10px;
-
             text-decoration: none;
-
             color: white;
-
             background: #7c3aed;
-
             font-weight: bold;
-
             border: none;
-
             cursor: pointer;
-
+            transition:
+                background 0.2s,
+                transform 0.2s;
         }
-
 
         .button:hover {
-
             background: #9333ea;
-
+            transform: translateY(-2px);
         }
-
 
         .button:disabled {
-
             opacity: 0.6;
-
             cursor: not-allowed;
-
+            transform: none;
         }
 
+        .button.secondary {
+            background: #28183d;
+            border: 1px solid #6d3ca3;
+        }
+
+        .button.secondary:hover {
+            background: #392052;
+        }
+
+        /* ======================================
+           SEÇÕES
+        ====================================== */
 
         section {
-
-            max-width: 1000px;
-
+            max-width: 1100px;
             margin: auto;
-
-            padding: 60px 20px;
-
+            padding: 70px 20px;
         }
-
 
         section h2 {
-
             text-align: center;
-
-            margin-bottom: 30px;
-
+            margin-bottom: 35px;
             color: #c084fc;
-
             font-size: 30px;
-
         }
 
+        .section-description {
+            text-align: center;
+            color: #aaa;
+            max-width: 700px;
+            margin: -15px auto 30px;
+            line-height: 1.6;
+        }
 
         .card {
-
             background: #1b112b;
-
             padding: 25px;
-
             border-radius: 15px;
-
             margin-bottom: 20px;
-
             border: 1px solid #3b2160;
-
         }
-
 
         .card h3 {
-
             color: #d8b4fe;
-
             margin-bottom: 10px;
-
         }
 
+        .card p {
+            color: #ddd;
+            line-height: 1.6;
+        }
+
+        /* ======================================
+           YOUTUBE
+        ====================================== */
+
+        .youtube-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .youtube-card {
+            background: #1b112b;
+            border: 1px solid #3b2160;
+            border-radius: 15px;
+            overflow: hidden;
+            transition:
+                transform 0.2s,
+                border-color 0.2s;
+        }
+
+        .youtube-card:hover {
+            transform: translateY(-5px);
+            border-color: #8b5cf6;
+        }
+
+        .youtube-thumbnail {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            display: block;
+        }
+
+        .youtube-info {
+            padding: 18px;
+        }
+
+        .youtube-title {
+            color: #d8b4fe;
+            font-size: 18px;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+
+        .youtube-date {
+            color: #999;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .youtube-button {
+            display: inline-block;
+            padding: 10px 16px;
+            background: #7c3aed;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .youtube-button:hover {
+            background: #9333ea;
+        }
 
         /* ======================================
            PARCERIAS
         ====================================== */
 
         .partnership {
-
             text-align: center;
-
         }
-
 
         .partnership input,
         .partnership textarea,
         .partnership select {
-
             width: 100%;
-
             max-width: 600px;
-
             padding: 14px;
-
             margin: 8px 0;
-
             border: none;
-
             border-radius: 10px;
-
             background: #28183d;
-
             color: white;
-
             font-family: Arial, sans-serif;
-
+            outline: none;
         }
 
+        .partnership input:focus,
+        .partnership textarea:focus,
+        .partnership select:focus {
+            box-shadow:
+                0 0 0 2px #7c3aed;
+        }
 
         .partnership select {
-
             cursor: pointer;
-
         }
-
 
         .partnership textarea {
-
             height: 140px;
-
             resize: vertical;
-
         }
-
 
         .partnership input::placeholder,
         .partnership textarea::placeholder {
-
             color: #aaa;
-
         }
-
 
         .message {
-
             display: none;
-
             max-width: 600px;
-
             margin: 15px auto 0;
-
             padding: 14px;
-
             border-radius: 10px;
-
             font-weight: bold;
-
         }
-
 
         .message.success {
-
             display: block;
-
             background: #183d2a;
-
             border: 1px solid #2ecc71;
-
             color: #8ff0b2;
-
         }
-
 
         .message.error {
-
             display: block;
-
             background: #3d1818;
-
             border: 1px solid #e74c3c;
-
             color: #ffaaa2;
-
         }
-
 
         /* ======================================
            SUGESTÕES PÚBLICAS
         ====================================== */
 
         .suggestions-grid {
-
             display: grid;
-
             grid-template-columns:
                 repeat(3, 1fr);
-
             gap: 20px;
-
         }
-
 
         .suggestion-column {
-
             background: #150c24;
-
             border: 1px solid #3b2160;
-
             border-radius: 15px;
-
             padding: 20px;
-
             min-height: 250px;
-
         }
-
 
         .suggestion-title {
-
             margin-bottom: 20px;
-
             font-size: 21px;
-
         }
-
 
         .analysis-title {
-
             color: #facc15;
-
         }
-
 
         .approved-title {
-
             color: #4ade80;
-
         }
-
 
         .rejected-title {
-
             color: #f87171;
-
         }
-
 
         .public-suggestion {
-
             background: #1b112b;
-
             border: 1px solid #3b2160;
-
             border-radius: 12px;
-
             padding: 16px;
-
             margin-bottom: 15px;
-
         }
-
 
         .public-suggestion h3 {
-
             color: #d8b4fe;
-
             margin-bottom: 10px;
-
         }
-
 
         .public-suggestion p {
-
             color: #ddd;
-
             line-height: 1.5;
-
             margin-bottom: 8px;
-
             word-break: break-word;
-
         }
-
 
         .suggestion-empty {
-
             text-align: center;
-
             color: #777;
-
             padding: 25px 10px;
-
         }
 
+        /* ======================================
+           DISCORD
+        ====================================== */
+
+        .discord-grid {
+            display: grid;
+            grid-template-columns:
+                repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .discord-card {
+            background:
+                linear-gradient(
+                    135deg,
+                    #1b112b,
+                    #25153d
+                );
+            border: 1px solid #4c2a75;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .discord-icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .discord-card h3 {
+            color: #d8b4fe;
+            margin-bottom: 12px;
+            font-size: 22px;
+        }
+
+        .discord-card p {
+            color: #ccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
 
         /* ======================================
-           RODAPÉ
+           SERVIDORES
+        ====================================== */
+
+        .server-card {
+            position: relative;
+        }
+
+        .server-tag {
+            display: inline-block;
+            background: #7c3aed;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+
+        /* ======================================
+           FOOTER
         ====================================== */
 
         footer {
-
             text-align: center;
-
-            padding: 30px;
-
+            padding: 35px;
             background: #0b0612;
-
             color: #aaa;
-
         }
 
+        footer p {
+            margin: 5px;
+        }
 
         /* ======================================
-           CELULAR
+           RESPONSIVO
         ====================================== */
 
-        @media (max-width: 850px) {
+        @media (max-width: 900px) {
+
+            .youtube-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
 
             .suggestions-grid {
-
                 grid-template-columns: 1fr;
+            }
 
+            .discord-grid {
+                grid-template-columns: 1fr;
             }
 
         }
-
 
         @media (max-width: 600px) {
 
-            .hero h2 {
-
-                font-size: 30px;
-
+            .hero {
+                padding: 65px 20px;
             }
 
+            .hero h2 {
+                font-size: 30px;
+            }
 
             header h1 {
-
                 font-size: 30px;
-
             }
 
-
             nav a {
-
                 display: inline-block;
-
                 margin: 7px;
+            }
 
+            .youtube-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 50px 15px;
             }
 
         }
@@ -514,7 +520,6 @@
     <p>
         Minecraft • Comunidade • Aventuras
     </p>
-
 
     <nav>
 
@@ -554,15 +559,11 @@
         Bem-vindo ao mundo do Vico! 🌸
     </h2>
 
-
     <p>
-
         Gameplays, desafios, construções,
         tutoriais e muita diversão
         dentro do Minecraft.
-
     </p>
-
 
     <div class="buttons">
 
@@ -570,15 +571,16 @@
             class="button"
             href="https://youtube.com/@vico1513"
             target="_blank"
+            rel="noopener noreferrer"
         >
             ▶️ Meu YouTube
         </a>
 
-
         <a
             class="button"
-            href="https://discord.gg/HNz6vetv"
+            href="https://discord.gg/p3vRj3teYd"
             target="_blank"
+            rel="noopener noreferrer"
         >
             💜 Meu Discord
         </a>
@@ -599,20 +601,23 @@
         🎬 Últimos vídeos
     </h2>
 
+    <p class="section-description">
+        Confira os vídeos mais recentes
+        do canal Vico1513.
+    </p>
 
-    <div class="card">
+    <div
+        id="youtubeVideos"
+        class="youtube-grid"
+    >
 
-        <h3>
-            🚧 Em breve...
-        </h3>
+        <div class="card">
 
+            <h3>
+                ⏳ Carregando vídeos...
+            </h3>
 
-        <p>
-
-            Aqui vão aparecer automaticamente
-            os vídeos novos do canal.
-
-        </p>
+        </div>
 
     </div>
 
@@ -630,25 +635,17 @@
         🤝 Faça uma parceria
     </h2>
 
+    <p class="section-description">
+
+        Tem um servidor, canal, projeto
+        ou outra ideia de parceria com o Vico1513?
+        Envie sua proposta!
+
+    </p>
 
     <div class="card partnership">
 
-        <p>
-
-            Tem um servidor, canal, projeto
-            ou outra ideia de parceria
-            com o Vico1513?
-
-            Envie sua proposta!
-
-        </p>
-
-
-        <br>
-
-
         <form id="partnershipForm">
-
 
             <input
                 type="text"
@@ -657,14 +654,12 @@
                 required
             >
 
-
             <input
                 type="text"
                 id="contato"
                 placeholder="Seu Discord ou outra forma de contato"
                 required
             >
-
 
             <select
                 id="tipo"
@@ -693,16 +688,13 @@
 
             </select>
 
-
             <textarea
                 id="mensagem"
                 placeholder="Conte um pouco sobre sua proposta..."
                 required
             ></textarea>
 
-
             <br>
-
 
             <button
                 type="submit"
@@ -712,9 +704,7 @@
                 🚀 Enviar proposta
             </button>
 
-
         </form>
-
 
         <div
             id="formMessage"
@@ -728,7 +718,7 @@
 
 
 <!-- ==========================================
-     SUGESTÕES
+     SUGESTÕES PÚBLICAS
 ========================================== -->
 
 <section id="sugestoes">
@@ -737,6 +727,12 @@
         💡 Sugestões da comunidade
     </h2>
 
+    <p class="section-description">
+
+        Acompanhe o andamento das propostas
+        enviadas pela comunidade.
+
+    </p>
 
     <div class="suggestions-grid">
 
@@ -751,11 +747,10 @@
                 🟡 Em análise
             </h3>
 
-
             <div id="publicAnalysis">
 
                 <p class="suggestion-empty">
-                    Carregando sugestões...
+                    Carregando...
                 </p>
 
             </div>
@@ -774,11 +769,10 @@
                 🟢 Aprovadas
             </h3>
 
-
             <div id="publicApproved">
 
                 <p class="suggestion-empty">
-                    Carregando sugestões...
+                    Carregando...
                 </p>
 
             </div>
@@ -797,17 +791,15 @@
                 🔴 Recusadas
             </h3>
 
-
             <div id="publicRejected">
 
                 <p class="suggestion-empty">
-                    Carregando sugestões...
+                    Carregando...
                 </p>
 
             </div>
 
         </div>
-
 
     </div>
 
@@ -825,34 +817,67 @@
         💜 Nossa comunidade
     </h2>
 
+    <div class="discord-grid">
 
-    <div class="card">
+        <div class="discord-card">
 
-        <h3>
-            🌸 Discord do Vico1513
-        </h3>
+            <div class="discord-icon">
+                💜
+            </div>
+
+            <h3>
+                Discord do Vico1513
+            </h3>
+
+            <p>
+
+                Entre para conversar,
+                acompanhar novidades,
+                participar de eventos
+                e fazer parte da comunidade!
+
+            </p>
+
+            <a
+                class="button"
+                href="https://discord.gg/p3vRj3teYd"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                💜 Entrar na comunidade
+            </a>
+
+        </div>
 
 
-        <p>
+        <div class="discord-card">
 
-            Entre para conversar,
-            acompanhar novidades,
-            participar de eventos
-            e fazer parte da comunidade!
+            <div class="discord-icon">
+                🌸
+            </div>
 
-        </p>
+            <h3>
+                Comunidade Vico1513
+            </h3>
 
+            <p>
 
-        <br>
+                Fique por dentro das novidades,
+                vídeos, eventos e projetos
+                do canal.
 
+            </p>
 
-        <a
-            class="button"
-            href="https://discord.gg/p3vRj3teYd"
-            target="_blank"
-        >
-            💜 Entrar na comunidade
-        </a>
+            <a
+                class="button secondary"
+                href="https://youtube.com/@vico1513"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                ▶️ Conhecer o canal
+            </a>
+
+        </div>
 
     </div>
 
@@ -870,13 +895,22 @@
         🌐 Servidores parceiros
     </h2>
 
+    <p class="section-description">
 
-    <div class="card">
+        Conheça servidores e projetos
+        parceiros do Vico1513.
+
+    </p>
+
+    <div class="card server-card">
+
+        <span class="server-tag">
+            🤝 PARCEIRO
+        </span>
 
         <h3>
             ⚡ Velocity SMP
         </h3>
-
 
         <p>
 
@@ -887,14 +921,13 @@
 
         </p>
 
-
         <br>
-
 
         <a
             class="button"
             href="https://discord.gg/6HKeVaedNH"
             target="_blank"
+            rel="noopener noreferrer"
         >
             ⚡ Entrar no Velocity SMP
         </a>
@@ -902,13 +935,11 @@
     </div>
 
 
-
     <div class="card">
 
         <h3>
             🤝 Seu servidor pode aparecer aqui!
         </h3>
-
 
         <p>
 
@@ -918,9 +949,7 @@
 
         </p>
 
-
         <br>
-
 
         <p>
 
@@ -955,10 +984,15 @@
 
 
 <!-- ==========================================
-     SUPABASE
+     JAVASCRIPT
 ========================================== -->
 
 <script>
+
+
+    /* =========================================
+       SUPABASE
+    ========================================= */
 
     const SUPABASE_URL =
         "https://fqalhymfpiexyrbyxnka.supabase.co";
@@ -969,9 +1003,9 @@
 
 
 
-    /* ========================================
+    /* =========================================
        FORMULÁRIO DE PARCERIAS
-    ======================================== */
+    ========================================= */
 
     const form =
         document.getElementById(
@@ -991,29 +1025,23 @@
         );
 
 
-
     form.addEventListener(
         "submit",
         async function(event) {
 
             event.preventDefault();
 
-
             submitButton.disabled =
                 true;
-
 
             submitButton.textContent =
                 "⏳ Enviando...";
 
-
             formMessage.className =
                 "message";
 
-
             formMessage.textContent =
                 "";
-
 
 
             const nome =
@@ -1043,9 +1071,7 @@
                     .trim();
 
 
-
             try {
-
 
                 const response =
                     await fetch(
@@ -1055,7 +1081,6 @@
                         {
 
                             method: "POST",
-
 
                             headers: {
 
@@ -1096,32 +1121,25 @@
                     );
 
 
-
                 if (!response.ok) {
-
 
                     const errorText =
                         await response.text();
-
 
                     console.error(
                         "Erro do Supabase:",
                         errorText
                     );
 
-
                     formMessage.className =
                         "message error";
-
 
                     formMessage.textContent =
                         "❌ Não foi possível enviar a proposta.";
 
-
                     return;
 
                 }
-
 
 
                 formMessage.className =
@@ -1135,25 +1153,19 @@
                 form.reset();
 
 
-                // Atualiza a lista pública
-
                 carregarSugestoesPublicas();
-
 
             }
 
 
             catch (error) {
 
-
                 console.error(
                     error
                 );
 
-
                 formMessage.className =
                     "message error";
-
 
                 formMessage.textContent =
                     "❌ Não foi possível enviar sua proposta. Tente novamente.";
@@ -1163,10 +1175,8 @@
 
             finally {
 
-
                 submitButton.disabled =
                     false;
-
 
                 submitButton.textContent =
                     "🚀 Enviar proposta";
@@ -1174,17 +1184,17 @@
             }
 
         }
+
     );
 
 
 
-    /* ========================================
-       CARREGAR SUGESTÕES PÚBLICAS
-    ======================================== */
+    /* =========================================
+       PROPOSTAS PÚBLICAS
+    ========================================= */
 
     async function
     carregarSugestoesPublicas() {
-
 
         const publicAnalysis =
             document.getElementById(
@@ -1204,9 +1214,7 @@
             );
 
 
-
         try {
-
 
             const response =
                 await fetch(
@@ -1232,13 +1240,10 @@
                 );
 
 
-
             if (!response.ok) {
-
 
                 const errorText =
                     await response.text();
-
 
                 console.error(
                     "Erro ao carregar propostas:",
@@ -1263,36 +1268,28 @@
             }
 
 
-
             const propostas =
                 await response.json();
-
 
 
             publicAnalysis.innerHTML =
                 "";
 
-
             publicApproved.innerHTML =
                 "";
-
 
             publicRejected.innerHTML =
                 "";
 
 
-
             let analysisCount =
                 0;
-
 
             let approvedCount =
                 0;
 
-
             let rejectedCount =
                 0;
-
 
 
             propostas.forEach(
@@ -1309,7 +1306,6 @@
                         "public-suggestion";
 
 
-
                     const titulo =
                         document.createElement(
                             "h3"
@@ -1319,7 +1315,6 @@
                     titulo.textContent =
                         proposta.nome ||
                         "Anônimo";
-
 
 
                     const tipo =
@@ -1340,7 +1335,6 @@
                     );
 
 
-
                     const mensagem =
                         document.createElement(
                             "p"
@@ -1350,7 +1344,6 @@
                     mensagem.textContent =
                         proposta.mensagem ||
                         "";
-
 
 
                     card.appendChild(
@@ -1368,20 +1361,16 @@
                     );
 
 
-
                     if (
                         proposta.status ===
                         "analise"
                     ) {
 
-
                         publicAnalysis.appendChild(
                             card
                         );
 
-
                         analysisCount++;
-
 
                     }
 
@@ -1391,14 +1380,11 @@
                         "aprovada"
                     ) {
 
-
                         publicApproved.appendChild(
                             card
                         );
 
-
                         approvedCount++;
-
 
                     }
 
@@ -1408,26 +1394,22 @@
                         "recusada"
                     ) {
 
-
                         publicRejected.appendChild(
                             card
                         );
 
-
                         rejectedCount++;
-
 
                     }
 
                 }
-            );
 
+            );
 
 
             if (
                 analysisCount === 0
             ) {
-
 
                 publicAnalysis.innerHTML =
                     '<p class="suggestion-empty">Nenhuma sugestão em análise.</p>';
@@ -1435,11 +1417,9 @@
             }
 
 
-
             if (
                 approvedCount === 0
             ) {
-
 
                 publicApproved.innerHTML =
                     '<p class="suggestion-empty">Nenhuma sugestão aprovada ainda.</p>';
@@ -1447,11 +1427,9 @@
             }
 
 
-
             if (
                 rejectedCount === 0
             ) {
-
 
                 publicRejected.innerHTML =
                     '<p class="suggestion-empty">Nenhuma sugestão recusada.</p>';
@@ -1462,7 +1440,6 @@
 
 
         catch (error) {
-
 
             console.error(
                 "Erro:",
@@ -1475,11 +1452,258 @@
 
 
 
-    /* ========================================
-       INICIAR
-    ======================================== */
+    /* =========================================
+       VÍDEOS DO YOUTUBE
+    ========================================= */
+
+    async function
+    carregarVideosYouTube() {
+
+
+        const container =
+            document.getElementById(
+                "youtubeVideos"
+            );
+
+
+        const channelId =
+            "UCIUUcvD6YhKlta_QWCIp5CA";
+
+
+        const rssUrl =
+            `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+
+
+        const apiUrl =
+            `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
+
+
+        try {
+
+            const response =
+                await fetch(apiUrl);
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Erro ao buscar vídeos"
+                );
+
+            }
+
+
+            const data =
+                await response.json();
+
+
+            if (
+                data.status !== "ok" ||
+                !data.items
+            ) {
+
+                throw new Error(
+                    "Feed do YouTube inválido"
+                );
+
+            }
+
+
+            container.innerHTML =
+                "";
+
+
+            data.items
+                .slice(0, 6)
+                .forEach(
+                    function(video) {
+
+
+                        const videoId =
+                            video.guid.replace(
+                                "yt:video:",
+                                ""
+                            );
+
+
+                        const card =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        card.className =
+                            "youtube-card";
+
+
+                        const thumbnail =
+                            document.createElement(
+                                "img"
+                            );
+
+
+                        thumbnail.className =
+                            "youtube-thumbnail";
+
+
+                        thumbnail.src =
+                            `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+
+
+                        thumbnail.alt =
+                            video.title;
+
+
+                        thumbnail.loading =
+                            "lazy";
+
+
+                        const info =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        info.className =
+                            "youtube-info";
+
+
+                        const title =
+                            document.createElement(
+                                "h3"
+                            );
+
+
+                        title.className =
+                            "youtube-title";
+
+
+                        title.textContent =
+                            video.title;
+
+
+                        const date =
+                            document.createElement(
+                                "p"
+                            );
+
+
+                        date.className =
+                            "youtube-date";
+
+
+                        const dataVideo =
+                            new Date(
+                                video.pubDate
+                            );
+
+
+                        date.textContent =
+                            "📅 " +
+                            dataVideo.toLocaleDateString(
+                                "pt-BR"
+                            );
+
+
+                        const button =
+                            document.createElement(
+                                "a"
+                            );
+
+
+                        button.className =
+                            "youtube-button";
+
+
+                        button.href =
+                            video.link;
+
+
+                        button.target =
+                            "_blank";
+
+
+                        button.rel =
+                            "noopener noreferrer";
+
+
+                        button.textContent =
+                            "▶️ Assistir";
+
+
+                        info.appendChild(
+                            title
+                        );
+
+
+                        info.appendChild(
+                            date
+                        );
+
+
+                        info.appendChild(
+                            button
+                        );
+
+
+                        card.appendChild(
+                            thumbnail
+                        );
+
+
+                        card.appendChild(
+                            info
+                        );
+
+
+                        container.appendChild(
+                            card
+                        );
+
+                    }
+                );
+
+        }
+
+
+        catch (error) {
+
+            console.error(
+                "Erro ao carregar vídeos:",
+                error
+            );
+
+
+            container.innerHTML = `
+
+                <div class="card">
+
+                    <h3>
+                        ❌ Não foi possível carregar os vídeos.
+                    </h3>
+
+                    <p>
+                        Tente atualizar a página.
+                    </p>
+
+                </div>
+
+            `;
+
+        }
+
+    }
+
+
+
+    /* =========================================
+       INICIALIZAÇÃO
+    ========================================= */
 
     carregarSugestoesPublicas();
+
+    carregarVideosYouTube();
+
 
 </script>
 
