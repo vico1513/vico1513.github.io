@@ -2,12 +2,18 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Vico1513 | Minecraft</title>
 
-    <link rel="icon" type="image/jpeg" href="vico-comunity.jpeg">
+    <link
+        rel="icon"
+        type="image/jpeg"
+        href="vico-comunity.jpeg"
+    >
 
     <meta
         name="description"
@@ -40,81 +46,126 @@
                     transparent 30%
                 ),
                 #10091c;
+
             color: white;
             min-height: 100vh;
         }
 
         /* =========================
-           HEADER
+           BARRA SUPERIOR
         ========================= */
 
         header {
+
             position: sticky;
             top: 0;
             z-index: 1000;
+
             padding: 18px 25px;
-            background: rgba(27, 13, 46, 0.90);
+
+            background:
+                rgba(27, 13, 46, 0.88);
+
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(192, 132, 252, 0.25);
+
+            border-bottom:
+                1px solid rgba(192, 132, 252, 0.25);
+
         }
 
         .header-content {
+
             max-width: 1200px;
             margin: auto;
+
             display: flex;
             align-items: center;
             justify-content: space-between;
+
             gap: 20px;
+
         }
 
         .brand {
+
             display: flex;
             align-items: center;
+
             gap: 12px;
+
             text-decoration: none;
             color: white;
+
         }
 
         .brand img {
-            width: 50px;
-            height: 50px;
+
+            width: 48px;
+            height: 48px;
+
             border-radius: 50%;
+
             object-fit: cover;
-            border: 3px solid #a855f7;
+
+            border:
+                2px solid #a855f7;
+
             box-shadow:
-                0 0 18px rgba(168, 85, 247, 0.45);
+                0 0 18px
+                rgba(168, 85, 247, 0.35);
+
         }
 
         .brand-text h1 {
+
             font-size: 22px;
             color: #e9d5ff;
+
         }
 
         .brand-text p {
+
             font-size: 12px;
             color: #a78bfa;
+
             margin-top: 3px;
+
         }
 
         nav {
+
             display: flex;
             gap: 8px;
+
             flex-wrap: wrap;
+
             justify-content: center;
+
         }
 
         nav a {
+
             color: #ddd;
+
             text-decoration: none;
+
             padding: 9px 12px;
+
             border-radius: 9px;
+
             transition: 0.2s;
+
             font-size: 14px;
+
         }
 
         nav a:hover {
+
             color: white;
-            background: rgba(124, 58, 237, 0.25);
+
+            background:
+                rgba(124, 58, 237, 0.25);
+
         }
 
         /* =========================
@@ -122,55 +173,80 @@
         ========================= */
 
         .hero {
+
             position: relative;
+
             overflow: hidden;
+
             min-height: 570px;
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             text-align: center;
+
             padding: 90px 20px;
+
             background:
                 linear-gradient(
                     135deg,
                     rgba(27, 13, 46, 0.95),
                     rgba(50, 16, 92, 0.88)
                 );
+
         }
 
         .hero::before {
+
             content: "";
+
             position: absolute;
+
             width: 500px;
             height: 500px;
+
             background:
                 radial-gradient(
                     circle,
                     rgba(168, 85, 247, 0.28),
                     transparent 65%
                 );
+
             top: -200px;
             left: -150px;
+
             animation: float 7s ease-in-out infinite;
+
         }
 
         .hero::after {
+
             content: "";
+
             position: absolute;
+
             width: 500px;
             height: 500px;
+
             background:
                 radial-gradient(
                     circle,
                     rgba(216, 180, 254, 0.12),
                     transparent 65%
                 );
+
             bottom: -250px;
             right: -150px;
+
             animation: float 9s ease-in-out infinite reverse;
+
         }
 
         @keyframes float {
+
             0%, 100% {
                 transform: translateY(0);
             }
@@ -178,28 +254,45 @@
             50% {
                 transform: translateY(25px);
             }
+
         }
 
         .hero-content {
+
             position: relative;
+
             z-index: 2;
+
             max-width: 800px;
+
         }
 
         .hero-logo {
-            width: 120px;
-            height: 120px;
+
+            width: 110px;
+            height: 110px;
+
             border-radius: 50%;
+
             object-fit: cover;
-            border: 4px solid #c084fc;
+
+            border:
+                3px solid #c084fc;
+
             box-shadow:
-                0 0 40px rgba(168, 85, 247, 0.55);
+                0 0 40px
+                rgba(168, 85, 247, 0.5);
+
             margin-bottom: 25px;
+
         }
 
         .hero h2 {
+
             font-size: clamp(38px, 7vw, 70px);
+
             line-height: 1.05;
+
             margin-bottom: 20px;
 
             background:
@@ -207,4 +300,1209 @@
                     90deg,
                     #e9d5ff,
                     #c084fc,
-                    #f0
+                    #f0abfc
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+        .hero p {
+
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #ddd;
+
+            line-height: 1.7;
+
+            font-size: 17px;
+
+        }
+
+        .buttons {
+
+            margin-top: 32px;
+
+            display: flex;
+
+            justify-content: center;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+        }
+
+        .button {
+
+            display: inline-block;
+
+            padding: 13px 21px;
+
+            border-radius: 11px;
+
+            text-decoration: none;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #9333ea
+                );
+
+            font-weight: bold;
+
+            border: 1px solid
+                rgba(255,255,255,0.08);
+
+            cursor: pointer;
+
+            transition: 0.25s;
+
+        }
+
+        .button:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 25px
+                rgba(124, 58, 237, 0.35);
+
+        }
+
+        .button.secondary {
+
+            background:
+                rgba(255,255,255,0.06);
+
+            border:
+                1px solid
+                rgba(192,132,252,0.25);
+
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================= */
+
+        section {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 80px 20px;
+
+        }
+
+        section h2 {
+
+            text-align: center;
+
+            margin-bottom: 15px;
+
+            color: #e9d5ff;
+
+            font-size: 32px;
+
+        }
+
+        .section-description {
+
+            text-align: center;
+
+            color: #999;
+
+            max-width: 650px;
+
+            margin: 0 auto 35px;
+
+            line-height: 1.6;
+
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .card {
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(27,17,43,0.95),
+                    rgba(21,12,36,0.95)
+                );
+
+            padding: 25px;
+
+            border-radius: 18px;
+
+            margin-bottom: 20px;
+
+            border:
+                1px solid
+                rgba(139,92,246,0.20);
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.15);
+
+            transition: 0.25s;
+
+        }
+
+        .card:hover {
+
+            transform: translateY(-3px);
+
+            border-color:
+                rgba(192,132,252,0.35);
+
+        }
+
+        .card h3 {
+
+            color: #d8b4fe;
+
+            margin-bottom: 10px;
+
+        }
+
+        .card p {
+
+            color: #ccc;
+
+            line-height: 1.6;
+
+        }
+
+        /* =========================
+           VÍDEOS
+        ========================= */
+
+        .video-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 20px;
+
+        }
+
+        .video-card {
+
+            overflow: hidden;
+
+            padding: 0;
+
+        }
+
+        .video-thumbnail {
+
+            width: 100%;
+
+            aspect-ratio: 16 / 9;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #32105c,
+                    #160a26
+                );
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 45px;
+
+        }
+
+        .video-content {
+
+            padding: 18px;
+
+        }
+
+        .video-content h3 {
+
+            font-size: 17px;
+
+            margin-bottom: 8px;
+
+        }
+
+        .video-content p {
+
+            color: #999;
+
+            font-size: 14px;
+
+        }
+
+        /* =========================
+           PARCERIA
+        ========================= */
+
+        .partnership {
+
+            text-align: center;
+
+        }
+
+        .partnership input,
+        .partnership textarea,
+        .partnership select {
+
+            width: 100%;
+
+            max-width: 650px;
+
+            padding: 14px;
+
+            margin: 7px 0;
+
+            border:
+                1px solid
+                rgba(139,92,246,0.18);
+
+            border-radius: 10px;
+
+            background: #28183d;
+
+            color: white;
+
+            font-family: Arial, sans-serif;
+
+            outline: none;
+
+        }
+
+        .partnership input:focus,
+        .partnership textarea:focus,
+        .partnership select:focus {
+
+            border-color: #8b5cf6;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(139,92,246,0.12);
+
+        }
+
+        .partnership textarea {
+
+            height: 140px;
+
+            resize: vertical;
+
+        }
+
+        .partnership input::placeholder,
+        .partnership textarea::placeholder {
+
+            color: #999;
+
+        }
+
+        .message {
+
+            display: none;
+
+            max-width: 650px;
+
+            margin: 15px auto 0;
+
+            padding: 14px;
+
+            border-radius: 10px;
+
+            font-weight: bold;
+
+        }
+
+        .message.success {
+
+            display: block;
+
+            background: #183d2a;
+
+            border:
+                1px solid #2ecc71;
+
+            color: #8ff0b2;
+
+        }
+
+        .message.error {
+
+            display: block;
+
+            background: #3d1818;
+
+            border:
+                1px solid #e74c3c;
+
+            color: #ffaaa2;
+
+        }
+
+        /* =========================
+           DISCORD
+        ========================= */
+
+        .discord-card {
+
+            text-align: center;
+
+            padding: 45px 25px;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(124,58,237,0.25),
+                    transparent 60%
+                ),
+                #1b112b;
+
+        }
+
+        .discord-icon {
+
+            font-size: 55px;
+
+            margin-bottom: 15px;
+
+        }
+
+        /* =========================
+           SERVIDORES
+        ========================= */
+
+        .partner-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+        }
+
+        .server-card {
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+        .server-card::before {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            top: 0;
+            bottom: 0;
+
+            width: 4px;
+
+            background:
+                linear-gradient(
+                    #a855f7,
+                    #7c3aed
+                );
+
+        }
+
+        .server-icon {
+
+            font-size: 38px;
+
+            margin-bottom: 12px;
+
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 45px 20px;
+
+            background: #0b0612;
+
+            color: #777;
+
+            border-top:
+                1px solid
+                rgba(139,92,246,0.15);
+
+        }
+
+        footer strong {
+
+            color: #c084fc;
+
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .header-content {
+
+                flex-direction: column;
+
+            }
+
+            .video-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            .partner-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+            nav {
+
+                width: 100%;
+
+            }
+
+        }
+
+        @media (max-width: 600px) {
+
+            .hero {
+
+                min-height: 520px;
+
+            }
+
+            section {
+
+                padding: 60px 15px;
+
+            }
+
+            .hero h2 {
+
+                font-size: 40px;
+
+            }
+
+            .brand-text h1 {
+
+                font-size: 20px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <div class="header-content">
+
+        <a
+            href="#inicio"
+            class="brand"
+        >
+
+            <img
+                src="vico-comunity.jpeg"
+                alt="Vico1513"
+            >
+
+            <div class="brand-text">
+
+                <h1>🌸 Vico1513</h1>
+
+                <p>Minecraft • Comunidade • Aventuras</p>
+
+            </div>
+
+        </a>
+
+
+        <nav>
+
+            <a href="#videos">
+                🎬 Vídeos
+            </a>
+
+            <a href="#parcerias">
+                🤝 Parcerias
+            </a>
+
+            <a href="#discord">
+                💜 Discord
+            </a>
+
+            <a href="#servidores">
+                🌐 Servidores
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<main>
+
+<section
+    class="hero"
+    id="inicio"
+>
+
+    <div class="hero-content">
+
+        <img
+            class="hero-logo"
+            src="vico-comunity.jpeg"
+            alt="Vico1513"
+        >
+
+        <h2>
+            Bem-vindo ao<br>
+            mundo do Vico! 🌸
+        </h2>
+
+        <p>
+
+            Minecraft, construções, tutoriais,
+            desafios e muita diversão.
+            Faça parte da comunidade Vico1513!
+
+        </p>
+
+
+        <div class="buttons">
+
+            <a
+                class="button"
+                href="https://youtube.com/@vico1513"
+                target="_blank"
+            >
+                ▶️ Meu YouTube
+            </a>
+
+
+            <a
+                class="button secondary"
+                href="https://discord.gg/p3vRj3teYd"
+                target="_blank"
+            >
+                💜 Entrar no Discord
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VÍDEOS
+========================= -->
+
+<section id="videos">
+
+    <h2>🎬 Últimos vídeos</h2>
+
+    <p class="section-description">
+
+        Confira alguns dos últimos conteúdos
+        publicados no canal Vico1513.
+
+    </p>
+
+
+    <div class="video-grid">
+
+
+        <a
+            href="https://www.youtube.com/watch?v=DGIFD41iy1U"
+            target="_blank"
+            class="card video-card"
+            style="text-decoration:none;color:white;"
+        >
+
+            <div class="video-thumbnail">
+                ▶️
+            </div>
+
+            <div class="video-content">
+
+                <h3>
+                    Como fazer uma porta invisível no Minecraft
+                </h3>
+
+                <p>
+                    Tutorial rápido de Minecraft.
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <a
+            href="https://www.youtube.com/watch?v=4vRSlGLQTuY"
+            target="_blank"
+            class="card video-card"
+            style="text-decoration:none;color:white;"
+        >
+
+            <div class="video-thumbnail">
+                ▶️
+            </div>
+
+            <div class="video-content">
+
+                <h3>
+                    Como fazer uma porta 2x2 automática
+                </h3>
+
+                <p>
+                    Uma construção simples e útil.
+                </p>
+
+            </div>
+
+        </a>
+
+
+        <a
+            href="https://www.youtube.com/watch?v=urLDWFr0cKQ"
+            target="_blank"
+            class="card video-card"
+            style="text-decoration:none;color:white;"
+        >
+
+            <div class="video-thumbnail">
+                ▶️
+            </div>
+
+            <div class="video-content">
+
+                <h3>
+                    Como fazer uma base subterrânea
+                </h3>
+
+                <p>
+                    Uma base compacta para Survival.
+                </p>
+
+            </div>
+
+        </a>
+
+
+    </div>
+
+
+    <div
+        class="buttons"
+        style="margin-top:30px;"
+    >
+
+        <a
+            class="button"
+            href="https://youtube.com/@vico1513"
+            target="_blank"
+        >
+            🎬 Ver todos os vídeos
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PARCERIAS
+========================= -->
+
+<section id="parcerias">
+
+    <h2>🤝 Faça uma parceria</h2>
+
+    <p class="section-description">
+
+        Tem um servidor, canal, projeto ou ideia?
+        Envie sua proposta para o Vico1513.
+
+    </p>
+
+
+    <div class="card partnership">
+
+        <form id="partnershipForm">
+
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Seu nome ou apelido"
+                required
+            >
+
+
+            <input
+                type="text"
+                id="contato"
+                placeholder="Seu Discord ou outra forma de contato"
+                required
+            >
+
+
+            <select
+                id="tipo"
+                required
+            >
+
+                <option value="">
+                    Tipo de parceria
+                </option>
+
+                <option value="Servidor">
+                    Servidor
+                </option>
+
+                <option value="Canal">
+                    Canal
+                </option>
+
+                <option value="Projeto">
+                    Projeto
+                </option>
+
+                <option value="Outro">
+                    Outro
+                </option>
+
+            </select>
+
+
+            <textarea
+                id="mensagem"
+                placeholder="Conte um pouco sobre sua proposta..."
+                required
+            ></textarea>
+
+
+            <br>
+
+
+            <button
+                type="submit"
+                class="button"
+                id="submitButton"
+            >
+                🚀 Enviar proposta
+            </button>
+
+
+        </form>
+
+
+        <div
+            id="formMessage"
+            class="message"
+        ></div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     DISCORD
+========================= -->
+
+<section id="discord">
+
+    <h2>💜 Nossa comunidade</h2>
+
+    <p class="section-description">
+
+        Entre no Discord e acompanhe as novidades
+        do Vico1513.
+
+    </p>
+
+
+    <div class="card discord-card">
+
+        <div class="discord-icon">
+            💜
+        </div>
+
+        <h3>
+            Discord do Vico1513
+        </h3>
+
+        <p>
+
+            Converse com a comunidade,
+            acompanhe novidades,
+            participe de eventos e fique
+            por dentro dos próximos vídeos!
+
+        </p>
+
+
+        <div class="buttons">
+
+            <a
+                class="button"
+                href="https://discord.gg/p3vRj3teYd"
+                target="_blank"
+            >
+                💜 Entrar na comunidade
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SERVIDORES
+========================= -->
+
+<section id="servidores">
+
+    <h2>🌐 Servidores parceiros</h2>
+
+    <p class="section-description">
+
+        Conheça os servidores e projetos
+        parceiros do Vico1513.
+
+    </p>
+
+
+    <div class="partner-grid">
+
+
+        <!-- VELOCITY SMP -->
+
+        <div class="card server-card">
+
+            <div class="server-icon">
+                ⚡
+            </div>
+
+            <h3>
+                Velocity SMP
+            </h3>
+
+            <p>
+
+                Um servidor parceiro do Vico1513!
+                Entre para conhecer a comunidade
+                e jogar com a galera.
+
+            </p>
+
+
+            <div class="buttons">
+
+                <a
+                    class="button"
+                    href="https://discord.gg/6HKeVaedNH"
+                    target="_blank"
+                >
+                    ⚡ Entrar no Velocity SMP
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- FUTURO PARCEIRO -->
+
+        <div class="card server-card">
+
+            <div class="server-icon">
+                🤝
+            </div>
+
+            <h3>
+                Seu servidor pode aparecer aqui!
+            </h3>
+
+            <p>
+
+                Servidores parceiros e projetos
+                poderão aparecer nesta área.
+
+            </p>
+
+
+            <div class="buttons">
+
+                <a
+                    class="button secondary"
+                    href="#parcerias"
+                >
+                    📩 Quero fazer parceria
+                </a>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+
+        🌸 <strong>Vico1513</strong> © 2026
+
+    </p>
+
+    <p style="margin-top:8px;">
+
+        Minecraft • Comunidade • Diversão
+
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     SUPABASE
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+<script>
+
+
+const SUPABASE_URL =
+    "https://fqalhymfpiexyrbyxnka.supabase.co";
+
+
+const SUPABASE_KEY =
+    "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+
+const form =
+    document.getElementById(
+        "partnershipForm"
+    );
+
+
+const submitButton =
+    document.getElementById(
+        "submitButton"
+    );
+
+
+const formMessage =
+    document.getElementById(
+        "formMessage"
+    );
+
+
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        submitButton.disabled =
+            true;
+
+        submitButton.textContent =
+            "⏳ Enviando...";
+
+
+        formMessage.className =
+            "message";
+
+        formMessage.textContent =
+            "";
+
+
+        const nome =
+            document
+                .getElementById("nome")
+                .value
+                .trim();
+
+
+        const contato =
+            document
+                .getElementById("contato")
+                .value
+                .trim();
+
+
+        const tipo =
+            document
+                .getElementById("tipo")
+                .value;
+
+
+        const mensagem =
+            document
+                .getElementById("mensagem")
+                .value
+                .trim();
+
+
+        try {
+
+
+            const resultado =
+                await supabaseClient
+                    .from("parcerias")
+                    .insert({
+
+                        nome: nome,
+
+                        contato: contato,
+
+                        tipo: tipo,
+
+                        mensagem: mensagem
+
+                    });
+
+
+            if (
+                resultado.error
+            ) {
+
+                throw resultado.error;
+
+            }
+
+
+            formMessage.className =
+                "message success";
+
+
+            formMessage.textContent =
+                "✅ Proposta enviada com sucesso! Obrigado pelo contato!";
+
+
+            form.reset();
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Erro ao enviar:",
+                error
+            );
+
+
+            formMessage.className =
+                "message error";
+
+
+            formMessage.textContent =
+                "❌ Não foi possível enviar sua proposta. Tente novamente.";
+
+        }
+
+
+        finally {
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "🚀 Enviar proposta";
+
+        }
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>
