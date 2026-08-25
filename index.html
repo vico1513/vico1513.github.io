@@ -90,6 +90,11 @@
             background: #9333ea;
         }
 
+        .button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
         section {
             max-width: 1000px;
             margin: auto;
@@ -116,12 +121,13 @@
             margin-bottom: 10px;
         }
 
-        .suggestion {
+        .partnership {
             text-align: center;
         }
 
-        .suggestion input,
-        .suggestion textarea {
+        .partnership input,
+        .partnership textarea,
+        .partnership select {
             width: 100%;
             max-width: 600px;
             padding: 14px;
@@ -130,11 +136,44 @@
             border-radius: 10px;
             background: #28183d;
             color: white;
+            font-family: Arial, sans-serif;
         }
 
-        .suggestion textarea {
-            height: 120px;
+        .partnership select {
+            cursor: pointer;
+        }
+
+        .partnership textarea {
+            height: 140px;
             resize: vertical;
+        }
+
+        .partnership input::placeholder,
+        .partnership textarea::placeholder {
+            color: #aaa;
+        }
+
+        .message {
+            display: none;
+            max-width: 600px;
+            margin: 15px auto 0;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .message.success {
+            display: block;
+            background: #183d2a;
+            border: 1px solid #2ecc71;
+            color: #8ff0b2;
+        }
+
+        .message.error {
+            display: block;
+            background: #3d1818;
+            border: 1px solid #e74c3c;
+            color: #ffaaa2;
         }
 
         footer {
@@ -169,7 +208,7 @@
 
     <nav>
         <a href="#videos">🎬 Vídeos</a>
-        <a href="#sugestoes">💡 Sugestões</a>
+        <a href="#parcerias">🤝 Parcerias</a>
         <a href="#discord">💜 Discord</a>
         <a href="#servidores">🌐 Servidores</a>
     </nav>
@@ -184,6 +223,7 @@
     </p>
 
     <div class="buttons">
+
         <a class="button" href="https://youtube.com/@vico1513" target="_blank">
             ▶️ Meu YouTube
         </a>
@@ -191,6 +231,7 @@
         <a class="button" href="https://discord.gg/HNz6vetv" target="_blank">
             💜 Meu Discord
         </a>
+
     </div>
 </div>
 
@@ -199,30 +240,69 @@
 
     <div class="card">
         <h3>🚧 Em breve...</h3>
+
         <p>
             Aqui vão aparecer automaticamente os vídeos novos do canal.
         </p>
     </div>
 </section>
 
-<section id="sugestoes">
-    <h2>💡 Sugira um vídeo</h2>
+<section id="parcerias">
+    <h2>🤝 Faça uma parceria</h2>
 
-    <div class="card suggestion">
+    <div class="card partnership">
+
         <p>
-            Tem uma ideia incrível para o próximo vídeo?
-            Manda para mim!
+            Tem um servidor, canal, projeto ou outra ideia de parceria
+            com o Vico1513? Envie sua proposta!
         </p>
-
-        <input type="text" placeholder="Seu nome ou apelido">
-
-        <textarea placeholder="Digite sua sugestão..."></textarea>
 
         <br>
 
-        <button class="button">
-            🚀 Enviar sugestão
-        </button>
+        <form id="partnershipForm">
+
+            <input
+                type="text"
+                id="nome"
+                placeholder="Seu nome ou apelido"
+                required
+            >
+
+            <input
+                type="text"
+                id="contato"
+                placeholder="Seu Discord ou outra forma de contato"
+                required
+            >
+
+            <select id="tipo" required>
+                <option value="">Tipo de parceria</option>
+                <option value="Servidor">Servidor</option>
+                <option value="Canal">Canal</option>
+                <option value="Projeto">Projeto</option>
+                <option value="Outro">Outro</option>
+            </select>
+
+            <textarea
+                id="mensagem"
+                placeholder="Conte um pouco sobre sua proposta..."
+                required
+            ></textarea>
+
+            <br>
+
+            <button
+                type="submit"
+                class="button"
+                id="submitButton"
+            >
+                🚀 Enviar proposta
+            </button>
+
+        </form>
+
+        <div id="formMessage" class="message"></div>
+
     </div>
 </section>
 
@@ -230,6 +310,7 @@
     <h2>💜 Nossa comunidade</h2>
 
     <div class="card">
+
         <h3>🌸 Discord do Vico1513</h3>
 
         <p>
@@ -239,9 +320,14 @@
 
         <br>
 
-        <a class="button" href="https://discord.gg/p3vRj3teYd" target="_blank">
+        <a
+            class="button"
+            href="https://discord.gg/p3vRj3teYd"
+            target="_blank"
+        >
             💜 Entrar na comunidade
         </a>
+
     </div>
 </section>
 
@@ -249,6 +335,7 @@
     <h2>🌐 Servidores parceiros</h2>
 
     <div class="card">
+
         <h3>⚡ Velocity SMP</h3>
 
         <p>
@@ -258,12 +345,18 @@
 
         <br>
 
-        <a class="button" href="https://discord.gg/6HKeVaedNH" target="_blank">
+        <a
+            class="button"
+            href="https://discord.gg/6HKeVaedNH"
+            target="_blank"
+        >
             ⚡ Entrar no Velocity SMP
         </a>
+
     </div>
 
     <div class="card">
+
         <h3>🤝 Seu servidor pode aparecer aqui!</h3>
 
         <p>
@@ -275,8 +368,9 @@
 
         <p>
             📩 Quer fazer parceria?
-            Entre em contato comigo.
+            Envie sua proposta pelo formulário acima.
         </p>
+
     </div>
 </section>
 
@@ -284,6 +378,113 @@
     <p>🌸 Vico1513 © 2026</p>
     <p>Minecraft • Comunidade • Diversão</p>
 </footer>
+
+
+<script>
+    // ==========================================
+    // CONFIGURAÇÃO DO SUPABASE
+    // ==========================================
+
+    const SUPABASE_URL = "https://fqalhymfpiexyrbyxnka.supabase.co";
+
+    const SUPABASE_KEY = "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
+
+
+    // ==========================================
+    // FORMULÁRIO DE PARCERIAS
+    // ==========================================
+
+    const form = document.getElementById("partnershipForm");
+
+    const submitButton = document.getElementById("submitButton");
+
+    const formMessage = document.getElementById("formMessage");
+
+
+    form.addEventListener("submit", async function(event) {
+
+        event.preventDefault();
+
+        submitButton.disabled = true;
+
+        submitButton.textContent = "⏳ Enviando...";
+
+        formMessage.className = "message";
+
+        formMessage.textContent = "";
+
+
+        const nome = document.getElementById("nome").value.trim();
+
+        const contato = document.getElementById("contato").value.trim();
+
+        const tipo = document.getElementById("tipo").value;
+
+        const mensagem = document.getElementById("mensagem").value.trim();
+
+
+        try {
+
+            const response = await fetch(
+                `${SUPABASE_URL}/rest/v1/parcerias`,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type": "application/json",
+                        "apikey": SUPABASE_KEY,
+                        "Authorization": `Bearer ${SUPABASE_KEY}`,
+                        "Prefer": "return=minimal"
+                    },
+
+                    body: JSON.stringify({
+                        nome: nome,
+                        contato: contato,
+                        tipo: tipo,
+                        mensagem: mensagem
+                    })
+                }
+            );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Não foi possível enviar a proposta."
+                );
+
+            }
+
+
+            formMessage.className = "message success";
+
+            formMessage.textContent =
+                "✅ Proposta enviada com sucesso! Obrigado pelo contato!";
+
+
+            form.reset();
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            formMessage.className = "message error";
+
+            formMessage.textContent =
+                "❌ Não foi possível enviar sua proposta. Tente novamente.";
+
+
+        } finally {
+
+            submitButton.disabled = false;
+
+            submitButton.textContent = "🚀 Enviar proposta";
+
+        }
+
+    });
+</script>
 
 </body>
 </html>
