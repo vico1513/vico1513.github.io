@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Administração | Vico1513</title>
+    <title>Admin | Vico1513</title>
 
     <style>
 
@@ -19,6 +19,7 @@
             font-family: Arial, sans-serif;
             background: #10091c;
             color: white;
+            min-height: 100vh;
         }
 
         header {
@@ -30,38 +31,47 @@
 
         header h1 {
             color: #c084fc;
-            margin-bottom: 8px;
+            font-size: 32px;
         }
 
         header p {
             color: #d8b4fe;
+            margin-top: 8px;
         }
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 40px 20px;
+        /* =========================
+           LOGIN
+        ========================= */
+
+        .login-container {
+            max-width: 430px;
+            margin: 80px auto;
+            padding: 20px;
         }
 
         .login-box {
-            max-width: 450px;
-            margin: 80px auto;
             background: #1b112b;
-            padding: 30px;
-            border-radius: 18px;
             border: 1px solid #3b2160;
+            border-radius: 18px;
+            padding: 30px;
             text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
         .login-box h2 {
             color: #c084fc;
+            margin-bottom: 10px;
+        }
+
+        .login-box p {
+            color: #aaa;
             margin-bottom: 25px;
         }
 
         input {
             width: 100%;
             padding: 14px;
-            margin: 8px 0;
+            margin-bottom: 12px;
             border: none;
             border-radius: 10px;
             background: #28183d;
@@ -69,22 +79,32 @@
             outline: none;
         }
 
+        input:focus {
+            outline: 2px solid #7c3aed;
+        }
+
         input::placeholder {
-            color: #aaa;
+            color: #999;
         }
 
         button {
-            padding: 12px 20px;
             border: none;
             border-radius: 10px;
-            background: #7c3aed;
+            padding: 12px 18px;
             color: white;
             font-weight: bold;
             cursor: pointer;
             margin: 5px;
+            transition: 0.2s;
         }
 
-        button:hover {
+        .login-button {
+            width: 100%;
+            background: #7c3aed;
+            margin: 5px 0 0;
+        }
+
+        .login-button:hover {
             background: #9333ea;
         }
 
@@ -93,44 +113,63 @@
             cursor: not-allowed;
         }
 
-        .logout {
-            background: #4c1d3d;
-        }
-
-        .logout:hover {
-            background: #6b244f;
-        }
-
-        .message {
+        .error-message {
+            display: none;
             margin-top: 15px;
             padding: 12px;
             border-radius: 10px;
-            display: none;
-        }
-
-        .error {
-            display: block;
             background: #3d1818;
             border: 1px solid #e74c3c;
             color: #ffaaa2;
         }
 
-        .dashboard {
+        .error-message.show {
+            display: block;
+        }
+
+        /* =========================
+           PAINEL
+        ========================= */
+
+        #dashboard {
             display: none;
         }
 
-        .topbar {
+        .dashboard {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .dashboard-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 35px;
+            gap: 20px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
         }
 
-        .topbar h2 {
+        .dashboard-header h2 {
             color: #c084fc;
+            margin-bottom: 5px;
         }
+
+        .dashboard-header p {
+            color: #999;
+        }
+
+        .logout-button {
+            background: #4c1d3d;
+        }
+
+        .logout-button:hover {
+            background: #6b244f;
+        }
+
+        /* =========================
+           COLUNAS
+        ========================= */
 
         .columns {
             display: grid;
@@ -141,38 +180,43 @@
         .column {
             background: #150c24;
             border: 1px solid #3b2160;
-            border-radius: 15px;
-            padding: 18px;
+            border-radius: 16px;
+            padding: 20px;
             min-height: 300px;
         }
 
-        .column h3 {
-            margin-bottom: 18px;
+        .column-title {
+            margin-bottom: 20px;
+            font-size: 21px;
         }
 
-        .analysis h3 {
+        .analysis-title {
             color: #facc15;
         }
 
-        .approved h3 {
+        .approved-title {
             color: #4ade80;
         }
 
-        .rejected h3 {
+        .rejected-title {
             color: #f87171;
         }
+
+        /* =========================
+           PROPOSTAS
+        ========================= */
 
         .proposal {
             background: #1b112b;
             border: 1px solid #3b2160;
-            border-radius: 12px;
-            padding: 16px;
+            border-radius: 13px;
+            padding: 17px;
             margin-bottom: 15px;
         }
 
-        .proposal h4 {
+        .proposal h3 {
             color: #d8b4fe;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-size: 18px;
         }
 
@@ -183,31 +227,47 @@
             word-break: break-word;
         }
 
-        .proposal small {
-            color: #999;
+        .proposal strong {
+            color: #c084fc;
         }
 
-        .approve {
+        .proposal-date {
+            color: #888 !important;
+            font-size: 13px;
+            margin-top: 12px;
+        }
+
+        .approve-button {
             background: #15803d;
         }
 
-        .approve:hover {
+        .approve-button:hover {
             background: #16a34a;
         }
 
-        .reject {
+        .reject-button {
             background: #b91c1c;
         }
 
-        .reject:hover {
+        .reject-button:hover {
             background: #dc2626;
         }
 
         .empty {
-            color: #888;
             text-align: center;
+            color: #777;
             padding: 30px 10px;
         }
+
+        .loading {
+            text-align: center;
+            color: #aaa;
+            padding: 30px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
 
         @media (max-width: 850px) {
 
@@ -215,12 +275,18 @@
                 grid-template-columns: 1fr;
             }
 
+            .dashboard-header {
+                align-items: flex-start;
+            }
+
         }
 
     </style>
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -231,61 +297,82 @@
 </header>
 
 
-<!-- LOGIN -->
+<!-- =====================================
+     LOGIN
+===================================== -->
 
-<div id="loginBox" class="login-box">
+<div
+    id="loginContainer"
+    class="login-container"
+>
 
-    <h2>🔐 Área Administrativa</h2>
+    <div class="login-box">
 
-    <p style="color:#aaa; margin-bottom:20px;">
-        Entre com sua conta de administrador.
-    </p>
+        <h2>🔐 Área Administrativa</h2>
 
-    <input
-        type="email"
-        id="email"
-        placeholder="Seu e-mail"
-    >
+        <p>
+            Entre com sua conta de administrador.
+        </p>
 
-    <input
-        type="password"
-        id="password"
-        placeholder="Sua senha"
-    >
+        <input
+            type="email"
+            id="email"
+            placeholder="E-mail"
+            autocomplete="email"
+        >
 
-    <button
-        id="loginButton"
-        onclick="login()"
-    >
-        🔑 Entrar
-    </button>
+        <input
+            type="password"
+            id="password"
+            placeholder="Senha"
+            autocomplete="current-password"
+        >
 
-    <div id="loginMessage" class="message"></div>
+        <button
+            id="loginButton"
+            class="login-button"
+        >
+            🔑 Entrar
+        </button>
+
+        <div
+            id="loginError"
+            class="error-message"
+        ></div>
+
+    </div>
 
 </div>
 
 
-<!-- PAINEL -->
+<!-- =====================================
+     PAINEL
+===================================== -->
 
-<div id="dashboard" class="dashboard">
+<div
+    id="dashboard"
+>
 
-    <div class="container">
+    <div class="dashboard">
 
-        <div class="topbar">
+
+        <div class="dashboard-header">
 
             <div>
 
-                <h2>⚙️ Painel Administrativo</h2>
+                <h2>
+                    ⚙️ Painel Administrativo
+                </h2>
 
-                <p style="color:#999; margin-top:5px;">
+                <p>
                     Gerencie as propostas recebidas.
                 </p>
 
             </div>
 
             <button
-                class="logout"
-                onclick="logout()"
+                id="logoutButton"
+                class="logout-button"
             >
                 🚪 Sair
             </button>
@@ -298,41 +385,66 @@
 
             <!-- EM ANÁLISE -->
 
-            <div class="column analysis">
+            <div class="column">
 
-                <h3>
+                <h3
+                    class="column-title analysis-title"
+                >
                     🟡 Em análise
                 </h3>
 
-                <div id="analysisList"></div>
+                <div
+                    id="analysisList"
+                >
+                    <div class="loading">
+                        Carregando...
+                    </div>
+                </div>
 
             </div>
 
 
             <!-- APROVADAS -->
 
-            <div class="column approved">
+            <div class="column">
 
-                <h3>
+                <h3
+                    class="column-title approved-title"
+                >
                     🟢 Aprovadas
                 </h3>
 
-                <div id="approvedList"></div>
+                <div
+                    id="approvedList"
+                >
+                    <div class="loading">
+                        Carregando...
+                    </div>
+                </div>
 
             </div>
 
 
             <!-- RECUSADAS -->
 
-            <div class="column rejected">
+            <div class="column">
 
-                <h3>
+                <h3
+                    class="column-title rejected-title"
+                >
                     🔴 Recusadas
                 </h3>
 
-                <div id="rejectedList"></div>
+                <div
+                    id="rejectedList"
+                >
+                    <div class="loading">
+                        Carregando...
+                    </div>
+                </div>
 
             </div>
+
 
         </div>
 
@@ -341,19 +453,27 @@
 </div>
 
 
+<!-- =====================================
+     SUPABASE
+===================================== -->
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 
 <script>
 
-    // ==========================================
-    // SUPABASE
-    // ==========================================
+    // =====================================
+    // CONFIGURAÇÃO
+    // =====================================
 
     const SUPABASE_URL =
         "https://fqalhymfpiexyrbyxnka.supabase.co";
 
     const SUPABASE_KEY =
         "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
+
+    const ADMIN_UID =
+        "15ef4f3f-a64f-46ae-82e7-6ad1994a4633";
 
 
     const supabaseClient =
@@ -363,49 +483,125 @@
         );
 
 
-    // ==========================================
-    // SEU UID DE ADMINISTRADOR
-    // ==========================================
+    // =====================================
+    // ELEMENTOS
+    // =====================================
 
-    const ADMIN_UID =
-        "15ef4f3f-a64f-46ae-82e7-6ad1994a4633";
+    const loginContainer =
+        document.getElementById(
+            "loginContainer"
+        );
+
+    const dashboard =
+        document.getElementById(
+            "dashboard"
+        );
+
+    const emailInput =
+        document.getElementById(
+            "email"
+        );
+
+    const passwordInput =
+        document.getElementById(
+            "password"
+        );
+
+    const loginButton =
+        document.getElementById(
+            "loginButton"
+        );
+
+    const loginError =
+        document.getElementById(
+            "loginError"
+        );
+
+    const logoutButton =
+        document.getElementById(
+            "logoutButton"
+        );
 
 
-    // ==========================================
+    // =====================================
+    // MOSTRAR ERRO
+    // =====================================
+
+    function mostrarErro(mensagem) {
+
+        loginError.textContent =
+            mensagem;
+
+        loginError.classList.add(
+            "show"
+        );
+
+    }
+
+
+    function esconderErro() {
+
+        loginError.textContent =
+            "";
+
+        loginError.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    // =====================================
     // LOGIN
-    // ==========================================
+    // =====================================
 
-    async function login() {
+    async function fazerLogin() {
+
+        esconderErro();
 
         const email =
-            document.getElementById("email").value.trim();
+            emailInput.value.trim();
 
         const password =
-            document.getElementById("password").value;
-
-        const loginButton =
-            document.getElementById("loginButton");
-
-        const loginMessage =
-            document.getElementById("loginMessage");
+            passwordInput.value;
 
 
-        loginButton.disabled = true;
+        if (!email || !password) {
 
-        loginButton.textContent = "⏳ Entrando...";
+            mostrarErro(
+                "Digite seu e-mail e sua senha."
+            );
 
-        loginMessage.className = "message";
+            return;
 
-        loginMessage.textContent = "";
+        }
+
+
+        loginButton.disabled =
+            true;
+
+        loginButton.textContent =
+            "⏳ Entrando...";
 
 
         try {
 
-            const { data, error } =
-                await supabaseClient.auth.signInWithPassword({
-                    email: email,
-                    password: password
-                });
+            const resultado =
+                await supabaseClient.auth
+                    .signInWithPassword({
+
+                        email: email,
+
+                        password: password
+
+                    });
+
+
+            const data =
+                resultado.data;
+
+            const error =
+                resultado.error;
 
 
             if (error) {
@@ -413,16 +609,22 @@
             }
 
 
-            if (!data.user) {
+            if (!data || !data.user) {
+
                 throw new Error(
-                    "Usuário não encontrado."
+                    "Não foi possível identificar o usuário."
                 );
+
             }
 
 
-            // CONFERE SE É O ADMIN
+            // =================================
+            // VERIFICA SE É O ADMIN
+            // =================================
 
-            if (data.user.id !== ADMIN_UID) {
+            if (
+                data.user.id !== ADMIN_UID
+            ) {
 
                 await supabaseClient.auth.signOut();
 
@@ -433,22 +635,31 @@
             }
 
 
-            mostrarPainel();
+            mostrarDashboard();
 
 
-        } catch (error) {
+        }
 
-            console.error(error);
+        catch (error) {
 
-            loginMessage.className =
-                "message error";
+            console.error(
+                "Erro no login:",
+                error
+            );
 
-            loginMessage.textContent =
-                "❌ " + error.message;
+            mostrarErro(
+                "❌ " + (
+                    error.message ||
+                    "Não foi possível entrar."
+                )
+            );
 
-        } finally {
+        }
 
-            loginButton.disabled = false;
+        finally {
+
+            loginButton.disabled =
+                false;
 
             loginButton.textContent =
                 "🔑 Entrar";
@@ -458,16 +669,16 @@
     }
 
 
-    // ==========================================
-    // MOSTRAR PAINEL
-    // ==========================================
+    // =====================================
+    // MOSTRAR DASHBOARD
+    // =====================================
 
-    function mostrarPainel() {
+    function mostrarDashboard() {
 
-        document.getElementById("loginBox").style.display =
+        loginContainer.style.display =
             "none";
 
-        document.getElementById("dashboard").style.display =
+        dashboard.style.display =
             "block";
 
         carregarPropostas();
@@ -475,308 +686,409 @@
     }
 
 
-    // ==========================================
-    // VERIFICAR LOGIN AO ABRIR
-    // ==========================================
+    // =====================================
+    // VERIFICAR SESSÃO
+    // =====================================
 
     async function verificarSessao() {
 
-        const { data } =
-            await supabaseClient.auth.getSession();
+        try {
+
+            const resultado =
+                await supabaseClient.auth
+                    .getSession();
 
 
-        const session =
-            data.session;
+            const session =
+                resultado.data.session;
 
 
-        if (!session) {
-            return;
+            if (!session) {
+                return;
+            }
+
+
+            if (
+                session.user.id !== ADMIN_UID
+            ) {
+
+                await supabaseClient.auth.signOut();
+
+                return;
+
+            }
+
+
+            mostrarDashboard();
+
         }
 
+        catch (error) {
 
-        if (session.user.id !== ADMIN_UID) {
-
-            await supabaseClient.auth.signOut();
-
-            return;
+            console.error(
+                "Erro ao verificar sessão:",
+                error
+            );
 
         }
-
-
-        mostrarPainel();
 
     }
 
 
-    // ==========================================
+    // =====================================
     // CARREGAR PROPOSTAS
-    // ==========================================
+    // =====================================
 
-async function carregarPropostas() {
-
-    console.log("🔎 Buscando propostas...");
-
-    const { data, error } =
-        await supabaseClient
-            .from("parcerias")
-            .select("*");
-
-    console.log("📦 Dados recebidos:", data);
-    console.log("❌ Erro:", error);
-
-    if (error) {
-
-        alert(
-            "Erro ao carregar propostas:\n\n" +
-            JSON.stringify(error, null, 2)
-        );
-
-        return;
-    }
-
-    const analysisList =
-        document.getElementById("analysisList");
-
-    const approvedList =
-        document.getElementById("approvedList");
-
-    const rejectedList =
-        document.getElementById("rejectedList");
-
-    analysisList.innerHTML = "";
-    approvedList.innerHTML = "";
-    rejectedList.innerHTML = "";
-
-    data.forEach(proposta => {
+    async function carregarPropostas() {
 
         console.log(
-            "📋 Proposta:",
-            proposta
+            "🔎 Buscando propostas..."
         );
 
-        const card =
-            criarCard(proposta);
 
-        if (proposta.status === "analise") {
+        const analysisList =
+            document.getElementById(
+                "analysisList"
+            );
 
-            analysisList.appendChild(card);
+        const approvedList =
+            document.getElementById(
+                "approvedList"
+            );
+
+        const rejectedList =
+            document.getElementById(
+                "rejectedList"
+            );
+
+
+        analysisList.innerHTML =
+            '<div class="loading">Carregando...</div>';
+
+        approvedList.innerHTML =
+            '<div class="loading">Carregando...</div>';
+
+        rejectedList.innerHTML =
+            '<div class="loading">Carregando...</div>';
+
+
+        try {
+
+            const resultado =
+                await supabaseClient
+                    .from("parcerias")
+                    .select("*")
+                    .order("id", {
+                        ascending: false
+                    });
+
+
+            const data =
+                resultado.data;
+
+            const error =
+                resultado.error;
+
+
+            console.log(
+                "📦 Dados recebidos:",
+                data
+            );
+
+            console.log(
+                "❌ Erro:",
+                error
+            );
+
+
+            if (error) {
+
+                throw error;
+
+            }
+
+
+            analysisList.innerHTML = "";
+
+            approvedList.innerHTML = "";
+
+            rejectedList.innerHTML = "";
+
+
+            let analysisCount = 0;
+
+            let approvedCount = 0;
+
+            let rejectedCount = 0;
+
+
+            data.forEach(
+                function(proposta) {
+
+                    const card =
+                        criarCard(
+                            proposta
+                        );
+
+
+                    if (
+                        proposta.status ===
+                        "analise"
+                    ) {
+
+                        analysisList.appendChild(
+                            card
+                        );
+
+                        analysisCount++;
+
+                    }
+
+                    else if (
+                        proposta.status ===
+                        "aprovada"
+                    ) {
+
+                        approvedList.appendChild(
+                            card
+                        );
+
+                        approvedCount++;
+
+                    }
+
+                    else if (
+                        proposta.status ===
+                        "recusada"
+                    ) {
+
+                        rejectedList.appendChild(
+                            card
+                        );
+
+                        rejectedCount++;
+
+                    }
+
+                }
+            );
+
+
+            if (
+                analysisCount === 0
+            ) {
+
+                analysisList.innerHTML =
+                    '<div class="empty">Nenhuma proposta em análise.</div>';
+
+            }
+
+
+            if (
+                approvedCount === 0
+            ) {
+
+                approvedList.innerHTML =
+                    '<div class="empty">Nenhuma proposta aprovada.</div>';
+
+            }
+
+
+            if (
+                rejectedCount === 0
+            ) {
+
+                rejectedList.innerHTML =
+                    '<div class="empty">Nenhuma proposta recusada.</div>';
+
+            }
 
         }
 
-        else if (proposta.status === "aprovada") {
-
-            approvedList.appendChild(card);
-
-        }
-
-        else if (proposta.status === "recusada") {
-
-            rejectedList.appendChild(card);
-
-        }
-
-    });
-
-}
-        if (error) {
+        catch (error) {
 
             console.error(
                 "Erro ao carregar propostas:",
                 error
             );
 
-            return;
-        }
-
-
-        const analysisList =
-            document.getElementById("analysisList");
-
-        const approvedList =
-            document.getElementById("approvedList");
-
-        const rejectedList =
-            document.getElementById("rejectedList");
-
-
-        analysisList.innerHTML = "";
-
-        approvedList.innerHTML = "";
-
-        rejectedList.innerHTML = "";
-
-
-        let analysisCount = 0;
-        let approvedCount = 0;
-        let rejectedCount = 0;
-
-
-        data.forEach(proposta => {
-
-            const card =
-                criarCard(proposta);
-
-
-            if (proposta.status === "analise") {
-
-                analysisList.appendChild(card);
-
-                analysisCount++;
-
-            }
-
-            else if (proposta.status === "aprovada") {
-
-                approvedList.appendChild(card);
-
-                approvedCount++;
-
-            }
-
-            else if (proposta.status === "recusada") {
-
-                rejectedList.appendChild(card);
-
-                rejectedCount++;
-
-            }
-
-        });
-
-
-        if (analysisCount === 0) {
 
             analysisList.innerHTML =
-                '<div class="empty">Nenhuma proposta em análise.</div>';
-
-        }
-
-
-        if (approvedCount === 0) {
+                '<div class="empty">❌ Erro ao carregar.</div>';
 
             approvedList.innerHTML =
-                '<div class="empty">Nenhuma proposta aprovada.</div>';
-
-        }
-
-
-        if (rejectedCount === 0) {
+                '<div class="empty">❌ Erro ao carregar.</div>';
 
             rejectedList.innerHTML =
-                '<div class="empty">Nenhuma proposta recusada.</div>';
+                '<div class="empty">❌ Erro ao carregar.</div>';
+
+
+            alert(
+                "Erro ao carregar propostas:\n\n" +
+                JSON.stringify(
+                    error,
+                    null,
+                    2
+                )
+            );
 
         }
 
     }
 
 
-    // ==========================================
+    // =====================================
     // CRIAR CARD
-    // ==========================================
+    // =====================================
 
     function criarCard(proposta) {
 
         const card =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        card.className = "proposal";
+        card.className =
+            "proposal";
 
 
         const titulo =
-            document.createElement("h4");
+            document.createElement(
+                "h3"
+            );
 
         titulo.textContent =
-            proposta.nome || "Sem nome";
+            proposta.nome ||
+            "Sem nome";
 
 
         const contato =
-            document.createElement("p");
+            document.createElement(
+                "p"
+            );
 
         contato.innerHTML =
             "<strong>📱 Contato:</strong> ";
 
-        const contatoTexto =
+        contato.appendChild(
             document.createTextNode(
-                proposta.contato || "Não informado"
-            );
-
-        contato.appendChild(contatoTexto);
+                proposta.contato ||
+                "Não informado"
+            )
+        );
 
 
         const tipo =
-            document.createElement("p");
+            document.createElement(
+                "p"
+            );
 
         tipo.innerHTML =
             "<strong>🏷️ Tipo:</strong> ";
 
         tipo.appendChild(
             document.createTextNode(
-                proposta.tipo || "Não informado"
+                proposta.tipo ||
+                "Não informado"
             )
         );
 
 
         const mensagem =
-            document.createElement("p");
+            document.createElement(
+                "p"
+            );
 
         mensagem.innerHTML =
             "<strong>💡 Proposta:</strong><br>";
 
         mensagem.appendChild(
             document.createTextNode(
-                proposta.mensagem || ""
+                proposta.mensagem ||
+                ""
             )
         );
 
 
-        card.appendChild(titulo);
+        card.appendChild(
+            titulo
+        );
 
-        card.appendChild(contato);
+        card.appendChild(
+            contato
+        );
 
-        card.appendChild(tipo);
+        card.appendChild(
+            tipo
+        );
 
-        card.appendChild(mensagem);
+        card.appendChild(
+            mensagem
+        );
 
 
-        // BOTÕES SOMENTE EM ANÁLISE
+        // =================================
+        // BOTÕES
+        // =================================
 
-        if (proposta.status === "analise") {
+        if (
+            proposta.status ===
+            "analise"
+        ) {
 
             const approveButton =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
             approveButton.className =
-                "approve";
+                "approve-button";
 
             approveButton.textContent =
                 "✅ Aprovar";
 
+
             approveButton.onclick =
-                () => alterarStatus(
-                    proposta.id,
-                    "aprovada"
-                );
+                function() {
+
+                    alterarStatus(
+                        proposta.id,
+                        "aprovada"
+                    );
+
+                };
 
 
             const rejectButton =
-                document.createElement("button");
+                document.createElement(
+                    "button"
+                );
 
             rejectButton.className =
-                "reject";
+                "reject-button";
 
             rejectButton.textContent =
                 "❌ Recusar";
 
+
             rejectButton.onclick =
-                () => alterarStatus(
-                    proposta.id,
-                    "recusada"
-                );
+                function() {
+
+                    alterarStatus(
+                        proposta.id,
+                        "recusada"
+                    );
+
+                };
 
 
-            card.appendChild(approveButton);
+            card.appendChild(
+                approveButton
+            );
 
-            card.appendChild(rejectButton);
+            card.appendChild(
+                rejectButton
+            );
 
         }
 
@@ -786,16 +1098,16 @@ async function carregarPropostas() {
     }
 
 
-    // ==========================================
+    // =====================================
     // ALTERAR STATUS
-    // ==========================================
+    // =====================================
 
     async function alterarStatus(
         id,
         novoStatus
     ) {
 
-        const texto =
+        const acao =
             novoStatus === "aprovada"
                 ? "aprovar"
                 : "recusar";
@@ -803,7 +1115,9 @@ async function carregarPropostas() {
 
         const confirmar =
             confirm(
-                `Tem certeza que deseja ${texto} esta proposta?`
+                "Tem certeza que deseja " +
+                acao +
+                " esta proposta?"
             );
 
 
@@ -812,19 +1126,50 @@ async function carregarPropostas() {
         }
 
 
-        const { error } =
-            await supabaseClient
-                .from("parcerias")
-                .update({
-                    status: novoStatus
-                })
-                .eq("id", id);
+        try {
+
+            const resultado =
+                await supabaseClient
+                    .from("parcerias")
+                    .update({
+                        status: novoStatus
+                    })
+                    .eq("id", id);
 
 
-        if (error) {
+            const error =
+                resultado.error;
+
+
+            if (error) {
+
+                console.error(
+                    "Erro ao atualizar:",
+                    error
+                );
+
+                alert(
+                    "❌ Erro ao atualizar:\n\n" +
+                    JSON.stringify(
+                        error,
+                        null,
+                        2
+                    )
+                );
+
+                return;
+
+            }
+
+
+            await carregarPropostas();
+
+        }
+
+        catch (error) {
 
             console.error(
-                "Erro ao atualizar:",
+                "Erro:",
                 error
             );
 
@@ -832,42 +1177,76 @@ async function carregarPropostas() {
                 "❌ Não foi possível atualizar a proposta."
             );
 
-            return;
         }
-
-
-        carregarPropostas();
 
     }
 
 
-    // ==========================================
+    // =====================================
     // LOGOUT
-    // ==========================================
+    // =====================================
 
-    async function logout() {
+    async function fazerLogout() {
 
         await supabaseClient.auth.signOut();
 
-        document.getElementById("dashboard").style.display =
+        dashboard.style.display =
             "none";
 
-        document.getElementById("loginBox").style.display =
+        loginContainer.style.display =
             "block";
 
-        document.getElementById("password").value =
+        emailInput.value =
             "";
+
+        passwordInput.value =
+            "";
+
+        esconderErro();
 
     }
 
 
-    // ==========================================
+    // =====================================
+    // EVENTOS
+    // =====================================
+
+    loginButton.addEventListener(
+        "click",
+        fazerLogin
+    );
+
+
+    passwordInput.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Enter"
+            ) {
+
+                fazerLogin();
+
+            }
+
+        }
+    );
+
+
+    logoutButton.addEventListener(
+        "click",
+        fazerLogout
+    );
+
+
+    // =====================================
     // INICIAR
-    // ==========================================
+    // =====================================
 
     verificarSessao();
 
 </script>
 
 </body>
+
 </html>
