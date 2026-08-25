@@ -381,13 +381,16 @@
 
 
 <script>
+
     // ==========================================
-    // CONFIGURAÇÃO DO SUPABASE
+    // SUPABASE
     // ==========================================
 
-    const SUPABASE_URL = "https://fqalhymfpiexyrbyxnka.supabase.co";
+    const SUPABASE_URL =
+        "https://fqalhymfpiexyrbyxnka.supabase.co";
 
-    const SUPABASE_KEY = "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
+    const SUPABASE_KEY =
+        "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
 
 
     // ==========================================
@@ -414,13 +417,17 @@
         formMessage.textContent = "";
 
 
-        const nome = document.getElementById("nome").value.trim();
+        const nome =
+            document.getElementById("nome").value.trim();
 
-        const contato = document.getElementById("contato").value.trim();
+        const contato =
+            document.getElementById("contato").value.trim();
 
-        const tipo = document.getElementById("tipo").value;
+        const tipo =
+            document.getElementById("tipo").value;
 
-        const mensagem = document.getElementById("mensagem").value.trim();
+        const mensagem =
+            document.getElementById("mensagem").value.trim();
 
 
         try {
@@ -432,8 +439,12 @@
 
                     headers: {
                         "Content-Type": "application/json",
+
                         "apikey": SUPABASE_KEY,
-                        "Authorization": `Bearer ${SUPABASE_KEY}`,
+
+                        "Authorization":
+                            `Bearer ${SUPABASE_KEY}`,
+
                         "Prefer": "return=minimal"
                     },
 
@@ -449,14 +460,23 @@
 
             if (!response.ok) {
 
-                throw new Error(
-                    "Não foi possível enviar a proposta."
+                const errorText =
+                    await response.text();
+
+                console.error(
+                    "Erro do Supabase:",
+                    response.status,
+                    errorText
                 );
 
+                throw new Error(
+                    "Erro ao enviar proposta."
+                );
             }
 
 
-            formMessage.className = "message success";
+            formMessage.className =
+                "message success";
 
             formMessage.textContent =
                 "✅ Proposta enviada com sucesso! Obrigado pelo contato!";
@@ -469,21 +489,23 @@
 
             console.error(error);
 
-            formMessage.className = "message error";
+            formMessage.className =
+                "message error";
 
             formMessage.textContent =
                 "❌ Não foi possível enviar sua proposta. Tente novamente.";
-
 
         } finally {
 
             submitButton.disabled = false;
 
-            submitButton.textContent = "🚀 Enviar proposta";
+            submitButton.textContent =
+                "🚀 Enviar proposta";
 
         }
 
     });
+
 </script>
 
 </body>
