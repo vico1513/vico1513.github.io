@@ -458,20 +458,14 @@
             );
 
 
-       if (!response.ok) {
+if (!response.ok) {
 
     const errorText = await response.text();
 
-    console.error(
-        "ERRO REAL DO SUPABASE:",
-        response.status,
-        errorText
-    );
+    console.log("STATUS:", response.status);
+    console.log("RESPOSTA DO SUPABASE:", errorText);
 
-    formMessage.className = "message error";
-
-    formMessage.textContent =
-        "❌ Erro " + response.status + ": " + errorText;
+    alert("Erro do Supabase:\n\n" + errorText);
 
     return;
 }
