@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Admin | Vico1513</title>
-<link rel="icon" type="image/jpeg" href="vico-comunity.jpeg">
+
+    <link rel="icon" type="image/jpeg" href="vico-comunity.jpeg">
+
     <style>
 
         * {
@@ -17,16 +19,30 @@
 
         body {
             font-family: Arial, sans-serif;
-            background: #10091c;
+            background:
+                radial-gradient(circle at top, #32105c 0%, #10091c 45%);
             color: white;
             min-height: 100vh;
         }
 
+        button,
+        input,
+        textarea {
+            font-family: Arial, sans-serif;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
-            padding: 25px;
+            padding: 25px 20px;
             text-align: center;
-            background: #1b0d2e;
+            background: rgba(27, 13, 46, 0.95);
             border-bottom: 2px solid #8b5cf6;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         header h1 {
@@ -50,12 +66,12 @@
         }
 
         .login-box {
-            background: #1b112b;
+            background: rgba(27, 17, 43, 0.95);
             border: 1px solid #3b2160;
             border-radius: 18px;
             padding: 30px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
         }
 
         .login-box h2 {
@@ -68,22 +84,33 @@
             margin-bottom: 25px;
         }
 
-        input {
+        input,
+        textarea,
+        select {
             width: 100%;
             padding: 14px;
             margin-bottom: 12px;
-            border: none;
+            border: 1px solid #3b2160;
             border-radius: 10px;
             background: #28183d;
             color: white;
             outline: none;
         }
 
-        input:focus {
-            outline: 2px solid #7c3aed;
+        textarea {
+            min-height: 110px;
+            resize: vertical;
         }
 
-        input::placeholder {
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.15);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
             color: #999;
         }
 
@@ -94,23 +121,26 @@
             color: white;
             font-weight: bold;
             cursor: pointer;
-            margin: 5px;
             transition: 0.2s;
         }
 
-        .login-button {
-            width: 100%;
-            background: #7c3aed;
-            margin: 5px 0 0;
-        }
-
-        .login-button:hover {
-            background: #9333ea;
+        button:hover {
+            transform: translateY(-1px);
         }
 
         button:disabled {
             opacity: 0.6;
             cursor: not-allowed;
+            transform: none;
+        }
+
+        .login-button {
+            width: 100%;
+            background: #7c3aed;
+        }
+
+        .login-button:hover {
+            background: #9333ea;
         }
 
         .error-message {
@@ -128,7 +158,7 @@
         }
 
         /* =========================
-           PAINEL
+           DASHBOARD
         ========================= */
 
         #dashboard {
@@ -136,9 +166,9 @@
         }
 
         .dashboard {
-            max-width: 1200px;
+            max-width: 1250px;
             margin: auto;
-            padding: 40px 20px;
+            padding: 40px 20px 70px;
         }
 
         .dashboard-header {
@@ -153,6 +183,7 @@
         .dashboard-header h2 {
             color: #c084fc;
             margin-bottom: 5px;
+            font-size: 30px;
         }
 
         .dashboard-header p {
@@ -168,7 +199,86 @@
         }
 
         /* =========================
-           COLUNAS
+           STATS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .stat {
+            background: rgba(27, 17, 43, 0.9);
+            border: 1px solid #3b2160;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .stat-title {
+            color: #aaa;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .stat-number {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        .stat-total .stat-number {
+            color: #c084fc;
+        }
+
+        .stat-analysis .stat-number {
+            color: #facc15;
+        }
+
+        .stat-approved .stat-number {
+            color: #4ade80;
+        }
+
+        .stat-rejected .stat-number {
+            color: #f87171;
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .admin-section {
+            margin-top: 45px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            color: #c084fc;
+        }
+
+        .section-header p {
+            color: #888;
+            margin-top: 5px;
+        }
+
+        .add-button {
+            background: #7c3aed;
+        }
+
+        .add-button:hover {
+            background: #9333ea;
+        }
+
+        /* =========================
+           PROPOSTAS
         ========================= */
 
         .columns {
@@ -178,11 +288,11 @@
         }
 
         .column {
-            background: #150c24;
+            background: rgba(21, 12, 36, 0.9);
             border: 1px solid #3b2160;
             border-radius: 16px;
             padding: 20px;
-            min-height: 300px;
+            min-height: 250px;
         }
 
         .column-title {
@@ -201,10 +311,6 @@
         .rejected-title {
             color: #f87171;
         }
-
-        /* =========================
-           PROPOSTAS
-        ========================= */
 
         .proposal {
             background: #1b112b;
@@ -239,6 +345,8 @@
 
         .approve-button {
             background: #15803d;
+            margin-top: 8px;
+            margin-right: 5px;
         }
 
         .approve-button:hover {
@@ -247,11 +355,179 @@
 
         .reject-button {
             background: #b91c1c;
+            margin-top: 8px;
         }
 
         .reject-button:hover {
             background: #dc2626;
         }
+
+        /* =========================
+           PARCERIAS
+        ========================= */
+
+        .partnerships-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .partnership-card {
+            background: rgba(27, 17, 43, 0.95);
+            border: 1px solid #3b2160;
+            border-radius: 16px;
+            padding: 22px;
+            position: relative;
+        }
+
+        .partnership-icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .partnership-card h3 {
+            color: #d8b4fe;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .partnership-card p {
+            color: #bbb;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .status-active {
+            background: #123d25;
+            color: #7ff0a8;
+            border: 1px solid #1f7a45;
+        }
+
+        .status-inactive {
+            background: #3d1818;
+            color: #ffaaa2;
+            border: 1px solid #8c2f2f;
+        }
+
+        .partnership-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .partnership-actions button {
+            margin: 0;
+        }
+
+        .edit-button {
+            background: #5b21b6;
+        }
+
+        .edit-button:hover {
+            background: #6d28d9;
+        }
+
+        .toggle-button {
+            background: #374151;
+        }
+
+        .toggle-button:hover {
+            background: #4b5563;
+        }
+
+        .delete-button {
+            background: #991b1b;
+        }
+
+        .delete-button:hover {
+            background: #b91c1c;
+        }
+
+        .partnership-link {
+            display: inline-block;
+            color: #c084fc;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+
+        .partnership-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-box {
+            width: 100%;
+            max-width: 550px;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: #1b112b;
+            border: 1px solid #6d28d9;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            color: #c084fc;
+        }
+
+        .close-button {
+            background: #3d234f;
+            font-size: 18px;
+            padding: 8px 12px;
+        }
+
+        .close-button:hover {
+            background: #542e6b;
+        }
+
+        .save-button {
+            width: 100%;
+            background: #7c3aed;
+            margin-top: 5px;
+        }
+
+        .save-button:hover {
+            background: #9333ea;
+        }
+
+        /* =========================
+           EMPTY / LOADING
+        ========================= */
 
         .empty {
             text-align: center;
@@ -269,14 +545,56 @@
            MOBILE
         ========================= */
 
-        @media (max-width: 850px) {
+        @media (max-width: 950px) {
 
-            .columns {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .columns,
+            .partnerships-grid {
                 grid-template-columns: 1fr;
             }
 
-            .dashboard-header {
-                align-items: flex-start;
+        }
+
+        @media (max-width: 600px) {
+
+            header h1 {
+                font-size: 27px;
+            }
+
+            .dashboard {
+                padding: 25px 15px 50px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat {
+                padding: 15px;
+            }
+
+            .stat-number {
+                font-size: 25px;
+            }
+
+            .dashboard-header h2 {
+                font-size: 25px;
+            }
+
+            .column {
+                padding: 15px;
+            }
+
+            .partnership-actions {
+                flex-direction: column;
+            }
+
+            .partnership-actions button {
+                width: 100%;
             }
 
         }
@@ -284,9 +602,7 @@
     </style>
 </head>
 
-
 <body>
-
 
 <header>
 
@@ -297,14 +613,11 @@
 </header>
 
 
-<!-- =====================================
+<!-- ==================================================
      LOGIN
-===================================== -->
+================================================== -->
 
-<div
-    id="loginContainer"
-    class="login-container"
->
+<div id="loginContainer" class="login-container">
 
     <div class="login-box">
 
@@ -345,27 +658,22 @@
 </div>
 
 
-<!-- =====================================
-     PAINEL
-===================================== -->
+<!-- ==================================================
+     DASHBOARD
+================================================== -->
 
-<div
-    id="dashboard"
->
+<div id="dashboard">
 
     <div class="dashboard">
-
 
         <div class="dashboard-header">
 
             <div>
 
-                <h2>
-                    ⚙️ Painel Administrativo
-                </h2>
+                <h2>⚙️ Painel Administrativo</h2>
 
                 <p>
-                    Gerencie as propostas recebidas.
+                    Controle as propostas e as parcerias do site.
                 </p>
 
             </div>
@@ -380,91 +688,298 @@
         </div>
 
 
-        <div class="columns">
+        <!-- ==================================================
+             ESTATÍSTICAS
+        ================================================== -->
 
+        <div class="stats">
 
-            <!-- EM ANÁLISE -->
+            <div class="stat stat-total">
 
-            <div class="column">
+                <div class="stat-title">
+                    📊 Total
+                </div>
 
-                <h3
-                    class="column-title analysis-title"
+                <div
+                    class="stat-number"
+                    id="totalCount"
                 >
+                    0
+                </div>
+
+            </div>
+
+            <div class="stat stat-analysis">
+
+                <div class="stat-title">
                     🟡 Em análise
-                </h3>
+                </div>
 
                 <div
-                    id="analysisList"
+                    class="stat-number"
+                    id="analysisCount"
                 >
-                    <div class="loading">
-                        Carregando...
-                    </div>
+                    0
                 </div>
 
             </div>
 
+            <div class="stat stat-approved">
 
-            <!-- APROVADAS -->
-
-            <div class="column">
-
-                <h3
-                    class="column-title approved-title"
-                >
+                <div class="stat-title">
                     🟢 Aprovadas
-                </h3>
+                </div>
 
                 <div
-                    id="approvedList"
+                    class="stat-number"
+                    id="approvedCount"
                 >
-                    <div class="loading">
-                        Carregando...
-                    </div>
+                    0
                 </div>
 
             </div>
 
+            <div class="stat stat-rejected">
 
-            <!-- RECUSADAS -->
-
-            <div class="column">
-
-                <h3
-                    class="column-title rejected-title"
-                >
+                <div class="stat-title">
                     🔴 Recusadas
-                </h3>
+                </div>
 
                 <div
-                    id="rejectedList"
+                    class="stat-number"
+                    id="rejectedCount"
                 >
-                    <div class="loading">
-                        Carregando...
-                    </div>
+                    0
                 </div>
 
             </div>
-
 
         </div>
+
+
+        <!-- ==================================================
+             PROPOSTAS
+        ================================================== -->
+
+        <section class="admin-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>🤝 Propostas recebidas</h2>
+
+                    <p>
+                        Analise as propostas enviadas pelo site.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="columns">
+
+                <!-- ANÁLISE -->
+
+                <div class="column">
+
+                    <h3 class="column-title analysis-title">
+                        🟡 Em análise
+                    </h3>
+
+                    <div id="analysisList">
+
+                        <div class="loading">
+                            Carregando...
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- APROVADAS -->
+
+                <div class="column">
+
+                    <h3 class="column-title approved-title">
+                        🟢 Aprovadas
+                    </h3>
+
+                    <div id="approvedList">
+
+                        <div class="loading">
+                            Carregando...
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RECUSADAS -->
+
+                <div class="column">
+
+                    <h3 class="column-title rejected-title">
+                        🔴 Recusadas
+                    </h3>
+
+                    <div id="rejectedList">
+
+                        <div class="loading">
+                            Carregando...
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             PARCERIAS
+        ================================================== -->
+
+        <section class="admin-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <h2>🌐 Parcerias do site</h2>
+
+                    <p>
+                        Gerencie os servidores e projetos exibidos no site.
+                    </p>
+
+                </div>
+
+                <button
+                    class="add-button"
+                    id="addPartnershipButton"
+                >
+                    ➕ Adicionar parceria
+                </button>
+
+            </div>
+
+
+            <div
+                id="partnershipsList"
+                class="partnerships-grid"
+            >
+
+                <div class="loading">
+                    Carregando parcerias...
+                </div>
+
+            </div>
+
+        </section>
 
     </div>
 
 </div>
 
 
-<!-- =====================================
+<!-- ==================================================
+     MODAL DE PARCERIA
+================================================== -->
+
+<div
+    id="partnershipModal"
+    class="modal"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                ➕ Nova parceria
+            </h2>
+
+            <button
+                class="close-button"
+                id="closeModalButton"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <input
+            type="hidden"
+            id="partnershipId"
+        >
+
+
+        <label>Emoji / ícone</label>
+
+        <input
+            type="text"
+            id="partnershipIcon"
+            placeholder="Ex: ⚡"
+            maxlength="10"
+        >
+
+
+        <label>Nome da parceria</label>
+
+        <input
+            type="text"
+            id="partnershipName"
+            placeholder="Ex: Velocity SMP"
+            required
+        >
+
+
+        <label>Descrição</label>
+
+        <textarea
+            id="partnershipDescription"
+            placeholder="Descreva essa parceria..."
+        ></textarea>
+
+
+        <label>Link</label>
+
+        <input
+            type="url"
+            id="partnershipLink"
+            placeholder="https://discord.gg/..."
+        >
+
+
+        <button
+            class="save-button"
+            id="savePartnershipButton"
+        >
+            💾 Salvar parceria
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- ==================================================
      SUPABASE
-===================================== -->
+================================================== -->
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-
 <script>
 
-    // =====================================
+    // ==================================================
     // CONFIGURAÇÃO
-    // =====================================
+    // ==================================================
 
     const SUPABASE_URL =
         "https://fqalhymfpiexyrbyxnka.supabase.co";
@@ -483,77 +998,69 @@
         );
 
 
-    // =====================================
+    // ==================================================
     // ELEMENTOS
-    // =====================================
+    // ==================================================
 
     const loginContainer =
-        document.getElementById(
-            "loginContainer"
-        );
+        document.getElementById("loginContainer");
 
     const dashboard =
-        document.getElementById(
-            "dashboard"
-        );
+        document.getElementById("dashboard");
 
     const emailInput =
-        document.getElementById(
-            "email"
-        );
+        document.getElementById("email");
 
     const passwordInput =
-        document.getElementById(
-            "password"
-        );
+        document.getElementById("password");
 
     const loginButton =
-        document.getElementById(
-            "loginButton"
-        );
+        document.getElementById("loginButton");
 
     const loginError =
-        document.getElementById(
-            "loginError"
-        );
+        document.getElementById("loginError");
 
     const logoutButton =
-        document.getElementById(
-            "logoutButton"
-        );
+        document.getElementById("logoutButton");
+
+    const partnershipModal =
+        document.getElementById("partnershipModal");
+
+    const addPartnershipButton =
+        document.getElementById("addPartnershipButton");
+
+    const closeModalButton =
+        document.getElementById("closeModalButton");
+
+    const savePartnershipButton =
+        document.getElementById("savePartnershipButton");
 
 
-    // =====================================
-    // MOSTRAR ERRO
-    // =====================================
+    // ==================================================
+    // ERROS
+    // ==================================================
 
     function mostrarErro(mensagem) {
 
-        loginError.textContent =
-            mensagem;
+        loginError.textContent = mensagem;
 
-        loginError.classList.add(
-            "show"
-        );
+        loginError.classList.add("show");
 
     }
 
 
     function esconderErro() {
 
-        loginError.textContent =
-            "";
+        loginError.textContent = "";
 
-        loginError.classList.remove(
-            "show"
-        );
+        loginError.classList.remove("show");
 
     }
 
 
-    // =====================================
+    // ==================================================
     // LOGIN
-    // =====================================
+    // ==================================================
 
     async function fazerLogin() {
 
@@ -577,8 +1084,7 @@
         }
 
 
-        loginButton.disabled =
-            true;
+        loginButton.disabled = true;
 
         loginButton.textContent =
             "⏳ Entrando...";
@@ -591,25 +1097,23 @@
                     .signInWithPassword({
 
                         email: email,
-
                         password: password
 
                     });
 
 
-            const data =
-                resultado.data;
+            if (resultado.error) {
 
-            const error =
-                resultado.error;
+                throw resultado.error;
 
-
-            if (error) {
-                throw error;
             }
 
 
-            if (!data || !data.user) {
+            const user =
+                resultado.data.user;
+
+
+            if (!user) {
 
                 throw new Error(
                     "Não foi possível identificar o usuário."
@@ -618,13 +1122,7 @@
             }
 
 
-            // =================================
-            // VERIFICA SE É O ADMIN
-            // =================================
-
-            if (
-                data.user.id !== ADMIN_UID
-            ) {
+            if (user.id !== ADMIN_UID) {
 
                 await supabaseClient.auth.signOut();
 
@@ -637,7 +1135,6 @@
 
             mostrarDashboard();
 
-
         }
 
         catch (error) {
@@ -648,7 +1145,8 @@
             );
 
             mostrarErro(
-                "❌ " + (
+                "❌ " +
+                (
                     error.message ||
                     "Não foi possível entrar."
                 )
@@ -658,8 +1156,7 @@
 
         finally {
 
-            loginButton.disabled =
-                false;
+            loginButton.disabled = false;
 
             loginButton.textContent =
                 "🔑 Entrar";
@@ -669,9 +1166,9 @@
     }
 
 
-    // =====================================
-    // MOSTRAR DASHBOARD
-    // =====================================
+    // ==================================================
+    // DASHBOARD
+    // ==================================================
 
     function mostrarDashboard() {
 
@@ -683,12 +1180,14 @@
 
         carregarPropostas();
 
+        carregarParcerias();
+
     }
 
 
-    // =====================================
-    // VERIFICAR SESSÃO
-    // =====================================
+    // ==================================================
+    // SESSÃO
+    // ==================================================
 
     async function verificarSessao() {
 
@@ -704,7 +1203,9 @@
 
 
             if (!session) {
+
                 return;
+
             }
 
 
@@ -735,31 +1236,20 @@
     }
 
 
-    // =====================================
-    // CARREGAR PROPOSTAS
-    // =====================================
+    // ==================================================
+    // PROPOSTAS
+    // ==================================================
 
     async function carregarPropostas() {
 
-        console.log(
-            "🔎 Buscando propostas..."
-        );
-
-
         const analysisList =
-            document.getElementById(
-                "analysisList"
-            );
+            document.getElementById("analysisList");
 
         const approvedList =
-            document.getElementById(
-                "approvedList"
-            );
+            document.getElementById("approvedList");
 
         const rejectedList =
-            document.getElementById(
-                "rejectedList"
-            );
+            document.getElementById("rejectedList");
 
 
         analysisList.innerHTML =
@@ -783,29 +1273,15 @@
                     });
 
 
-            const data =
-                resultado.data;
+            if (resultado.error) {
 
-            const error =
-                resultado.error;
-
-
-            console.log(
-                "📦 Dados recebidos:",
-                data
-            );
-
-            console.log(
-                "❌ Erro:",
-                error
-            );
-
-
-            if (error) {
-
-                throw error;
+                throw resultado.error;
 
             }
+
+
+            const data =
+                resultado.data || [];
 
 
             analysisList.innerHTML = "";
@@ -822,61 +1298,46 @@
             let rejectedCount = 0;
 
 
-            data.forEach(
-                function(proposta) {
+            data.forEach(function(proposta) {
 
-                    const card =
-                        criarCard(
-                            proposta
-                        );
+                const card =
+                    criarCard(proposta);
 
 
-                    if (
-                        proposta.status ===
-                        "analise"
-                    ) {
+                if (
+                    proposta.status === "analise"
+                ) {
 
-                        analysisList.appendChild(
-                            card
-                        );
+                    analysisList.appendChild(card);
 
-                        analysisCount++;
-
-                    }
-
-                    else if (
-                        proposta.status ===
-                        "aprovada"
-                    ) {
-
-                        approvedList.appendChild(
-                            card
-                        );
-
-                        approvedCount++;
-
-                    }
-
-                    else if (
-                        proposta.status ===
-                        "recusada"
-                    ) {
-
-                        rejectedList.appendChild(
-                            card
-                        );
-
-                        rejectedCount++;
-
-                    }
+                    analysisCount++;
 
                 }
-            );
+
+                else if (
+                    proposta.status === "aprovada"
+                ) {
+
+                    approvedList.appendChild(card);
+
+                    approvedCount++;
+
+                }
+
+                else if (
+                    proposta.status === "recusada"
+                ) {
+
+                    rejectedList.appendChild(card);
+
+                    rejectedCount++;
+
+                }
+
+            });
 
 
-            if (
-                analysisCount === 0
-            ) {
+            if (analysisCount === 0) {
 
                 analysisList.innerHTML =
                     '<div class="empty">Nenhuma proposta em análise.</div>';
@@ -884,9 +1345,7 @@
             }
 
 
-            if (
-                approvedCount === 0
-            ) {
+            if (approvedCount === 0) {
 
                 approvedList.innerHTML =
                     '<div class="empty">Nenhuma proposta aprovada.</div>';
@@ -894,14 +1353,25 @@
             }
 
 
-            if (
-                rejectedCount === 0
-            ) {
+            if (rejectedCount === 0) {
 
                 rejectedList.innerHTML =
                     '<div class="empty">Nenhuma proposta recusada.</div>';
 
             }
+
+
+            document.getElementById("totalCount").textContent =
+                data.length;
+
+            document.getElementById("analysisCount").textContent =
+                analysisCount;
+
+            document.getElementById("approvedCount").textContent =
+                approvedCount;
+
+            document.getElementById("rejectedCount").textContent =
+                rejectedCount;
 
         }
 
@@ -922,40 +1392,26 @@
             rejectedList.innerHTML =
                 '<div class="empty">❌ Erro ao carregar.</div>';
 
-
-            alert(
-                "Erro ao carregar propostas:\n\n" +
-                JSON.stringify(
-                    error,
-                    null,
-                    2
-                )
-            );
-
         }
 
     }
 
 
-    // =====================================
-    // CRIAR CARD
-    // =====================================
+    // ==================================================
+    // CARD DE PROPOSTA
+    // ==================================================
 
     function criarCard(proposta) {
 
         const card =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
         card.className =
             "proposal";
 
 
         const titulo =
-            document.createElement(
-                "h3"
-            );
+            document.createElement("h3");
 
         titulo.textContent =
             proposta.nome ||
@@ -963,9 +1419,7 @@
 
 
         const contato =
-            document.createElement(
-                "p"
-            );
+            document.createElement("p");
 
         contato.innerHTML =
             "<strong>📱 Contato:</strong> ";
@@ -979,9 +1433,7 @@
 
 
         const tipo =
-            document.createElement(
-                "p"
-            );
+            document.createElement("p");
 
         tipo.innerHTML =
             "<strong>🏷️ Tipo:</strong> ";
@@ -995,9 +1447,7 @@
 
 
         const mensagem =
-            document.createElement(
-                "p"
-            );
+            document.createElement("p");
 
         mensagem.innerHTML =
             "<strong>💡 Proposta:</strong><br>";
@@ -1010,36 +1460,42 @@
         );
 
 
-        card.appendChild(
-            titulo
-        );
+        card.appendChild(titulo);
 
-        card.appendChild(
-            contato
-        );
+        card.appendChild(contato);
 
-        card.appendChild(
-            tipo
-        );
+        card.appendChild(tipo);
 
-        card.appendChild(
-            mensagem
-        );
+        card.appendChild(mensagem);
 
 
-        // =================================
-        // BOTÕES
-        // =================================
+        if (proposta.criado_em) {
+
+            const data =
+                document.createElement("p");
+
+            data.className =
+                "proposal-date";
+
+            data.textContent =
+                "📅 " +
+                new Date(
+                    proposta.criado_em
+                ).toLocaleString(
+                    "pt-BR"
+                );
+
+            card.appendChild(data);
+
+        }
+
 
         if (
-            proposta.status ===
-            "analise"
+            proposta.status === "analise"
         ) {
 
             const approveButton =
-                document.createElement(
-                    "button"
-                );
+                document.createElement("button");
 
             approveButton.className =
                 "approve-button";
@@ -1060,9 +1516,7 @@
 
 
             const rejectButton =
-                document.createElement(
-                    "button"
-                );
+                document.createElement("button");
 
             rejectButton.className =
                 "reject-button";
@@ -1098,9 +1552,9 @@
     }
 
 
-    // =====================================
+    // ==================================================
     // ALTERAR STATUS
-    // =====================================
+    // ==================================================
 
     async function alterarStatus(
         id,
@@ -1113,16 +1567,16 @@
                 : "recusar";
 
 
-        const confirmar =
-            confirm(
+        if (
+            !confirm(
                 "Tem certeza que deseja " +
                 acao +
                 " esta proposta?"
-            );
+            )
+        ) {
 
-
-        if (!confirmar) {
             return;
+
         }
 
 
@@ -1137,27 +1591,9 @@
                     .eq("id", id);
 
 
-            const error =
-                resultado.error;
+            if (resultado.error) {
 
-
-            if (error) {
-
-                console.error(
-                    "Erro ao atualizar:",
-                    error
-                );
-
-                alert(
-                    "❌ Erro ao atualizar:\n\n" +
-                    JSON.stringify(
-                        error,
-                        null,
-                        2
-                    )
-                );
-
-                return;
+                throw resultado.error;
 
             }
 
@@ -1169,12 +1605,16 @@
         catch (error) {
 
             console.error(
-                "Erro:",
+                "Erro ao atualizar:",
                 error
             );
 
             alert(
-                "❌ Não foi possível atualizar a proposta."
+                "❌ Erro ao atualizar:\n\n" +
+                (
+                    error.message ||
+                    JSON.stringify(error)
+                )
             );
 
         }
@@ -1182,19 +1622,634 @@
     }
 
 
-    // =====================================
+    // ==================================================
+    // PARCERIAS PÚBLICAS
+    // ==================================================
+
+    async function carregarParcerias() {
+
+        const container =
+            document.getElementById(
+                "partnershipsList"
+            );
+
+
+        container.innerHTML =
+            '<div class="loading">Carregando parcerias...</div>';
+
+
+        try {
+
+            const resultado =
+                await supabaseClient
+                    .from("parcerias_publicas")
+                    .select("*")
+                    .order("id", {
+                        ascending: true
+                    });
+
+
+            if (resultado.error) {
+
+                throw resultado.error;
+
+            }
+
+
+            const parcerias =
+                resultado.data || [];
+
+
+            container.innerHTML = "";
+
+
+            if (parcerias.length === 0) {
+
+                container.innerHTML =
+                    '<div class="empty">Nenhuma parceria cadastrada.</div>';
+
+                return;
+
+            }
+
+
+            parcerias.forEach(function(parceria) {
+
+                container.appendChild(
+                    criarCardParceria(parceria)
+                );
+
+            });
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Erro ao carregar parcerias:",
+                error
+            );
+
+
+            container.innerHTML =
+                '<div class="empty">❌ Não foi possível carregar as parcerias.</div>';
+
+        }
+
+    }
+
+
+    // ==================================================
+    // CARD DE PARCERIA
+    // ==================================================
+
+    function criarCardParceria(parceria) {
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "partnership-card";
+
+
+        const icon =
+            document.createElement("div");
+
+        icon.className =
+            "partnership-icon";
+
+        icon.textContent =
+            parceria.icone || "🤝";
+
+
+        const title =
+            document.createElement("h3");
+
+        title.textContent =
+            parceria.nome;
+
+
+        const description =
+            document.createElement("p");
+
+        description.textContent =
+            parceria.descricao ||
+            "Sem descrição.";
+
+
+        const badge =
+            document.createElement("span");
+
+        badge.className =
+            "status-badge " +
+            (
+                parceria.ativo
+                    ? "status-active"
+                    : "status-inactive"
+            );
+
+        badge.textContent =
+            parceria.ativo
+                ? "● Ativa no site"
+                : "● Oculta do site";
+
+
+        card.appendChild(icon);
+
+        card.appendChild(title);
+
+        card.appendChild(description);
+
+        card.appendChild(badge);
+
+
+        if (parceria.link) {
+
+            const link =
+                document.createElement("a");
+
+            link.className =
+                "partnership-link";
+
+            link.href =
+                parceria.link;
+
+            link.target =
+                "_blank";
+
+            link.rel =
+                "noopener noreferrer";
+
+            link.textContent =
+                "🔗 Abrir link";
+
+
+            card.appendChild(link);
+
+        }
+
+
+        const actions =
+            document.createElement("div");
+
+        actions.className =
+            "partnership-actions";
+
+
+        const editButton =
+            document.createElement("button");
+
+        editButton.className =
+            "edit-button";
+
+        editButton.textContent =
+            "✏️ Editar";
+
+
+        editButton.onclick =
+            function() {
+
+                abrirEditarParceria(
+                    parceria
+                );
+
+            };
+
+
+        const toggleButton =
+            document.createElement("button");
+
+        toggleButton.className =
+            "toggle-button";
+
+        toggleButton.textContent =
+            parceria.ativo
+                ? "👁️ Ocultar"
+                : "👁️ Publicar";
+
+
+        toggleButton.onclick =
+            function() {
+
+                alternarParceria(
+                    parceria
+                );
+
+            };
+
+
+        const deleteButton =
+            document.createElement("button");
+
+        deleteButton.className =
+            "delete-button";
+
+        deleteButton.textContent =
+            "🗑️ Excluir";
+
+
+        deleteButton.onclick =
+            function() {
+
+                excluirParceria(
+                    parceria
+                );
+
+            };
+
+
+        actions.appendChild(editButton);
+
+        actions.appendChild(toggleButton);
+
+        actions.appendChild(deleteButton);
+
+        card.appendChild(actions);
+
+
+        return card;
+
+    }
+
+
+    // ==================================================
+    // ABRIR NOVA PARCERIA
+    // ==================================================
+
+    function abrirNovaParceria() {
+
+        document.getElementById(
+            "modalTitle"
+        ).textContent =
+            "➕ Nova parceria";
+
+
+        document.getElementById(
+            "partnershipId"
+        ).value = "";
+
+
+        document.getElementById(
+            "partnershipIcon"
+        ).value = "🤝";
+
+
+        document.getElementById(
+            "partnershipName"
+        ).value = "";
+
+
+        document.getElementById(
+            "partnershipDescription"
+        ).value = "";
+
+
+        document.getElementById(
+            "partnershipLink"
+        ).value = "";
+
+
+        partnershipModal.classList.add(
+            "show"
+        );
+
+    }
+
+
+    // ==================================================
+    // EDITAR PARCERIA
+    // ==================================================
+
+    function abrirEditarParceria(
+        parceria
+    ) {
+
+        document.getElementById(
+            "modalTitle"
+        ).textContent =
+            "✏️ Editar parceria";
+
+
+        document.getElementById(
+            "partnershipId"
+        ).value =
+            parceria.id;
+
+
+        document.getElementById(
+            "partnershipIcon"
+        ).value =
+            parceria.icone || "🤝";
+
+
+        document.getElementById(
+            "partnershipName"
+        ).value =
+            parceria.nome || "";
+
+
+        document.getElementById(
+            "partnershipDescription"
+        ).value =
+            parceria.descricao || "";
+
+
+        document.getElementById(
+            "partnershipLink"
+        ).value =
+            parceria.link || "";
+
+
+        partnershipModal.classList.add(
+            "show"
+        );
+
+    }
+
+
+    // ==================================================
+    // FECHAR MODAL
+    // ==================================================
+
+    function fecharModal() {
+
+        partnershipModal.classList.remove(
+            "show"
+        );
+
+    }
+
+
+    // ==================================================
+    // SALVAR PARCERIA
+    // ==================================================
+
+    async function salvarParceria() {
+
+        const id =
+            document.getElementById(
+                "partnershipId"
+            ).value;
+
+
+        const icone =
+            document.getElementById(
+                "partnershipIcon"
+            ).value.trim() ||
+            "🤝";
+
+
+        const nome =
+            document.getElementById(
+                "partnershipName"
+            ).value.trim();
+
+
+        const descricao =
+            document.getElementById(
+                "partnershipDescription"
+            ).value.trim();
+
+
+        const link =
+            document.getElementById(
+                "partnershipLink"
+            ).value.trim();
+
+
+        if (!nome) {
+
+            alert(
+                "Digite o nome da parceria."
+            );
+
+            return;
+
+        }
+
+
+        savePartnershipButton.disabled =
+            true;
+
+        savePartnershipButton.textContent =
+            "⏳ Salvando...";
+
+
+        try {
+
+            let resultado;
+
+
+            if (id) {
+
+                resultado =
+                    await supabaseClient
+                        .from("parcerias_publicas")
+                        .update({
+
+                            icone: icone,
+
+                            nome: nome,
+
+                            descricao: descricao,
+
+                            link: link
+
+                        })
+                        .eq("id", id);
+
+            }
+
+            else {
+
+                resultado =
+                    await supabaseClient
+                        .from("parcerias_publicas")
+                        .insert({
+
+                            icone: icone,
+
+                            nome: nome,
+
+                            descricao: descricao,
+
+                            link: link,
+
+                            ativo: true
+
+                        });
+
+            }
+
+
+            if (resultado.error) {
+
+                throw resultado.error;
+
+            }
+
+
+            fecharModal();
+
+            await carregarParcerias();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Erro ao salvar parceria:",
+                error
+            );
+
+            alert(
+                "❌ Erro ao salvar parceria:\n\n" +
+                (
+                    error.message ||
+                    JSON.stringify(error)
+                )
+            );
+
+        }
+
+        finally {
+
+            savePartnershipButton.disabled =
+                false;
+
+            savePartnershipButton.textContent =
+                "💾 Salvar parceria";
+
+        }
+
+    }
+
+
+    // ==================================================
+    // ATIVAR / DESATIVAR
+    // ==================================================
+
+    async function alternarParceria(
+        parceria
+    ) {
+
+        const novoEstado =
+            !parceria.ativo;
+
+
+        try {
+
+            const resultado =
+                await supabaseClient
+                    .from("parcerias_publicas")
+                    .update({
+
+                        ativo: novoEstado
+
+                    })
+                    .eq("id", parceria.id);
+
+
+            if (resultado.error) {
+
+                throw resultado.error;
+
+            }
+
+
+            await carregarParcerias();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Erro ao alterar parceria:",
+                error
+            );
+
+            alert(
+                "❌ Não foi possível alterar a parceria."
+            );
+
+        }
+
+    }
+
+
+    // ==================================================
+    // EXCLUIR PARCERIA
+    // ==================================================
+
+    async function excluirParceria(
+        parceria
+    ) {
+
+        if (
+            !confirm(
+                "Tem certeza que deseja excluir a parceria \"" +
+                parceria.nome +
+                "\"?"
+            )
+        ) {
+
+            return;
+
+        }
+
+
+        try {
+
+            const resultado =
+                await supabaseClient
+                    .from("parcerias_publicas")
+                    .delete()
+                    .eq("id", parceria.id);
+
+
+            if (resultado.error) {
+
+                throw resultado.error;
+
+            }
+
+
+            await carregarParcerias();
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Erro ao excluir parceria:",
+                error
+            );
+
+            alert(
+                "❌ Não foi possível excluir a parceria."
+            );
+
+        }
+
+    }
+
+
+    // ==================================================
     // LOGOUT
-    // =====================================
+    // ==================================================
 
     async function fazerLogout() {
 
         await supabaseClient.auth.signOut();
 
+
         dashboard.style.display =
             "none";
 
+
         loginContainer.style.display =
             "block";
+
 
         emailInput.value =
             "";
@@ -1202,14 +2257,15 @@
         passwordInput.value =
             "";
 
+
         esconderErro();
 
     }
 
 
-    // =====================================
+    // ==================================================
     // EVENTOS
-    // =====================================
+    // ==================================================
 
     loginButton.addEventListener(
         "click",
@@ -1221,9 +2277,7 @@
         "keydown",
         function(event) {
 
-            if (
-                event.key === "Enter"
-            ) {
+            if (event.key === "Enter") {
 
                 fazerLogin();
 
@@ -1239,14 +2293,48 @@
     );
 
 
-    // =====================================
+    addPartnershipButton.addEventListener(
+        "click",
+        abrirNovaParceria
+    );
+
+
+    closeModalButton.addEventListener(
+        "click",
+        fecharModal
+    );
+
+
+    savePartnershipButton.addEventListener(
+        "click",
+        salvarParceria
+    );
+
+
+    partnershipModal.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target ===
+                partnershipModal
+            ) {
+
+                fecharModal();
+
+            }
+
+        }
+    );
+
+
+    // ==================================================
     // INICIAR
-    // =====================================
+    // ==================================================
 
     verificarSessao();
 
 </script>
 
 </body>
-
 </html>
