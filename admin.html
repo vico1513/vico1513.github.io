@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administração | Vico1513</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #10091c;
+            color: white;
+        }
+
+        header {
+            padding: 25px;
+            text-align: center;
+            background: #1b0d2e;
+            border-bottom: 2px solid #8b5cf6;
+        }
+
+        header h1 {
+            color: #c084fc;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #d8b4fe;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        .login-box {
+            max-width: 450px;
+            margin: 80px auto;
+            background: #1b112b;
+            padding: 30px;
+            border-radius: 18px;
+            border: 1px solid #3b2160;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            color: #c084fc;
+            margin-bottom: 25px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 10px;
+            background: #28183d;
+            color: white;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 10px;
+            background: #7c3aed;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #9333ea;
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .logout {
+            background: #4c1d3d;
+        }
+
+        .logout:hover {
+            background: #6b244f;
+        }
+
+        .message {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .error {
+            display: block;
+            background: #3d1818;
+            border: 1px solid #e74c3c;
+            color: #ffaaa2;
+        }
+
+        .dashboard {
+            display: none;
+        }
+
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .topbar h2 {
+            color: #c084fc;
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .column {
+            background: #150c24;
+            border: 1px solid #3b2160;
+            border-radius: 15px;
+            padding: 18px;
+            min-height: 300px;
+        }
+
+        .column h3 {
+            margin-bottom: 18px;
+        }
+
+        .analysis h3 {
+            color: #facc15;
+        }
+
+        .approved h3 {
+            color: #4ade80;
+        }
+
+        .rejected h3 {
+            color: #f87171;
+        }
+
+        .proposal {
+            background: #1b112b;
+            border: 1px solid #3b2160;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 15px;
+        }
+
+        .proposal h4 {
+            color: #d8b4fe;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .proposal p {
+            color: #ddd;
+            margin-bottom: 8px;
+            line-height: 1.5;
+            word-break: break-word;
+        }
+
+        .proposal small {
+            color: #999;
+        }
+
+        .approve {
+            background: #15803d;
+        }
+
+        .approve:hover {
+            background: #16a34a;
+        }
+
+        .reject {
+            background: #b91c1c;
+        }
+
+        .reject:hover {
+            background: #dc2626;
+        }
+
+        .empty {
+            color: #888;
+            text-align: center;
+            padding: 30px 10px;
+        }
+
+        @media (max-width: 850px) {
+
+            .columns {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <h1>🌸 Vico1513</h1>
+
+    <p>Central Administrativa</p>
+
+</header>
+
+
+<!-- LOGIN -->
+
+<div id="loginBox" class="login-box">
+
+    <h2>🔐 Área Administrativa</h2>
+
+    <p style="color:#aaa; margin-bottom:20px;">
+        Entre com sua conta de administrador.
+    </p>
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Seu e-mail"
+    >
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Sua senha"
+    >
+
+    <button
+        id="loginButton"
+        onclick="login()"
+    >
+        🔑 Entrar
+    </button>
+
+    <div id="loginMessage" class="message"></div>
+
+</div>
+
+
+<!-- PAINEL -->
+
+<div id="dashboard" class="dashboard">
+
+    <div class="container">
+
+        <div class="topbar">
+
+            <div>
+
+                <h2>⚙️ Painel Administrativo</h2>
+
+                <p style="color:#999; margin-top:5px;">
+                    Gerencie as propostas recebidas.
+                </p>
+
+            </div>
+
+            <button
+                class="logout"
+                onclick="logout()"
+            >
+                🚪 Sair
+            </button>
+
+        </div>
+
+
+        <div class="columns">
+
+
+            <!-- EM ANÁLISE -->
+
+            <div class="column analysis">
+
+                <h3>
+                    🟡 Em análise
+                </h3>
+
+                <div id="analysisList"></div>
+
+            </div>
+
+
+            <!-- APROVADAS -->
+
+            <div class="column approved">
+
+                <h3>
+                    🟢 Aprovadas
+                </h3>
+
+                <div id="approvedList"></div>
+
+            </div>
+
+
+            <!-- RECUSADAS -->
+
+            <div class="column rejected">
+
+                <h3>
+                    🔴 Recusadas
+                </h3>
+
+                <div id="rejectedList"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+
+    // ==========================================
+    // SUPABASE
+    // ==========================================
+
+    const SUPABASE_URL =
+        "https://fqalhymfpiexyrbyxnka.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
+
+
+    const supabaseClient =
+        window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+
+    // ==========================================
+    // SEU UID DE ADMINISTRADOR
+    // ==========================================
+
+    const ADMIN_UID =
+        "15ef4f3f-a64f-46ae-82e7-6ad1994a4633";
+
+
+    // ==========================================
+    // LOGIN
+    // ==========================================
+
+    async function login() {
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const password =
+            document.getElementById("password").value;
+
+        const loginButton =
+            document.getElementById("loginButton");
+
+        const loginMessage =
+            document.getElementById("loginMessage");
+
+
+        loginButton.disabled = true;
+
+        loginButton.textContent = "⏳ Entrando...";
+
+        loginMessage.className = "message";
+
+        loginMessage.textContent = "";
+
+
+        try {
+
+            const { data, error } =
+                await supabaseClient.auth.signInWithPassword({
+                    email: email,
+                    password: password
+                });
+
+
+            if (error) {
+                throw error;
+            }
+
+
+            if (!data.user) {
+                throw new Error(
+                    "Usuário não encontrado."
+                );
+            }
+
+
+            // CONFERE SE É O ADMIN
+
+            if (data.user.id !== ADMIN_UID) {
+
+                await supabaseClient.auth.signOut();
+
+                throw new Error(
+                    "Esta conta não possui permissão de administrador."
+                );
+
+            }
+
+
+            mostrarPainel();
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            loginMessage.className =
+                "message error";
+
+            loginMessage.textContent =
+                "❌ " + error.message;
+
+        } finally {
+
+            loginButton.disabled = false;
+
+            loginButton.textContent =
+                "🔑 Entrar";
+
+        }
+
+    }
+
+
+    // ==========================================
+    // MOSTRAR PAINEL
+    // ==========================================
+
+    function mostrarPainel() {
+
+        document.getElementById("loginBox").style.display =
+            "none";
+
+        document.getElementById("dashboard").style.display =
+            "block";
+
+        carregarPropostas();
+
+    }
+
+
+    // ==========================================
+    // VERIFICAR LOGIN AO ABRIR
+    // ==========================================
+
+    async function verificarSessao() {
+
+        const { data } =
+            await supabaseClient.auth.getSession();
+
+
+        const session =
+            data.session;
+
+
+        if (!session) {
+            return;
+        }
+
+
+        if (session.user.id !== ADMIN_UID) {
+
+            await supabaseClient.auth.signOut();
+
+            return;
+
+        }
+
+
+        mostrarPainel();
+
+    }
+
+
+    // ==========================================
+    // CARREGAR PROPOSTAS
+    // ==========================================
+
+    async function carregarPropostas() {
+
+        const { data, error } =
+            await supabaseClient
+                .from("parcerias")
+                .select("*")
+                .order("id", {
+                    ascending: false
+                });
+
+
+        if (error) {
+
+            console.error(
+                "Erro ao carregar propostas:",
+                error
+            );
+
+            return;
+        }
+
+
+        const analysisList =
+            document.getElementById("analysisList");
+
+        const approvedList =
+            document.getElementById("approvedList");
+
+        const rejectedList =
+            document.getElementById("rejectedList");
+
+
+        analysisList.innerHTML = "";
+
+        approvedList.innerHTML = "";
+
+        rejectedList.innerHTML = "";
+
+
+        let analysisCount = 0;
+        let approvedCount = 0;
+        let rejectedCount = 0;
+
+
+        data.forEach(proposta => {
+
+            const card =
+                criarCard(proposta);
+
+
+            if (proposta.status === "analise") {
+
+                analysisList.appendChild(card);
+
+                analysisCount++;
+
+            }
+
+            else if (proposta.status === "aprovada") {
+
+                approvedList.appendChild(card);
+
+                approvedCount++;
+
+            }
+
+            else if (proposta.status === "recusada") {
+
+                rejectedList.appendChild(card);
+
+                rejectedCount++;
+
+            }
+
+        });
+
+
+        if (analysisCount === 0) {
+
+            analysisList.innerHTML =
+                '<div class="empty">Nenhuma proposta em análise.</div>';
+
+        }
+
+
+        if (approvedCount === 0) {
+
+            approvedList.innerHTML =
+                '<div class="empty">Nenhuma proposta aprovada.</div>';
+
+        }
+
+
+        if (rejectedCount === 0) {
+
+            rejectedList.innerHTML =
+                '<div class="empty">Nenhuma proposta recusada.</div>';
+
+        }
+
+    }
+
+
+    // ==========================================
+    // CRIAR CARD
+    // ==========================================
+
+    function criarCard(proposta) {
+
+        const card =
+            document.createElement("div");
+
+        card.className = "proposal";
+
+
+        const titulo =
+            document.createElement("h4");
+
+        titulo.textContent =
+            proposta.nome || "Sem nome";
+
+
+        const contato =
+            document.createElement("p");
+
+        contato.innerHTML =
+            "<strong>📱 Contato:</strong> ";
+
+        const contatoTexto =
+            document.createTextNode(
+                proposta.contato || "Não informado"
+            );
+
+        contato.appendChild(contatoTexto);
+
+
+        const tipo =
+            document.createElement("p");
+
+        tipo.innerHTML =
+            "<strong>🏷️ Tipo:</strong> ";
+
+        tipo.appendChild(
+            document.createTextNode(
+                proposta.tipo || "Não informado"
+            )
+        );
+
+
+        const mensagem =
+            document.createElement("p");
+
+        mensagem.innerHTML =
+            "<strong>💡 Proposta:</strong><br>";
+
+        mensagem.appendChild(
+            document.createTextNode(
+                proposta.mensagem || ""
+            )
+        );
+
+
+        card.appendChild(titulo);
+
+        card.appendChild(contato);
+
+        card.appendChild(tipo);
+
+        card.appendChild(mensagem);
+
+
+        // BOTÕES SOMENTE EM ANÁLISE
+
+        if (proposta.status === "analise") {
+
+            const approveButton =
+                document.createElement("button");
+
+            approveButton.className =
+                "approve";
+
+            approveButton.textContent =
+                "✅ Aprovar";
+
+            approveButton.onclick =
+                () => alterarStatus(
+                    proposta.id,
+                    "aprovada"
+                );
+
+
+            const rejectButton =
+                document.createElement("button");
+
+            rejectButton.className =
+                "reject";
+
+            rejectButton.textContent =
+                "❌ Recusar";
+
+            rejectButton.onclick =
+                () => alterarStatus(
+                    proposta.id,
+                    "recusada"
+                );
+
+
+            card.appendChild(approveButton);
+
+            card.appendChild(rejectButton);
+
+        }
+
+
+        return card;
+
+    }
+
+
+    // ==========================================
+    // ALTERAR STATUS
+    // ==========================================
+
+    async function alterarStatus(
+        id,
+        novoStatus
+    ) {
+
+        const texto =
+            novoStatus === "aprovada"
+                ? "aprovar"
+                : "recusar";
+
+
+        const confirmar =
+            confirm(
+                `Tem certeza que deseja ${texto} esta proposta?`
+            );
+
+
+        if (!confirmar) {
+            return;
+        }
+
+
+        const { error } =
+            await supabaseClient
+                .from("parcerias")
+                .update({
+                    status: novoStatus
+                })
+                .eq("id", id);
+
+
+        if (error) {
+
+            console.error(
+                "Erro ao atualizar:",
+                error
+            );
+
+            alert(
+                "❌ Não foi possível atualizar a proposta."
+            );
+
+            return;
+        }
+
+
+        carregarPropostas();
+
+    }
+
+
+    // ==========================================
+    // LOGOUT
+    // ==========================================
+
+    async function logout() {
+
+        await supabaseClient.auth.signOut();
+
+        document.getElementById("dashboard").style.display =
+            "none";
+
+        document.getElementById("loginBox").style.display =
+            "block";
+
+        document.getElementById("password").value =
+            "";
+
+    }
+
+
+    // ==========================================
+    // INICIAR
+    // ==========================================
+
+    verificarSessao();
+
+</script>
+
+</body>
+</html>
