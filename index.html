@@ -458,21 +458,23 @@
             );
 
 
-            if (!response.ok) {
+       if (!response.ok) {
 
-                const errorText =
-                    await response.text();
+    const errorText = await response.text();
 
-                console.error(
-                    "Erro do Supabase:",
-                    response.status,
-                    errorText
-                );
+    console.error(
+        "ERRO REAL DO SUPABASE:",
+        response.status,
+        errorText
+    );
 
-                throw new Error(
-                    "Erro ao enviar proposta."
-                );
-            }
+    formMessage.className = "message error";
+
+    formMessage.textContent =
+        "❌ Erro " + response.status + ": " + errorText;
+
+    return;
+}
 
 
             formMessage.className =
