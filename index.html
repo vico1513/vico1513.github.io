@@ -5,13 +5,29 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Vico1513 — Minecraft, construções, tutoriais, desafios e comunidade."
+    >
 
     <title>Vico1513 | Minecraft</title>
 
-    <link rel="icon" type="image/jpeg" href="vico-comunity.jpeg">
+    <link
+        rel="icon"
+        type="image/png"
+        href="favicon.png"
+    >
 
     <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
 
         * {
             box-sizing: border-box;
@@ -24,205 +40,488 @@
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #10091c;
+            font-family: Arial, Helvetica, sans-serif;
             color: white;
+            min-height: 100vh;
             overflow-x: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(10, 5, 20, 0.68),
+                    rgba(12, 5, 24, 0.88)
+                ),
+                url("FF186E10-B115-4C11-8BCA-DB22C5F2B07A.png");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
         }
 
-        /* ======================================
-           FOLHAS DE CEREJEIRA
-        ====================================== */
 
-        #sakura-container {
+        /* =====================================================
+           FOLHAS DE CEREJEIRA
+        ===================================================== */
+
+        .petals {
             position: fixed;
             inset: 0;
             pointer-events: none;
+            z-index: 20;
             overflow: hidden;
-            z-index: 999;
         }
 
-        .sakura {
+        .petal {
             position: absolute;
             top: -50px;
-            width: 14px;
-            height: 9px;
-            background: #ffb7d5;
-            border-radius: 100% 0 100% 0;
-            opacity: 0.8;
-            filter: drop-shadow(0 0 4px rgba(255, 183, 213, 0.5));
+
+            width: 12px;
+            height: 8px;
+
+            background: #f9a8d4;
+
+            border-radius:
+                100% 0 100% 0;
+
+            opacity: 0.75;
+
             animation:
-                sakuraFall linear forwards,
-                sakuraRotate ease-in-out infinite alternate;
+                fall linear infinite;
+
+            filter:
+                drop-shadow(
+                    0 0 4px rgba(244,114,182,0.4)
+                );
         }
 
-        @keyframes sakuraFall {
+        .petal:nth-child(1) {
+            left: 5%;
+            animation-duration: 9s;
+            animation-delay: 0s;
+        }
+
+        .petal:nth-child(2) {
+            left: 14%;
+            animation-duration: 12s;
+            animation-delay: 3s;
+        }
+
+        .petal:nth-child(3) {
+            left: 24%;
+            animation-duration: 10s;
+            animation-delay: 1s;
+        }
+
+        .petal:nth-child(4) {
+            left: 35%;
+            animation-duration: 14s;
+            animation-delay: 5s;
+        }
+
+        .petal:nth-child(5) {
+            left: 47%;
+            animation-duration: 11s;
+            animation-delay: 2s;
+        }
+
+        .petal:nth-child(6) {
+            left: 58%;
+            animation-duration: 13s;
+            animation-delay: 6s;
+        }
+
+        .petal:nth-child(7) {
+            left: 69%;
+            animation-duration: 10s;
+            animation-delay: 4s;
+        }
+
+        .petal:nth-child(8) {
+            left: 80%;
+            animation-duration: 15s;
+            animation-delay: 1s;
+        }
+
+        .petal:nth-child(9) {
+            left: 90%;
+            animation-duration: 11s;
+            animation-delay: 7s;
+        }
+
+        .petal:nth-child(10) {
+            left: 97%;
+            animation-duration: 13s;
+            animation-delay: 3s;
+        }
+
+        @keyframes fall {
 
             0% {
-                transform: translateY(-50px) translateX(0) rotate(0deg);
+                transform:
+                    translateY(-60px)
+                    translateX(0)
+                    rotate(0deg);
+            }
+
+            25% {
+                transform:
+                    translateY(25vh)
+                    translateX(40px)
+                    rotate(120deg);
+            }
+
+            50% {
+                transform:
+                    translateY(50vh)
+                    translateX(-50px)
+                    rotate(240deg);
+            }
+
+            75% {
+                transform:
+                    translateY(75vh)
+                    translateX(45px)
+                    rotate(300deg);
             }
 
             100% {
-                transform: translateY(110vh) translateX(var(--drift)) rotate(360deg);
+                transform:
+                    translateY(110vh)
+                    translateX(-20px)
+                    rotate(420deg);
             }
-
         }
 
-        @keyframes sakuraRotate {
 
-            0% {
-                margin-left: -15px;
-            }
-
-            100% {
-                margin-left: 15px;
-            }
-
-        }
-
-        /* ======================================
+        /* =====================================================
            HEADER
-        ====================================== */
+        ===================================================== */
 
         header {
-            padding: 25px;
-            text-align: center;
-            background: #1b0d2e;
-            border-bottom: 2px solid #8b5cf6;
-            position: relative;
-            z-index: 2;
+            position: sticky;
+            top: 0;
+            z-index: 30;
+
+            padding: 18px 20px;
+
+            background:
+                rgba(18, 8, 31, 0.88);
+
+            backdrop-filter:
+                blur(14px);
+
+            -webkit-backdrop-filter:
+                blur(14px);
+
+            border-bottom:
+                1px solid rgba(192,132,252,0.35);
+
+            box-shadow:
+                0 5px 30px rgba(0,0,0,0.25);
         }
 
-        header h1 {
-            font-size: 38px;
-            color: #c084fc;
+        .header-content {
+            max-width: 1200px;
+            margin: auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
         }
 
-        header p {
-            margin-top: 8px;
-            color: #d8b4fe;
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            text-decoration: none;
+            color: white;
+        }
+
+        .brand-image {
+            width: 48px;
+            height: 48px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border:
+                2px solid #c084fc;
+
+            box-shadow:
+                0 0 18px rgba(192,132,252,0.45);
+        }
+
+        .brand-text h1 {
+            color: #e9d5ff;
+            font-size: 21px;
+        }
+
+        .brand-text span {
+            color: #a78bfa;
+            font-size: 12px;
         }
 
         nav {
-            margin-top: 20px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         nav a {
-            color: white;
+            color: #ddd6fe;
             text-decoration: none;
-            margin: 0 10px;
+
+            padding: 8px 11px;
+
+            border-radius: 8px;
+
             font-weight: bold;
-            transition: color 0.2s;
+            font-size: 14px;
+
+            transition:
+                0.25s;
         }
 
         nav a:hover {
-            color: #c084fc;
+            color: white;
+
+            background:
+                rgba(124,58,237,0.25);
+
+            transform:
+                translateY(-2px);
         }
 
-        /* ======================================
+
+        /* =====================================================
            HERO
-        ====================================== */
+        ===================================================== */
 
         .hero {
+            min-height: 650px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
             text-align: center;
-            padding: 90px 20px;
-            background:
-                linear-gradient(
-                    135deg,
-                    #1b0d2e,
-                    #32105c
-                );
+
+            padding: 100px 20px;
+
             position: relative;
-            z-index: 1;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(124,58,237,0.25),
+                    transparent 55%
+                );
+        }
+
+        .hero-content {
+            max-width: 850px;
+
+            animation:
+                heroAppear 1s ease;
+        }
+
+        @keyframes heroAppear {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+        .hero-badge {
+            display: inline-block;
+
+            padding: 8px 16px;
+
+            border-radius: 30px;
+
+            background:
+                rgba(124,58,237,0.22);
+
+            border:
+                1px solid rgba(192,132,252,0.5);
+
+            color: #e9d5ff;
+
+            margin-bottom: 20px;
+
+            font-size: 14px;
         }
 
         .hero h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
+            font-size:
+                clamp(38px, 7vw, 72px);
+
+            line-height: 1.05;
+
+            margin-bottom: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #f5d0fe,
+                    #c084fc,
+                    #a78bfa
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+
+            color: transparent;
+
+            text-shadow:
+                0 0 30px rgba(192,132,252,0.2);
         }
 
         .hero p {
-            color: #ddd;
-            max-width: 650px;
+            max-width: 700px;
             margin: auto;
-            line-height: 1.6;
+
+            color: #ddd6fe;
+
+            line-height: 1.7;
+
+            font-size: 18px;
         }
 
         .buttons {
-            margin-top: 30px;
+            margin-top: 35px;
+
+            display: flex;
+            justify-content: center;
+
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .button {
             display: inline-block;
-            padding: 13px 22px;
-            margin: 5px;
-            border-radius: 10px;
+
+            padding: 14px 23px;
+
+            border-radius: 12px;
+
             text-decoration: none;
+
             color: white;
-            background: #7c3aed;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #9333ea
+                );
+
             font-weight: bold;
-            border: none;
+
+            border: 1px solid
+                rgba(255,255,255,0.12);
+
             cursor: pointer;
+
             transition:
-                background 0.2s,
-                transform 0.2s,
-                box-shadow 0.2s;
+                transform 0.25s,
+                box-shadow 0.25s,
+                background 0.25s;
         }
 
         .button:hover {
-            background: #9333ea;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(147, 51, 234, 0.3);
-        }
+            transform:
+                translateY(-4px);
 
-        .button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
+            box-shadow:
+                0 10px 30px
+                rgba(124,58,237,0.4);
         }
 
         .button.secondary {
-            background: #28183d;
-            border: 1px solid #6d3ca3;
+            background:
+                rgba(30,18,48,0.8);
+
+            border:
+                1px solid #6d3ca3;
         }
 
-        .button.secondary:hover {
-            background: #392052;
-        }
 
-        /* ======================================
+        /* =====================================================
            SEÇÕES
-        ====================================== */
+        ===================================================== */
 
         section {
-            max-width: 1100px;
+            max-width: 1150px;
             margin: auto;
-            padding: 70px 20px;
-            position: relative;
-            z-index: 1;
+
+            padding:
+                90px 20px;
         }
 
         section h2 {
             text-align: center;
-            margin-bottom: 35px;
-            color: #c084fc;
-            font-size: 30px;
+
+            margin-bottom: 15px;
+
+            color: #e9d5ff;
+
+            font-size:
+                clamp(27px, 4vw, 38px);
         }
 
         .section-description {
             text-align: center;
+
             color: #aaa;
+
             max-width: 700px;
-            margin: -15px auto 30px;
-            line-height: 1.6;
+
+            margin:
+                0 auto 40px;
+
+            line-height: 1.7;
         }
 
+
+        /* =====================================================
+           CARDS
+        ===================================================== */
+
         .card {
-            background: #1b112b;
-            padding: 25px;
-            border-radius: 15px;
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(27,17,43,0.92),
+                    rgba(20,10,35,0.88)
+                );
+
+            padding: 27px;
+
+            border-radius: 18px;
+
             margin-bottom: 20px;
-            border: 1px solid #3b2160;
+
+            border:
+                1px solid rgba(139,92,246,0.3);
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.2);
+
+            backdrop-filter:
+                blur(8px);
         }
 
         .card h3 {
@@ -232,40 +531,61 @@
 
         .card p {
             color: #ddd;
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
-        /* ======================================
+
+        /* =====================================================
            YOUTUBE
-        ====================================== */
+        ===================================================== */
 
         .youtube-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 22px;
         }
 
         .youtube-card {
-            background: #1b112b;
-            border: 1px solid #3b2160;
-            border-radius: 15px;
+            background:
+                rgba(27,17,43,0.92);
+
+            border:
+                1px solid rgba(139,92,246,0.3);
+
+            border-radius: 17px;
+
             overflow: hidden;
+
             transition:
-                transform 0.2s,
-                border-color 0.2s,
-                box-shadow 0.2s;
+                0.3s;
+
+            box-shadow:
+                0 10px 30px
+                rgba(0,0,0,0.2);
         }
 
         .youtube-card:hover {
-            transform: translateY(-5px);
-            border-color: #8b5cf6;
-            box-shadow: 0 10px 35px rgba(124, 58, 237, 0.2);
+            transform:
+                translateY(-7px);
+
+            border-color:
+                #a855f7;
+
+            box-shadow:
+                0 15px 40px
+                rgba(124,58,237,0.25);
         }
 
         .youtube-thumbnail {
             width: 100%;
+
             aspect-ratio: 16 / 9;
+
             object-fit: cover;
+
             display: block;
         }
 
@@ -274,119 +594,221 @@
         }
 
         .youtube-title {
-            color: #d8b4fe;
-            font-size: 18px;
-            line-height: 1.4;
+            color: #e9d5ff;
+
+            font-size: 17px;
+
+            line-height: 1.45;
+
             margin-bottom: 10px;
         }
 
         .youtube-date {
-            color: #999;
-            font-size: 14px;
+            color: #888;
+
+            font-size: 13px;
+
             margin-bottom: 15px;
         }
 
         .youtube-button {
             display: inline-block;
-            padding: 10px 16px;
-            background: #7c3aed;
+
+            padding: 10px 15px;
+
+            background:
+                #7c3aed;
+
             color: white;
+
             text-decoration: none;
-            border-radius: 8px;
+
+            border-radius: 9px;
+
             font-weight: bold;
+
+            transition:
+                0.2s;
         }
 
         .youtube-button:hover {
-            background: #9333ea;
+            background:
+                #9333ea;
         }
 
-        /* ======================================
+
+        /* =====================================================
            PARCERIAS
-        ====================================== */
+        ===================================================== */
 
         .partnership {
             text-align: center;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .partnership::before {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(168,85,247,0.12);
+
+            filter:
+                blur(50px);
+
+            top: -100px;
+            right: -80px;
+
+            pointer-events: none;
         }
 
         .partnership input,
         .partnership textarea,
         .partnership select {
             width: 100%;
-            max-width: 600px;
-            padding: 14px;
-            margin: 8px 0;
-            border: none;
-            border-radius: 10px;
-            background: #28183d;
+
+            max-width: 650px;
+
+            padding: 15px 17px;
+
+            margin: 7px 0;
+
+            border:
+                1px solid #3b2160;
+
+            border-radius: 11px;
+
+            background:
+                rgba(40,24,61,0.9);
+
             color: white;
-            font-family: Arial, sans-serif;
+
+            font-family:
+                Arial, sans-serif;
+
             outline: none;
+
+            transition:
+                0.2s;
         }
 
         .partnership input:focus,
         .partnership textarea:focus,
         .partnership select:focus {
-            box-shadow: 0 0 0 2px #7c3aed;
+            border-color:
+                #a855f7;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(124,58,237,0.16);
+        }
+
+        .partnership textarea {
+            height: 150px;
+
+            resize: vertical;
         }
 
         .partnership select {
             cursor: pointer;
         }
 
-        .partnership textarea {
-            height: 140px;
-            resize: vertical;
-        }
-
         .partnership input::placeholder,
         .partnership textarea::placeholder {
-            color: #aaa;
+            color: #999;
+        }
+
+        .partnership option {
+            background:
+                #211330;
+
+            color: white;
         }
 
         .message {
             display: none;
-            max-width: 600px;
-            margin: 15px auto 0;
+
+            max-width: 650px;
+
+            margin:
+                15px auto 0;
+
             padding: 14px;
+
             border-radius: 10px;
+
             font-weight: bold;
         }
 
         .message.success {
             display: block;
-            background: #183d2a;
-            border: 1px solid #2ecc71;
-            color: #8ff0b2;
+
+            background:
+                #183d2a;
+
+            border:
+                1px solid #2ecc71;
+
+            color:
+                #8ff0b2;
         }
 
         .message.error {
             display: block;
-            background: #3d1818;
-            border: 1px solid #e74c3c;
-            color: #ffaaa2;
+
+            background:
+                #3d1818;
+
+            border:
+                1px solid #e74c3c;
+
+            color:
+                #ffaaa2;
         }
 
-        /* ======================================
-           SUGESTÕES PÚBLICAS
-        ====================================== */
+
+        /* =====================================================
+           SUGESTÕES
+        ===================================================== */
 
         .suggestions-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
             gap: 20px;
         }
 
         .suggestion-column {
-            background: #150c24;
-            border: 1px solid #3b2160;
-            border-radius: 15px;
+            background:
+                rgba(21,12,36,0.88);
+
+            border:
+                1px solid #3b2160;
+
+            border-radius: 17px;
+
             padding: 20px;
+
             min-height: 250px;
+
+            backdrop-filter:
+                blur(8px);
         }
 
         .suggestion-title {
             margin-bottom: 20px;
-            font-size: 21px;
+
+            font-size: 20px;
         }
 
         .analysis-title {
@@ -402,243 +824,511 @@
         }
 
         .public-suggestion {
-            background: #1b112b;
-            border: 1px solid #3b2160;
-            border-radius: 12px;
+            background:
+                rgba(27,17,43,0.95);
+
+            border:
+                1px solid #3b2160;
+
+            border-radius: 13px;
+
             padding: 16px;
+
             margin-bottom: 15px;
+
+            animation:
+                cardAppear 0.4s ease;
+        }
+
+        @keyframes cardAppear {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
         }
 
         .public-suggestion h3 {
             color: #d8b4fe;
+
             margin-bottom: 10px;
         }
 
         .public-suggestion p {
             color: #ddd;
+
             line-height: 1.5;
+
             margin-bottom: 8px;
+
             word-break: break-word;
         }
 
         .suggestion-empty {
             text-align: center;
+
             color: #777;
-            padding: 25px 10px;
+
+            padding:
+                25px 10px;
         }
 
-        /* ======================================
+
+        /* =====================================================
            DISCORD
-        ====================================== */
+        ===================================================== */
 
         .discord-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 22px;
         }
 
         .discord-card {
             background:
                 linear-gradient(
                     135deg,
-                    #1b112b,
-                    #25153d
+                    rgba(27,17,43,0.94),
+                    rgba(37,21,61,0.94)
                 );
-            border: 1px solid #4c2a75;
-            border-radius: 15px;
-            padding: 30px;
+
+            border:
+                1px solid #4c2a75;
+
+            border-radius: 18px;
+
+            padding: 35px;
+
             text-align: center;
+
+            transition:
+                0.3s;
+        }
+
+        .discord-card:hover {
+            transform:
+                translateY(-5px);
+
+            border-color:
+                #a855f7;
         }
 
         .discord-icon {
-            font-size: 45px;
+            font-size: 48px;
+
             margin-bottom: 15px;
+
+            animation:
+                floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+
+            0%, 100% {
+                transform:
+                    translateY(0);
+            }
+
+            50% {
+                transform:
+                    translateY(-7px);
+            }
         }
 
         .discord-card h3 {
             color: #d8b4fe;
+
             margin-bottom: 12px;
+
             font-size: 22px;
         }
 
         .discord-card p {
             color: #ccc;
+
             line-height: 1.6;
-            margin-bottom: 15px;
+
+            margin-bottom: 18px;
         }
 
-        /* ======================================
+
+        /* =====================================================
            SERVIDORES
-        ====================================== */
+        ===================================================== */
 
         .server-card {
             position: relative;
+            overflow: hidden;
         }
 
         .server-tag {
             display: inline-block;
-            background: #7c3aed;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #a855f7
+                );
+
             color: white;
-            padding: 5px 10px;
-            border-radius: 20px;
+
+            padding:
+                6px 11px;
+
+            border-radius:
+                20px;
+
             font-size: 12px;
-            margin-bottom: 12px;
+
+            margin-bottom: 14px;
+
+            font-weight: bold;
         }
 
-        /* ======================================
+
+        /* =====================================================
            FOOTER
-        ====================================== */
+        ===================================================== */
 
         footer {
             text-align: center;
-            padding: 35px;
-            background: #0b0612;
+
+            padding:
+                45px 20px;
+
+            background:
+                rgba(8,4,14,0.94);
+
+            border-top:
+                1px solid rgba(139,92,246,0.25);
+
             color: #aaa;
-            position: relative;
-            z-index: 1;
+        }
+
+        footer strong {
+            color: #c084fc;
         }
 
         footer p {
-            margin: 5px;
+            margin: 6px;
         }
 
-        /* ======================================
-           TELA DE SUCESSO
-        ====================================== */
 
-        #successOverlay {
+        /* =====================================================
+           ANIMAÇÃO DE PROPOSTA ENVIADA
+        ===================================================== */
+
+        .success-overlay {
             position: fixed;
+
             inset: 0;
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(124, 58, 237, 0.35),
-                    rgba(8, 3, 15, 0.97) 70%
-                );
-            backdrop-filter: blur(8px);
-            display: flex;
+
+            z-index: 9999;
+
+            display: none;
+
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            transition:
-                opacity 0.5s ease,
-                visibility 0.5s ease;
-            z-index: 5000;
+
+            text-align: center;
+
+            padding: 25px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(124,58,237,0.45),
+                    rgba(7,3,15,0.97) 70%
+                );
+
+            backdrop-filter:
+                blur(10px);
         }
 
-        #successOverlay.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
+        .success-overlay.show {
+            display: flex;
+
+            animation:
+                overlayIn 0.5s ease;
+        }
+
+        @keyframes overlayIn {
+
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         .success-box {
             max-width: 650px;
-            width: 100%;
-            text-align: center;
-            padding: 55px 35px;
-            border-radius: 30px;
-            background:
-                linear-gradient(
-                    145deg,
-                    #211039,
-                    #13091f
-                );
-            border: 1px solid #9b5cff;
-            box-shadow:
-                0 0 80px rgba(139, 92, 246, 0.35),
-                inset 0 0 40px rgba(255, 255, 255, 0.02);
-            transform: scale(0.7) translateY(30px);
-            transition: transform 0.6s cubic-bezier(.17,.89,.32,1.28);
+
+            animation:
+                successPop 0.7s
+                cubic-bezier(.17,.67,.28,1.3);
         }
 
-        #successOverlay.active .success-box {
-            transform: scale(1) translateY(0);
+        @keyframes successPop {
+
+            0% {
+                opacity: 0;
+
+                transform:
+                    scale(0.4)
+                    rotate(-8deg);
+            }
+
+            70% {
+                transform:
+                    scale(1.08)
+                    rotate(2deg);
+            }
+
+            100% {
+                opacity: 1;
+
+                transform:
+                    scale(1)
+                    rotate(0);
+            }
         }
 
         .success-icon {
-            font-size: 85px;
-            margin-bottom: 15px;
-            animation: successBounce 1s ease infinite alternate;
+            font-size:
+                clamp(70px, 15vw, 130px);
+
+            animation:
+                successIcon 1.2s
+                ease-in-out infinite;
         }
 
-        @keyframes successBounce {
+        @keyframes successIcon {
 
-            from {
-                transform: translateY(0) rotate(-5deg);
+            0%, 100% {
+                transform:
+                    translateY(0)
+                    rotate(-3deg);
             }
 
-            to {
-                transform: translateY(-12px) rotate(5deg);
+            50% {
+                transform:
+                    translateY(-12px)
+                    rotate(3deg);
             }
-
         }
 
         .success-box h2 {
-            color: #e0b3ff;
-            font-size: 38px;
-            margin-bottom: 15px;
+            font-size:
+                clamp(34px, 7vw, 60px);
+
+            margin:
+                10px 0;
+
+            color: #f5d0fe;
         }
 
         .success-box p {
-            color: #ddd;
+            color: #ddd6fe;
+
             font-size: 18px;
-            line-height: 1.7;
+
+            line-height: 1.6;
+
             margin-bottom: 25px;
         }
 
-        .success-highlight {
-            color: #c084fc;
+        .close-success {
+            border: none;
+
+            padding:
+                13px 25px;
+
+            border-radius: 11px;
+
+            background:
+                #7c3aed;
+
+            color: white;
+
             font-weight: bold;
+
+            cursor: pointer;
+
+            font-size: 15px;
+
+            transition:
+                0.2s;
         }
 
-        /* ======================================
+        .close-success:hover {
+            background:
+                #9333ea;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        /* =====================================================
            CONFETES
-        ====================================== */
+        ===================================================== */
 
         .confetti {
             position: fixed;
+
             width: 10px;
             height: 15px;
-            top: -30px;
-            z-index: 6000;
+
+            top: 50%;
+            left: 50%;
+
+            z-index: 10000;
+
             pointer-events: none;
-            animation: confettiFall 3.5s linear forwards;
+
+            animation:
+                confettiFall 2.8s
+                ease-out forwards;
         }
 
         @keyframes confettiFall {
 
             0% {
-                transform:
-                    translateY(-30px)
-                    rotate(0deg);
                 opacity: 1;
+
+                transform:
+                    translate(-50%, -50%)
+                    rotate(0deg);
             }
 
             100% {
-                transform:
-                    translateY(110vh)
-                    translateX(var(--x))
-                    rotate(720deg);
                 opacity: 0;
+
+                transform:
+                    translate(
+                        calc(-50% + var(--x)),
+                        calc(-50% + var(--y))
+                    )
+                    rotate(720deg);
+            }
+        }
+
+
+        /* =====================================================
+           LOADING
+        ===================================================== */
+
+        .loading {
+            text-align: center;
+
+            color: #aaa;
+
+            padding: 35px;
+
+            grid-column:
+                1 / -1;
+        }
+
+        .loading::after {
+            content: "";
+
+            display: block;
+
+            width: 25px;
+            height: 25px;
+
+            margin:
+                15px auto 0;
+
+            border:
+                3px solid #3b2160;
+
+            border-top-color:
+                #a855f7;
+
+            border-radius: 50%;
+
+            animation:
+                spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+
+            to {
+                transform:
+                    rotate(360deg);
+            }
+        }
+
+
+        /* =====================================================
+           RESPONSIVO
+        ===================================================== */
+
+        @media (max-width: 950px) {
+
+            .header-content {
+                flex-direction: column;
+            }
+
+            .youtube-grid {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+            .suggestions-grid {
+                grid-template-columns: 1fr;
             }
 
         }
 
-        /* ======================================
-           RESPONSIVO
-        ====================================== */
+        @media (max-width: 650px) {
 
-        @media (max-width: 900px) {
-
-            .youtube-grid {
-                grid-template-columns: repeat(2, 1fr);
+            header {
+                padding:
+                    13px 12px;
             }
 
-            .suggestions-grid {
+            .brand-image {
+                width: 42px;
+                height: 42px;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 6px 7px;
+            }
+
+            .hero {
+                min-height: 570px;
+                padding:
+                    70px 18px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding:
+                    65px 15px;
+            }
+
+            .youtube-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -646,45 +1336,12 @@
                 grid-template-columns: 1fr;
             }
 
-        }
-
-        @media (max-width: 600px) {
-
-            .hero {
-                padding: 65px 20px;
+            .card {
+                padding: 20px;
             }
 
-            .hero h2 {
-                font-size: 30px;
-            }
-
-            header h1 {
-                font-size: 30px;
-            }
-
-            nav a {
-                display: inline-block;
-                margin: 7px;
-            }
-
-            .youtube-grid {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 50px 15px;
-            }
-
-            .success-box {
-                padding: 40px 22px;
-            }
-
-            .success-box h2 {
-                font-size: 30px;
-            }
-
-            .success-icon {
-                font-size: 65px;
+            .discord-card {
+                padding: 25px 18px;
             }
 
         }
@@ -693,783 +1350,792 @@
 
 </head>
 
+
 <body>
 
-<!-- ==========================================
-     FOLHAS
-========================================== -->
 
-<div id="sakura-container"></div>
+    <!-- =====================================================
+         FOLHAS
+    ====================================================== -->
 
+    <div class="petals">
 
-<!-- ==========================================
-     TELA DE SUCESSO
-========================================== -->
-
-<div id="successOverlay">
-
-    <div class="success-box">
-
-        <div class="success-icon">
-            🌸
-        </div>
-
-        <h2>
-            Proposta enviada! 🎉
-        </h2>
-
-        <p>
-            Sua proposta chegou até mim com sucesso!
-            <br><br>
-            Agora ela será analisada pela equipe do
-            <span class="success-highlight">
-                Vico1513
-            </span>.
-            <br><br>
-            Obrigado por fazer parte da comunidade! 💜
-        </p>
-
-        <button
-            class="button"
-            onclick="fecharSucesso()"
-        >
-            ✨ Voltar para o site
-        </button>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
+        <span class="petal"></span>
 
     </div>
 
-</div>
 
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-<!-- ==========================================
-     HEADER
-========================================== -->
+    <header>
 
-<header>
-
-    <h1>🌸 Vico1513</h1>
-
-    <p>
-        Minecraft • Comunidade • Aventuras
-    </p>
-
-    <nav>
-
-        <a href="#videos">
-            🎬 Vídeos
-        </a>
-
-        <a href="#parcerias">
-            🤝 Parcerias
-        </a>
-
-        <a href="#sugestoes">
-            💡 Sugestões
-        </a>
-
-        <a href="#discord">
-            💜 Discord
-        </a>
-
-        <a href="#servidores">
-            🌐 Servidores
-        </a>
-
-    </nav>
-
-</header>
-
-
-<!-- ==========================================
-     HERO
-========================================== -->
-
-<div class="hero">
-
-    <h2>
-        Bem-vindo ao cantinho do Vico! 🌸
-    </h2>
-
-    <p>
-        Gameplays, desafios, construções,
-        tutoriais e muita diversão
-        dentro do Minecraft.
-    </p>
-
-    <div class="buttons">
-
-        <a
-            class="button"
-            href="https://youtube.com/@vico1513"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            ▶️ Meu YouTube
-        </a>
-
-        <a
-            class="button"
-            href="https://discord.gg/p3vRj3teYd"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            💜 Meu Discord
-        </a>
-
-    </div>
-
-</div>
-
-
-<!-- ==========================================
-     VÍDEOS
-========================================== -->
-
-<section id="videos">
-
-    <h2>
-        🎬 Últimos vídeos
-    </h2>
-
-    <p class="section-description">
-        Confira os vídeos mais recentes
-        do canal Vico1513.
-    </p>
-
-    <div
-        id="youtubeVideos"
-        class="youtube-grid"
-    >
-
-        <div class="card">
-
-            <h3>
-                ⏳ Carregando vídeos...
-            </h3>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ==========================================
-     PARCERIAS
-========================================== -->
-
-<section id="parcerias">
-
-    <h2>
-        🤝 Faça uma parceria
-    </h2>
-
-    <p class="section-description">
-
-        Tem um servidor, canal, projeto
-        ou outra ideia de parceria com o Vico1513?
-        Envie sua proposta!
-
-    </p>
-
-    <div class="card partnership">
-
-        <form id="partnershipForm">
-
-            <input
-                type="text"
-                id="nome"
-                placeholder="Seu nome ou apelido"
-                required
-            >
-
-            <input
-                type="text"
-                id="contato"
-                placeholder="Seu Discord ou outra forma de contato"
-                required
-            >
-
-            <select
-                id="tipo"
-                required
-            >
-
-                <option value="">
-                    Tipo de parceria
-                </option>
-
-                <option value="Servidor">
-                    Servidor
-                </option>
-
-                <option value="Canal">
-                    Canal
-                </option>
-
-                <option value="Projeto">
-                    Projeto
-                </option>
-
-                <option value="Outro">
-                    Outro
-                </option>
-
-            </select>
-
-            <textarea
-                id="mensagem"
-                placeholder="Conte um pouco sobre sua proposta..."
-                required
-            ></textarea>
-
-            <br>
-
-            <button
-                type="submit"
-                class="button"
-                id="submitButton"
-            >
-                🚀 Enviar proposta
-            </button>
-
-        </form>
-
-        <div
-            id="formMessage"
-            class="message"
-        ></div>
-
-    </div>
-
-</section>
-
-
-<!-- ==========================================
-     SUGESTÕES
-========================================== -->
-
-<section id="sugestoes">
-
-    <h2>
-        💡 Sugestões da comunidade
-    </h2>
-
-    <p class="section-description">
-
-        Acompanhe o andamento das propostas
-        enviadas pela comunidade.
-
-    </p>
-
-    <div class="suggestions-grid">
-
-        <div class="suggestion-column">
-
-            <h3 class="suggestion-title analysis-title">
-                🟡 Em análise
-            </h3>
-
-            <div id="publicAnalysis">
-
-                <p class="suggestion-empty">
-                    Carregando...
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="suggestion-column">
-
-            <h3 class="suggestion-title approved-title">
-                🟢 Aprovadas
-            </h3>
-
-            <div id="publicApproved">
-
-                <p class="suggestion-empty">
-                    Carregando...
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="suggestion-column">
-
-            <h3 class="suggestion-title rejected-title">
-                🔴 Recusadas
-            </h3>
-
-            <div id="publicRejected">
-
-                <p class="suggestion-empty">
-                    Carregando...
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ==========================================
-     DISCORD
-========================================== -->
-
-<section id="discord">
-
-    <h2>
-        💜 Nossa comunidade
-    </h2>
-
-    <div class="discord-grid">
-
-        <div class="discord-card">
-
-            <div class="discord-icon">
-                💜
-            </div>
-
-            <h3>
-                Discord do Vico1513
-            </h3>
-
-            <p>
-                Entre para conversar,
-                acompanhar novidades,
-                participar de eventos
-                e fazer parte da comunidade!
-            </p>
+        <div class="header-content">
 
             <a
-                class="button"
-                href="https://discord.gg/p3vRj3teYd"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#"
+                class="brand"
             >
-                💜 Entrar na comunidade
+
+                <img
+                    src="vico-comunity.jpeg"
+                    class="brand-image"
+                    alt="Vico1513"
+                >
+
+                <div class="brand-text">
+
+                    <h1>Vico1513</h1>
+
+                    <span>
+                        Minecraft • Comunidade
+                    </span>
+
+                </div>
+
             </a>
+
+
+            <nav>
+
+                <a href="#videos">
+                    🎬 Vídeos
+                </a>
+
+                <a href="#parcerias">
+                    🤝 Parcerias
+                </a>
+
+                <a href="#sugestoes">
+                    💡 Sugestões
+                </a>
+
+                <a href="#discord">
+                    💜 Discord
+                </a>
+
+                <a href="#servidores">
+                    🌐 Servidores
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
+
+    <main>
+
+        <div class="hero">
+
+            <div class="hero-content">
+
+                <div class="hero-badge">
+                    🌸 Bem-vindo à comunidade Vico1513
+                </div>
+
+                <h2>
+                    Bem-vindo ao<br>
+                    mundo do Vico! 🌸
+                </h2>
+
+                <p>
+                    Gameplays, construções, desafios,
+                    tutoriais e muita diversão
+                    dentro do Minecraft.
+                </p>
+
+
+                <div class="buttons">
+
+                    <a
+                        class="button"
+                        href="https://youtube.com/@vico1513"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        ▶️ Meu YouTube
+                    </a>
+
+                    <a
+                        class="button secondary"
+                        href="https://discord.gg/p3vRj3teYd"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        💜 Meu Discord
+                    </a>
+
+                </div>
+
+            </div>
 
         </div>
 
 
-        <div class="discord-card">
+        <!-- =================================================
+             VÍDEOS
+        ================================================== -->
 
-            <div class="discord-icon">
+        <section id="videos">
+
+            <h2>
+                🎬 Últimos vídeos
+            </h2>
+
+            <p class="section-description">
+                Confira os vídeos mais recentes
+                do canal Vico1513.
+            </p>
+
+            <div
+                id="youtubeVideos"
+                class="youtube-grid"
+            >
+
+                <div class="loading">
+                    Carregando vídeos...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PARCERIAS
+        ================================================== -->
+
+        <section id="parcerias">
+
+            <h2>
+                🤝 Faça uma parceria
+            </h2>
+
+            <p class="section-description">
+                Tem um servidor, canal, projeto ou
+                ideia de parceria? Envie sua proposta
+                diretamente para o Vico1513!
+            </p>
+
+
+            <div class="card partnership">
+
+                <form id="partnershipForm">
+
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Seu nome ou apelido"
+                        maxlength="80"
+                        required
+                    >
+
+                    <input
+                        type="text"
+                        id="contato"
+                        placeholder="Seu Discord ou outra forma de contato"
+                        maxlength="150"
+                        required
+                    >
+
+                    <select
+                        id="tipo"
+                        required
+                    >
+
+                        <option value="">
+                            🏷️ Tipo de parceria
+                        </option>
+
+                        <option value="Servidor">
+                            🌐 Servidor
+                        </option>
+
+                        <option value="Canal">
+                            ▶️ Canal
+                        </option>
+
+                        <option value="Projeto">
+                            🚀 Projeto
+                        </option>
+
+                        <option value="Evento">
+                            🎉 Evento
+                        </option>
+
+                        <option value="Outro">
+                            ✨ Outro
+                        </option>
+
+                    </select>
+
+                    <textarea
+                        id="mensagem"
+                        placeholder="Conte um pouco sobre sua proposta..."
+                        maxlength="2000"
+                        required
+                    ></textarea>
+
+                    <br>
+
+                    <button
+                        type="submit"
+                        class="button"
+                        id="submitButton"
+                    >
+                        🚀 Enviar proposta
+                    </button>
+
+                </form>
+
+
+                <div
+                    id="formMessage"
+                    class="message"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SUGESTÕES
+        ================================================== -->
+
+        <section id="sugestoes">
+
+            <h2>
+                💡 Sugestões da comunidade
+            </h2>
+
+            <p class="section-description">
+                Acompanhe as propostas enviadas
+                pela comunidade e veja quais foram
+                aprovadas pelo Vico1513.
+            </p>
+
+
+            <div class="suggestions-grid">
+
+
+                <div class="suggestion-column">
+
+                    <h3 class="suggestion-title analysis-title">
+                        🟡 Em análise
+                    </h3>
+
+                    <div id="publicAnalysis">
+
+                        <p class="suggestion-empty">
+                            Carregando...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="suggestion-column">
+
+                    <h3 class="suggestion-title approved-title">
+                        🟢 Aprovadas
+                    </h3>
+
+                    <div id="publicApproved">
+
+                        <p class="suggestion-empty">
+                            Carregando...
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="suggestion-column">
+
+                    <h3 class="suggestion-title rejected-title">
+                        🔴 Recusadas
+                    </h3>
+
+                    <div id="publicRejected">
+
+                        <p class="suggestion-empty">
+                            Carregando...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             DISCORD
+        ================================================== -->
+
+        <section id="discord">
+
+            <h2>
+                💜 Nossa comunidade
+            </h2>
+
+            <p class="section-description">
+                Entre para a comunidade e fique
+                por dentro de tudo que acontece.
+            </p>
+
+
+            <div class="discord-grid">
+
+
+                <div class="discord-card">
+
+                    <div class="discord-icon">
+                        💜
+                    </div>
+
+                    <h3>
+                        Discord do Vico1513
+                    </h3>
+
+                    <p>
+                        Converse com a comunidade,
+                        acompanhe novidades, participe
+                        de eventos e muito mais!
+                    </p>
+
+                    <a
+                        class="button"
+                        href="https://discord.gg/p3vRj3teYd"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        💜 Entrar na comunidade
+                    </a>
+
+                </div>
+
+
+                <div class="discord-card">
+
+                    <div class="discord-icon">
+                        🌸
+                    </div>
+
+                    <h3>
+                        Canal Vico1513
+                    </h3>
+
+                    <p>
+                        Tutoriais, construções, desafios,
+                        Minecraft e vários projetos
+                        novos chegando!
+                    </p>
+
+                    <a
+                        class="button secondary"
+                        href="https://youtube.com/@vico1513"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        ▶️ Conhecer o canal
+                    </a>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SERVIDORES
+        ================================================== -->
+
+        <section id="servidores">
+
+            <h2>
+                🌐 Servidores parceiros
+            </h2>
+
+            <p class="section-description">
+                Conheça servidores e projetos
+                parceiros do Vico1513.
+            </p>
+
+
+            <div class="card server-card">
+
+                <span class="server-tag">
+                    🤝 PARCEIRO
+                </span>
+
+                <h3>
+                    ⚡ Velocity SMP
+                </h3>
+
+                <p>
+                    Um servidor parceiro do Vico1513!
+                    Entre para conhecer a comunidade
+                    e jogar com a galera.
+                </p>
+
+                <br>
+
+                <a
+                    class="button"
+                    href="https://discord.gg/6HKeVaedNH"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ⚡ Entrar no Velocity SMP
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🤝 Seu servidor pode aparecer aqui!
+                </h3>
+
+                <p>
+                    Servidores parceiros, projetos
+                    e patrocinadores poderão aparecer
+                    nesta área.
+                </p>
+
+                <br>
+
+                <a
+                    class="button secondary"
+                    href="#parcerias"
+                >
+                    📩 Quero fazer parceria
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <p>
+            🌸 <strong>Vico1513</strong> © 2026
+        </p>
+
+        <p>
+            Minecraft • Comunidade • Diversão
+        </p>
+
+    </footer>
+
+
+    <!-- =====================================================
+         TELA DE PROPOSTA ENVIADA
+    ====================================================== -->
+
+    <div
+        id="successOverlay"
+        class="success-overlay"
+    >
+
+        <div class="success-box">
+
+            <div class="success-icon">
                 🌸
             </div>
 
-            <h3>
-                Comunidade Vico1513
-            </h3>
+            <h2>
+                PROPOSTA ENVIADA!
+            </h2>
 
             <p>
-                Fique por dentro das novidades,
-                vídeos, eventos e projetos
-                do canal.
+                Sua proposta chegou até o Vico1513! 💜
+                <br>
+                Agora é só aguardar a análise.
             </p>
 
-            <a
-                class="button secondary"
-                href="https://youtube.com/@vico1513"
-                target="_blank"
-                rel="noopener noreferrer"
+            <button
+                class="close-success"
+                id="closeSuccess"
             >
-                ▶️ Conhecer o canal
-            </a>
+                ✨ Continuar no site
+            </button>
 
         </div>
 
     </div>
 
-</section>
 
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
 
-<!-- ==========================================
-     SERVIDORES
-========================================== -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<section id="servidores">
 
-    <h2>
-        🌐 Servidores parceiros
-    </h2>
+    <script>
 
-    <p class="section-description">
+        /* =====================================================
+           CONFIGURAÇÃO
+        ===================================================== */
 
-        Conheça servidores e projetos
-        parceiros do Vico1513.
+        const SUPABASE_URL =
+            "https://fqalhymfpiexyrbyxnka.supabase.co";
 
-    </p>
+        const SUPABASE_KEY =
+            "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
 
-    <div class="card server-card">
 
-        <span class="server-tag">
-            🤝 PARCEIRO
-        </span>
-
-        <h3>
-            ⚡ Velocity SMP
-        </h3>
-
-        <p>
-            Um servidor parceiro do Vico1513!
-            Entre para conhecer a comunidade
-            e jogar com a galera.
-        </p>
-
-        <br>
-
-        <a
-            class="button"
-            href="https://discord.gg/6HKeVaedNH"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            ⚡ Entrar no Velocity SMP
-        </a>
-
-    </div>
-
-
-    <div class="card">
-
-        <h3>
-            🤝 Seu servidor pode aparecer aqui!
-        </h3>
-
-        <p>
-            Servidores parceiros e patrocinadores
-            do Vico1513 poderão aparecer
-            nesta área.
-        </p>
-
-        <br>
-
-        <p>
-            📩 Quer fazer parceria?
-            Envie sua proposta pelo formulário acima.
-        </p>
-
-    </div>
-
-</section>
-
-
-<!-- ==========================================
-     FOOTER
-========================================== -->
-
-<footer>
-
-    <p>
-        🌸 Vico1513 © 2026
-    </p>
-
-    <p>
-        Minecraft • Comunidade • Diversão
-    </p>
-
-</footer>
-
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<script>
-
-    /* =========================================
-       SUPABASE
-    ========================================= */
-
-    const SUPABASE_URL =
-        "https://fqalhymfpiexyrbyxnka.supabase.co";
-
-    const SUPABASE_KEY =
-        "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
-
-
-    const supabaseClient =
-        window.supabase.createClient(
-            SUPABASE_URL,
-            SUPABASE_KEY
-        );
-
-
-    /* =========================================
-       FOLHAS DE CEREJEIRA
-    ========================================= */
-
-    const sakuraContainer =
-        document.getElementById("sakura-container");
-
-
-    function criarFolha() {
-
-        const folha =
-            document.createElement("div");
-
-        folha.className = "sakura";
-
-        folha.style.left =
-            Math.random() * 100 + "vw";
-
-        folha.style.setProperty(
-            "--drift",
-            (Math.random() * 300 - 150) + "px"
-        );
-
-        const tamanho =
-            Math.random() * 8 + 8;
-
-        folha.style.width =
-            tamanho + "px";
-
-        folha.style.height =
-            tamanho * 0.65 + "px";
-
-        folha.style.animationDuration =
-            (Math.random() * 5 + 6) + "s";
-
-        folha.style.opacity =
-            Math.random() * 0.5 + 0.4;
-
-        sakuraContainer.appendChild(folha);
-
-
-        setTimeout(
-            () => folha.remove(),
-            12000
-        );
-
-    }
-
-
-    setInterval(
-        criarFolha,
-        450
-    );
-
-
-    for (
-        let i = 0;
-        i < 15;
-        i++
-    ) {
-
-        setTimeout(
-            criarFolha,
-            i * 250
-        );
-
-    }
-
-
-    /* =========================================
-       CONFETES
-    ========================================= */
-
-    function criarConfetes() {
-
-        const quantidade = 100;
-
-        for (
-            let i = 0;
-            i < quantidade;
-            i++
-        ) {
-
-            const confetti =
-                document.createElement("div");
-
-            confetti.className =
-                "confetti";
-
-            confetti.style.left =
-                Math.random() * 100 + "vw";
-
-            confetti.style.setProperty(
-                "--x",
-                (Math.random() * 500 - 250) + "px"
-            );
-
-            confetti.style.animationDelay =
-                Math.random() * 1.2 + "s";
-
-            confetti.style.background =
-                [
-                    "#c084fc",
-                    "#a855f7",
-                    "#f9a8d4",
-                    "#f0abfc",
-                    "#fde68a",
-                    "#86efac",
-                    "#ffffff"
-                ][
-                    Math.floor(
-                        Math.random() * 7
-                    )
-                ];
-
-            confetti.style.transform =
-                `rotate(${Math.random() * 360}deg)`;
-
-            document.body.appendChild(
-                confetti
+        const supabaseClient =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
             );
 
 
-            setTimeout(
-                () => confetti.remove(),
-                5000
+        /* =====================================================
+           ELEMENTOS
+        ===================================================== */
+
+        const form =
+            document.getElementById(
+                "partnershipForm"
             );
+
+        const submitButton =
+            document.getElementById(
+                "submitButton"
+            );
+
+        const formMessage =
+            document.getElementById(
+                "formMessage"
+            );
+
+        const successOverlay =
+            document.getElementById(
+                "successOverlay"
+            );
+
+        const closeSuccess =
+            document.getElementById(
+                "closeSuccess"
+            );
+
+
+        /* =====================================================
+           ANIMAÇÃO DE CONFETES
+        ===================================================== */
+
+        function criarConfetes() {
+
+            const quantidade = 70;
+
+            for (
+                let i = 0;
+                i < quantidade;
+                i++
+            ) {
+
+                const confetti =
+                    document.createElement(
+                        "div"
+                    );
+
+                confetti.className =
+                    "confetti";
+
+                const x =
+                    (Math.random() - 0.5)
+                    * 1100;
+
+                const y =
+                    (Math.random() * 900)
+                    + 300;
+
+                const tamanho =
+                    Math.random() * 8 + 6;
+
+                confetti.style.width =
+                    tamanho + "px";
+
+                confetti.style.height =
+                    tamanho * 1.5 + "px";
+
+                confetti.style.setProperty(
+                    "--x",
+                    x + "px"
+                );
+
+                confetti.style.setProperty(
+                    "--y",
+                    y + "px"
+                );
+
+                confetti.style.background =
+                    [
+                        "#c084fc",
+                        "#e879f9",
+                        "#f9a8d4",
+                        "#facc15",
+                        "#4ade80",
+                        "#60a5fa"
+                    ][
+                        Math.floor(
+                            Math.random() * 6
+                        )
+                    ];
+
+                confetti.style.animationDelay =
+                    (
+                        Math.random() * 0.5
+                    ) + "s";
+
+                document.body.appendChild(
+                    confetti
+                );
+
+                setTimeout(
+                    function() {
+
+                        confetti.remove();
+
+                    },
+                    3500
+                );
+
+            }
 
         }
 
-    }
 
+        /* =====================================================
+           MOSTRAR ANIMAÇÃO DE SUCESSO
+        ===================================================== */
 
-    /* =========================================
-       SUCESSO
-    ========================================= */
+        function mostrarSucesso() {
 
-    function mostrarSucesso() {
-
-        const overlay =
-            document.getElementById(
-                "successOverlay"
+            successOverlay.classList.add(
+                "show"
             );
 
-        overlay.classList.add(
-            "active"
-        );
+            criarConfetes();
 
-        criarConfetes();
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }
+        }
 
 
-    function fecharSucesso() {
+        closeSuccess.addEventListener(
+            "click",
+            function() {
 
-        const overlay =
-            document.getElementById(
-                "successOverlay"
-            );
+                successOverlay.classList.remove(
+                    "show"
+                );
 
-        overlay.classList.remove(
-            "active"
-        );
+                document.getElementById(
+                    "sugestoes"
+                ).scrollIntoView({
+                    behavior: "smooth"
+                });
 
-    }
-
-
-    /* =========================================
-       FORMULÁRIO
-    ========================================= */
-
-    const form =
-        document.getElementById(
-            "partnershipForm"
+            }
         );
 
 
-    const submitButton =
-        document.getElementById(
-            "submitButton"
-        );
+        /* =====================================================
+           FORMULÁRIO
+        ===================================================== */
+
+        form.addEventListener(
+            "submit",
+            async function(event) {
+
+                event.preventDefault();
 
 
-    const formMessage =
-        document.getElementById(
-            "formMessage"
-        );
+                submitButton.disabled =
+                    true;
+
+                submitButton.textContent =
+                    "⏳ Enviando...";
 
 
-    form.addEventListener(
-        "submit",
-        async function(event) {
+                formMessage.className =
+                    "message";
 
-            event.preventDefault();
-
-
-            submitButton.disabled =
-                true;
-
-            submitButton.textContent =
-                "⏳ Enviando...";
+                formMessage.textContent =
+                    "";
 
 
-            formMessage.className =
-                "message";
-
-            formMessage.textContent =
-                "";
-
-
-            const nome =
-                document
-                    .getElementById("nome")
-                    .value
-                    .trim();
+                const nome =
+                    document
+                        .getElementById("nome")
+                        .value
+                        .trim();
 
 
-            const contato =
-                document
-                    .getElementById("contato")
-                    .value
-                    .trim();
+                const contato =
+                    document
+                        .getElementById("contato")
+                        .value
+                        .trim();
 
 
-            const tipo =
-                document
-                    .getElementById("tipo")
-                    .value;
+                const tipo =
+                    document
+                        .getElementById("tipo")
+                        .value;
 
 
-            const mensagem =
-                document
-                    .getElementById("mensagem")
-                    .value
-                    .trim();
+                const mensagem =
+                    document
+                        .getElementById("mensagem")
+                        .value
+                        .trim();
 
 
-            try {
+                try {
 
-                const response =
-                    await fetch(
-                        `${SUPABASE_URL}/rest/v1/parcerias`,
-                        {
-
-                            method: "POST",
-
-                            headers: {
-
-                                "Content-Type":
-                                    "application/json",
-
-                                "apikey":
-                                    SUPABASE_KEY,
-
-                                "Authorization":
-                                    `Bearer ${SUPABASE_KEY}`,
-
-                                "Prefer":
-                                    "return=minimal"
-
-                            },
-
-                            body:
-                                JSON.stringify({
-
+                    const {
+                        data,
+                        error
+                    } =
+                        await supabaseClient
+                            .from("parcerias")
+                            .insert([
+                                {
                                     nome:
                                         nome,
 
@@ -1484,368 +2150,148 @@
 
                                     status:
                                         "analise"
+                                }
+                            ])
+                            .select();
 
-                                })
 
-                        }
+                    if (error) {
+
+                        console.error(
+                            "Erro ao enviar:",
+                            error
+                        );
+
+                        throw error;
+
+                    }
+
+
+                    console.log(
+                        "Proposta enviada:",
+                        data
                     );
 
 
-                if (!response.ok) {
+                    form.reset();
 
-                    const errorText =
-                        await response.text();
+
+                    mostrarSucesso();
+
+
+                    carregarSugestoesPublicas();
+
+                }
+
+
+                catch (error) {
 
                     console.error(
                         "Erro do Supabase:",
-                        errorText
+                        error
                     );
+
 
                     formMessage.className =
                         "message error";
 
+
                     formMessage.textContent =
-                        "❌ Não foi possível enviar a proposta.";
-
-                    return;
+                        "❌ Não foi possível enviar a proposta. Tente novamente.";
 
                 }
 
 
-                form.reset();
+                finally {
 
-                carregarSugestoesPublicas();
+                    submitButton.disabled =
+                        false;
 
-                mostrarSucesso();
+                    submitButton.textContent =
+                        "🚀 Enviar proposta";
+
+                }
 
             }
+        );
 
 
-            catch (error) {
+        /* =====================================================
+           PROPOSTAS PÚBLICAS
+        ===================================================== */
 
-                console.error(
-                    "Erro:",
+        async function carregarSugestoesPublicas() {
+
+            const publicAnalysis =
+                document.getElementById(
+                    "publicAnalysis"
+                );
+
+            const publicApproved =
+                document.getElementById(
+                    "publicApproved"
+                );
+
+            const publicRejected =
+                document.getElementById(
+                    "publicRejected"
+                );
+
+
+            try {
+
+                const {
+                    data,
                     error
-                );
-
-                formMessage.className =
-                    "message error";
-
-                formMessage.textContent =
-                    "❌ Não foi possível enviar sua proposta. Tente novamente.";
-
-            }
-
-
-            finally {
-
-                submitButton.disabled =
-                    false;
-
-                submitButton.textContent =
-                    "🚀 Enviar proposta";
-
-            }
-
-        }
-    );
-
-
-    /* =========================================
-       PROPOSTAS PÚBLICAS
-    ========================================= */
-
-    async function carregarSugestoesPublicas() {
-
-        const publicAnalysis =
-            document.getElementById(
-                "publicAnalysis"
-            );
-
-        const publicApproved =
-            document.getElementById(
-                "publicApproved"
-            );
-
-        const publicRejected =
-            document.getElementById(
-                "publicRejected"
-            );
-
-
-        try {
-
-            const response =
-                await fetch(
-                    `${SUPABASE_URL}/rest/v1/parcerias?select=nome,tipo,mensagem,status&order=id.desc`,
-                    {
-
-                        method: "GET",
-
-                        headers: {
-
-                            "apikey":
-                                SUPABASE_KEY,
-
-                            "Authorization":
-                                `Bearer ${SUPABASE_KEY}`
-
-                        }
-
-                    }
-                );
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Erro ao carregar propostas."
-                );
-
-            }
-
-
-            const propostas =
-                await response.json();
-
-
-            publicAnalysis.innerHTML =
-                "";
-
-            publicApproved.innerHTML =
-                "";
-
-            publicRejected.innerHTML =
-                "";
-
-
-            let analysisCount = 0;
-
-            let approvedCount = 0;
-
-            let rejectedCount = 0;
-
-
-            propostas.forEach(
-                function(proposta) {
-
-                    const card =
-                        document.createElement(
-                            "div"
-                        );
-
-                    card.className =
-                        "public-suggestion";
-
-
-                    const titulo =
-                        document.createElement(
-                            "h3"
-                        );
-
-                    titulo.textContent =
-                        proposta.nome ||
-                        "Anônimo";
-
-
-                    const tipo =
-                        document.createElement(
-                            "p"
-                        );
-
-                    tipo.innerHTML =
-                        "<strong>🏷️ Tipo:</strong> ";
-
-                    tipo.appendChild(
-                        document.createTextNode(
-                            proposta.tipo ||
-                            "Outro"
+                } =
+                    await supabaseClient
+                        .from("parcerias")
+                        .select(
+                            "id,nome,tipo,mensagem,status"
                         )
-                    );
-
-
-                    const mensagem =
-                        document.createElement(
-                            "p"
+                        .order(
+                            "id",
+                            {
+                                ascending:
+                                    false
+                            }
                         );
 
-                    mensagem.textContent =
-                        proposta.mensagem ||
-                        "";
 
+                if (error) {
 
-                    card.appendChild(
-                        titulo
+                    console.error(
+                        "Erro ao carregar:",
+                        error
                     );
 
-                    card.appendChild(
-                        tipo
-                    );
-
-                    card.appendChild(
-                        mensagem
-                    );
-
-
-                    if (
-                        proposta.status ===
-                        "analise"
-                    ) {
-
-                        publicAnalysis.appendChild(
-                            card
-                        );
-
-                        analysisCount++;
-
-                    }
-
-                    else if (
-                        proposta.status ===
-                        "aprovada"
-                    ) {
-
-                        publicApproved.appendChild(
-                            card
-                        );
-
-                        approvedCount++;
-
-                    }
-
-                    else if (
-                        proposta.status ===
-                        "recusada"
-                    ) {
-
-                        publicRejected.appendChild(
-                            card
-                        );
-
-                        rejectedCount++;
-
-                    }
+                    throw error;
 
                 }
-            );
 
-
-            if (
-                analysisCount === 0
-            ) {
 
                 publicAnalysis.innerHTML =
-                    '<p class="suggestion-empty">Nenhuma sugestão em análise.</p>';
-
-            }
-
-
-            if (
-                approvedCount === 0
-            ) {
+                    "";
 
                 publicApproved.innerHTML =
-                    '<p class="suggestion-empty">Nenhuma sugestão aprovada ainda.</p>';
-
-            }
-
-
-            if (
-                rejectedCount === 0
-            ) {
+                    "";
 
                 publicRejected.innerHTML =
-                    '<p class="suggestion-empty">Nenhuma sugestão recusada.</p>';
-
-            }
-
-        }
+                    "";
 
 
-        catch (error) {
+                let analysisCount =
+                    0;
 
-            console.error(
-                "Erro ao carregar propostas:",
-                error
-            );
+                let approvedCount =
+                    0;
 
-        }
-
-    }
+                let rejectedCount =
+                    0;
 
 
-    /* =========================================
-       YOUTUBE
-    ========================================= */
-
-    async function carregarVideosYouTube() {
-
-        const container =
-            document.getElementById(
-                "youtubeVideos"
-            );
-
-
-        const channelId =
-            "UCIUUcvD6YhKlta_QWCIp5CA";
-
-
-        const rssUrl =
-            `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
-
-
-        const apiUrl =
-            `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
-
-
-        try {
-
-            const response =
-                await fetch(
-                    apiUrl
-                );
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    "Erro ao buscar vídeos"
-                );
-
-            }
-
-
-            const data =
-                await response.json();
-
-
-            if (
-                data.status !== "ok" ||
-                !data.items
-            ) {
-
-                throw new Error(
-                    "Feed do YouTube inválido"
-                );
-
-            }
-
-
-            container.innerHTML =
-                "";
-
-
-            data.items
-                .slice(0, 6)
-                .forEach(
-                    function(video) {
-
-                        const videoId =
-                            video.guid.replace(
-                                "yt:video:",
-                                ""
-                            );
-
+                data.forEach(
+                    function(proposta) {
 
                         const card =
                             document.createElement(
@@ -1853,161 +2299,392 @@
                             );
 
                         card.className =
-                            "youtube-card";
+                            "public-suggestion";
 
 
-                        const thumbnail =
-                            document.createElement(
-                                "img"
-                            );
-
-                        thumbnail.className =
-                            "youtube-thumbnail";
-
-                        thumbnail.src =
-                            `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
-
-                        thumbnail.alt =
-                            video.title;
-
-                        thumbnail.loading =
-                            "lazy";
-
-
-                        const info =
-                            document.createElement(
-                                "div"
-                            );
-
-                        info.className =
-                            "youtube-info";
-
-
-                        const title =
+                        const titulo =
                             document.createElement(
                                 "h3"
                             );
 
-                        title.className =
-                            "youtube-title";
-
-                        title.textContent =
-                            video.title;
+                        titulo.textContent =
+                            proposta.nome ||
+                            "Anônimo";
 
 
-                        const date =
+                        const tipo =
                             document.createElement(
                                 "p"
                             );
 
-                        date.className =
-                            "youtube-date";
+                        tipo.innerHTML =
+                            "<strong>🏷️ Tipo:</strong> ";
+
+                        tipo.appendChild(
+                            document.createTextNode(
+                                proposta.tipo ||
+                                "Outro"
+                            )
+                        );
 
 
-                        const dataVideo =
-                            new Date(
-                                video.pubDate
-                            );
-
-
-                        date.textContent =
-                            "📅 " +
-                            dataVideo.toLocaleDateString(
-                                "pt-BR"
-                            );
-
-
-                        const button =
+                        const mensagem =
                             document.createElement(
-                                "a"
+                                "p"
                             );
 
-                        button.className =
-                            "youtube-button";
-
-                        button.href =
-                            video.link;
-
-                        button.target =
-                            "_blank";
-
-                        button.rel =
-                            "noopener noreferrer";
-
-                        button.textContent =
-                            "▶️ Assistir";
-
-
-                        info.appendChild(
-                            title
-                        );
-
-                        info.appendChild(
-                            date
-                        );
-
-                        info.appendChild(
-                            button
-                        );
+                        mensagem.textContent =
+                            proposta.mensagem ||
+                            "";
 
 
                         card.appendChild(
-                            thumbnail
+                            titulo
                         );
 
                         card.appendChild(
-                            info
+                            tipo
+                        );
+
+                        card.appendChild(
+                            mensagem
                         );
 
 
-                        container.appendChild(
-                            card
-                        );
+                        if (
+                            proposta.status ===
+                            "analise"
+                        ) {
+
+                            publicAnalysis.appendChild(
+                                card
+                            );
+
+                            analysisCount++;
+
+                        }
+
+
+                        else if (
+                            proposta.status ===
+                            "aprovada"
+                        ) {
+
+                            publicApproved.appendChild(
+                                card
+                            );
+
+                            approvedCount++;
+
+                        }
+
+
+                        else if (
+                            proposta.status ===
+                            "recusada"
+                        ) {
+
+                            publicRejected.appendChild(
+                                card
+                            );
+
+                            rejectedCount++;
+
+                        }
 
                     }
                 );
 
+
+                if (
+                    analysisCount === 0
+                ) {
+
+                    publicAnalysis.innerHTML =
+                        '<p class="suggestion-empty">Nenhuma proposta em análise.</p>';
+
+                }
+
+
+                if (
+                    approvedCount === 0
+                ) {
+
+                    publicApproved.innerHTML =
+                        '<p class="suggestion-empty">Nenhuma proposta aprovada ainda.</p>';
+
+                }
+
+
+                if (
+                    rejectedCount === 0
+                ) {
+
+                    publicRejected.innerHTML =
+                        '<p class="suggestion-empty">Nenhuma proposta recusada.</p>';
+
+                }
+
+            }
+
+
+            catch (error) {
+
+                console.error(
+                    "Erro ao carregar propostas:",
+                    error
+                );
+
+
+                publicAnalysis.innerHTML =
+                    '<p class="suggestion-empty">❌ Erro ao carregar.</p>';
+
+                publicApproved.innerHTML =
+                    '<p class="suggestion-empty">❌ Erro ao carregar.</p>';
+
+                publicRejected.innerHTML =
+                    '<p class="suggestion-empty">❌ Erro ao carregar.</p>';
+
+            }
+
         }
 
 
-        catch (error) {
+        /* =====================================================
+           YOUTUBE
+        ===================================================== */
 
-            console.error(
-                "Erro ao carregar vídeos:",
-                error
-            );
+        async function carregarVideosYouTube() {
+
+            const container =
+                document.getElementById(
+                    "youtubeVideos"
+                );
 
 
-            container.innerHTML = `
+            const channelId =
+                "UCIUUcvD6YhKlta_QWCIp5CA";
 
-                <div class="card">
 
-                    <h3>
-                        ❌ Não foi possível carregar os vídeos.
-                    </h3>
+            const rssUrl =
+                `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
 
-                    <p>
-                        Tente atualizar a página.
-                    </p>
 
-                </div>
+            const apiUrl =
+                `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`;
 
-            `;
+
+            try {
+
+                const response =
+                    await fetch(
+                        apiUrl
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Erro ao buscar vídeos."
+                    );
+
+                }
+
+
+                const data =
+                    await response.json();
+
+
+                if (
+                    data.status !== "ok" ||
+                    !data.items
+                ) {
+
+                    throw new Error(
+                        "Feed do YouTube inválido."
+                    );
+
+                }
+
+
+                container.innerHTML =
+                    "";
+
+
+                data.items
+                    .slice(0, 6)
+                    .forEach(
+                        function(video) {
+
+                            const videoId =
+                                video.guid
+                                    .replace(
+                                        "yt:video:",
+                                        ""
+                                    );
+
+
+                            const card =
+                                document.createElement(
+                                    "div"
+                                );
+
+                            card.className =
+                                "youtube-card";
+
+
+                            const thumbnail =
+                                document.createElement(
+                                    "img"
+                                );
+
+                            thumbnail.className =
+                                "youtube-thumbnail";
+
+                            thumbnail.src =
+                                `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+
+                            thumbnail.alt =
+                                video.title;
+
+                            thumbnail.loading =
+                                "lazy";
+
+
+                            const info =
+                                document.createElement(
+                                    "div"
+                                );
+
+                            info.className =
+                                "youtube-info";
+
+
+                            const title =
+                                document.createElement(
+                                    "h3"
+                                );
+
+                            title.className =
+                                "youtube-title";
+
+                            title.textContent =
+                                video.title;
+
+
+                            const date =
+                                document.createElement(
+                                    "p"
+                                );
+
+                            date.className =
+                                "youtube-date";
+
+
+                            const dataVideo =
+                                new Date(
+                                    video.pubDate
+                                );
+
+
+                            date.textContent =
+                                "📅 " +
+                                dataVideo.toLocaleDateString(
+                                    "pt-BR"
+                                );
+
+
+                            const button =
+                                document.createElement(
+                                    "a"
+                                );
+
+                            button.className =
+                                "youtube-button";
+
+                            button.href =
+                                video.link;
+
+                            button.target =
+                                "_blank";
+
+                            button.rel =
+                                "noopener noreferrer";
+
+                            button.textContent =
+                                "▶️ Assistir";
+
+
+                            info.appendChild(
+                                title
+                            );
+
+                            info.appendChild(
+                                date
+                            );
+
+                            info.appendChild(
+                                button
+                            );
+
+
+                            card.appendChild(
+                                thumbnail
+                            );
+
+                            card.appendChild(
+                                info
+                            );
+
+
+                            container.appendChild(
+                                card
+                            );
+
+                        }
+                    );
+
+            }
+
+
+            catch (error) {
+
+                console.error(
+                    "Erro ao carregar vídeos:",
+                    error
+                );
+
+
+                container.innerHTML = `
+
+                    <div class="card">
+
+                        <h3>
+                            ❌ Não foi possível carregar os vídeos.
+                        </h3>
+
+                        <p>
+                            Tente atualizar a página.
+                        </p>
+
+                    </div>
+
+                `;
+
+            }
 
         }
 
-    }
 
+        /* =====================================================
+           INICIALIZAÇÃO
+        ===================================================== */
 
-    /* =========================================
-       INICIALIZAÇÃO
-    ========================================= */
+        carregarSugestoesPublicas();
 
-    carregarSugestoesPublicas();
+        carregarVideosYouTube();
 
-    carregarVideosYouTube();
-
-</script>
+    </script>
 
 </body>
 
