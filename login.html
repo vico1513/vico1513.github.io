@@ -1,1 +1,541 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VicoAI | Entrar</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+
+            font-family: Arial, Helvetica, sans-serif;
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(16, 9, 28, 0.72),
+                    rgba(16, 9, 28, 0.88)
+                ),
+                url("FF186E10-B115-4C11-8BCA-DB22C5F2B07A.png");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 430px;
+
+            padding: 35px 28px;
+
+            text-align: center;
+
+            background: rgba(27, 17, 43, 0.88);
+
+            border: 1px solid rgba(192, 132, 252, 0.35);
+            border-radius: 24px;
+
+            backdrop-filter: blur(15px);
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.45),
+                0 0 40px rgba(124, 58, 237, 0.15);
+        }
+
+        .logo {
+            width: 90px;
+            height: 90px;
+
+            object-fit: cover;
+
+            border-radius: 50%;
+
+            border: 3px solid rgba(216, 180, 254, 0.65);
+
+            box-shadow:
+                0 0 25px rgba(192, 132, 252, 0.35);
+
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            color: #e9b6ff;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #bbb;
+            margin-bottom: 28px;
+        }
+
+        input {
+            width: 100%;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+
+            border: 1px solid rgba(139, 92, 246, 0.25);
+            border-radius: 11px;
+
+            background: rgba(40, 24, 61, 0.85);
+
+            color: white;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+        input:focus {
+            border-color: #9b6cff;
+
+            box-shadow:
+                0 0 0 3px rgba(124, 58, 237, 0.15);
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        button {
+            width: 100%;
+
+            padding: 14px;
+
+            margin-top: 8px;
+
+            border: none;
+            border-radius: 11px;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #7c3aed,
+                    #9333ea
+                );
+
+            font-weight: bold;
+            font-size: 16px;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.12);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .switch {
+            margin-top: 20px;
+
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+        .switch button {
+            width: auto;
+
+            padding: 0;
+
+            margin: 0;
+
+            background: none;
+
+            color: #d8b4fe;
+
+            font-size: 14px;
+        }
+
+        .message {
+            display: none;
+
+            margin-top: 15px;
+
+            padding: 12px;
+
+            border-radius: 10px;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        .message.error {
+            background: rgba(120, 30, 30, 0.35);
+            border: 1px solid rgba(248, 113, 113, 0.5);
+            color: #ffaaa2;
+        }
+
+        .message.success {
+            background: rgba(30, 100, 60, 0.35);
+            border: 1px solid rgba(74, 222, 128, 0.5);
+            color: #8ff0b2;
+        }
+
+        .back {
+            display: block;
+
+            margin-top: 22px;
+
+            color: #999;
+
+            text-decoration: none;
+
+            font-size: 14px;
+        }
+
+        .back:hover {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <img
+            class="logo"
+            src="FF186E10-B115-4C11-8BCA-DB22C5F2B07A.png"
+            alt="Vico"
+        >
+
+        <h1>🤖 VicoAI</h1>
+
+        <p class="subtitle">
+            Acesse sua conta para continuar
+        </p>
+
+        <form id="authForm">
+
+            <input
+                type="email"
+                id="email"
+                placeholder="Seu e-mail"
+                required
+            >
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Sua senha"
+                minlength="6"
+                required
+            >
+
+            <button
+                type="submit"
+                id="submitButton"
+            >
+                Entrar
+            </button>
+
+        </form>
+
+        <div
+            id="message"
+            class="message"
+        ></div>
+
+        <div class="switch">
+
+            <span id="switchText">
+                Ainda não tem uma conta?
+            </span>
+
+            <button
+                type="button"
+                id="switchButton"
+            >
+                Criar conta
+            </button>
+
+        </div>
+
+        <a
+            href="index.html"
+            class="back"
+        >
+            ← Voltar para o Cantinho do Vico
+        </a>
+
+    </div>
+
+
+<script>
+
+const SUPABASE_URL =
+    "https://fqalhymfpiexyrbyxnka.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
+
+
+const form =
+    document.getElementById("authForm");
+
+const emailInput =
+    document.getElementById("email");
+
+const passwordInput =
+    document.getElementById("password");
+
+const submitButton =
+    document.getElementById("submitButton");
+
+const message =
+    document.getElementById("message");
+
+const switchButton =
+    document.getElementById("switchButton");
+
+const switchText =
+    document.getElementById("switchText");
+
+
+let modoCadastro = false;
+
+
+function mostrarMensagem(texto, tipo) {
+
+    message.textContent = texto;
+
+    message.className =
+        "message show " + tipo;
+
+}
+
+
+switchButton.addEventListener(
+    "click",
+    function() {
+
+        modoCadastro =
+            !modoCadastro;
+
+
+        if (modoCadastro) {
+
+            switchText.textContent =
+                "Já tem uma conta?";
+
+            switchButton.textContent =
+                "Entrar";
+
+            submitButton.textContent =
+                "Criar conta";
+
+        }
+
+        else {
+
+            switchText.textContent =
+                "Ainda não tem uma conta?";
+
+            switchButton.textContent =
+                "Criar conta";
+
+            submitButton.textContent =
+                "Entrar";
+
+        }
+
+        mostrarMensagem("", "");
+
+    }
+);
+
+
+form.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const email =
+            emailInput.value.trim();
+
+        const password =
+            passwordInput.value;
+
+
+        submitButton.disabled =
+            true;
+
+
+        submitButton.textContent =
+            modoCadastro
+                ? "Criando conta..."
+                : "Entrando...";
+
+
+        try {
+
+            const endpoint =
+                modoCadastro
+                    ? "/auth/v1/signup"
+                    : "/auth/v1/token?grant_type=password";
+
+
+            const body =
+                modoCadastro
+                    ? {
+                        email: email,
+                        password: password
+                    }
+                    : {
+                        email: email,
+                        password: password
+                    };
+
+
+            const response =
+                await fetch(
+                    SUPABASE_URL + endpoint,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json",
+
+                            "apikey":
+                                SUPABASE_KEY
+                        },
+
+                        body:
+                            JSON.stringify(body)
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                console.error(
+                    "Erro:",
+                    data
+                );
+
+                mostrarMensagem(
+                    data.msg ||
+                    data.message ||
+                    "Não foi possível realizar a operação.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            if (modoCadastro) {
+
+                mostrarMensagem(
+                    "✅ Conta criada! Agora você já pode entrar.",
+                    "success"
+                );
+
+                modoCadastro =
+                    false;
+
+                switchText.textContent =
+                    "Ainda não tem uma conta?";
+
+                switchButton.textContent =
+                    "Criar conta";
+
+                submitButton.textContent =
+                    "Entrar";
+
+                passwordInput.value =
+                    "";
+
+                return;
+
+            }
+
+
+            localStorage.setItem(
+                "vico_access_token",
+                data.access_token
+            );
+
+            localStorage.setItem(
+                "vico_refresh_token",
+                data.refresh_token
+            );
+
+            window.location.href =
+                "ia.html";
+
+        }
+
+        catch (error) {
+
+            console.error(
+                error
+            );
+
+            mostrarMensagem(
+                "❌ Erro de conexão. Tente novamente.",
+                "error"
+            );
+
+        }
+
+        finally {
+
+            submitButton.disabled =
+                false;
+
+            if (!modoCadastro) {
+
+                submitButton.textContent =
+                    "Entrar";
+
+            }
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
