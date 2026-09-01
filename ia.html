@@ -356,7 +356,7 @@ main {
 
 
 /* =========================
-   IMAGEM ANEXADA
+   IMAGEM
 ========================= */
 
 .image-preview {
@@ -497,7 +497,7 @@ main {
 
 
 /* =========================
-   BOTÃO DE IMAGEM
+   BOTÃO IMAGEM
 ========================= */
 
 #imageButton {
@@ -911,6 +911,7 @@ main {
                 id="removeImage"
                 class="remove-image"
                 type="button"
+                title="Remover imagem"
             >
                 ×
             </button>
@@ -920,7 +921,7 @@ main {
 
         <textarea
             id="prompt"
-            placeholder="Digite sua pergunta..."
+            placeholder="Digite sua pergunta... ou cole uma print"
             rows="1"
         ></textarea>
 
@@ -947,6 +948,7 @@ main {
     <button
         id="sendButton"
         type="button"
+        title="Enviar"
     >
         ➤
     </button>
@@ -974,6 +976,15 @@ const SUPABASE_URL =
 
 const SUPABASE_KEY =
     "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
+
+
+/* =========================================
+   EDGE FUNCTION
+========================================= */
+
+const VICO_AI_FUNCTION =
+    SUPABASE_URL +
+    "/functions/v1/vico-ai";
 
 
 /* =========================================
@@ -1028,10 +1039,11 @@ let accessToken =
    APELIDO
 ========================================= */
 
-const nickname =
+let nickname =
     localStorage.getItem(
         "vico_nickname"
     );
+
 
 if (nickname) {
 
@@ -1139,7 +1151,7 @@ async function verificarAcesso() {
         window.location.href =
             "login.html";
 
-        return;
+        return false;
 
     }
 
@@ -1173,7 +1185,7 @@ async function verificarAcesso() {
 
             desconectar();
 
-            return;
+            return false;
 
         }
 
@@ -1183,10 +1195,31 @@ async function verificarAcesso() {
 
 
         /*
-           Se ainda não houver apelido
-           salvo, usa o e-mail apenas
-           como fallback.
+           Pega o nickname salvo no
+           Supabase Auth, caso exista.
         */
+
+        const nicknameSupabase =
+            user.user_metadata &&
+            user.user_metadata.nickname;
+
+
+        if (nicknameSupabase) {
+
+            nickname =
+                nicknameSupabase;
+
+            localStorage.setItem(
+                "vico_nickname",
+                nicknameSupabase
+            );
+
+            userNickname.textContent =
+                "👤 " +
+                nicknameSupabase;
+
+        }
+
 
         if (!nickname) {
 
@@ -1267,7 +1300,7 @@ async function verificarAcesso() {
 
             `;
 
-            return;
+            return false;
 
         }
 
@@ -1303,7 +1336,7 @@ async function verificarAcesso() {
 
             `;
 
-            return;
+            return false;
 
         }
 
@@ -1311,6 +1344,8 @@ async function verificarAcesso() {
         console.log(
             "VicoAI: acesso autorizado."
         );
+
+        return true;
 
     }
 
@@ -1343,20 +1378,158 @@ async function verificarAcesso() {
 
         `;
 
+        return false;
+
     }
 
 }
 
 
-verificarAcesso();
+/* =========================================
+   INICIALIZAÇÃO
+========================================= */
+
+let acessoAutorizado =
+    false;
+
+
+verificarAcesso()
+    .then(
+        function(resultado) {
+
+            acessoAutorizado =
+                resultado;
+
+        }
+    );
 
 
 /* =========================================
    IMAGEM
 ========================================= */
 
-let imagemSelecionada = null;
+let imagemSelecionada =
+    null;
 
+
+/*
+   Converte uma imagem para
+   Data URL para podermos
+   enviá-la para a Edge Function.
+*/
+
+function arquivoParaDataURL(
+    arquivo
+) {
+
+    return new Promise(
+        function(resolve, reject) {
+
+            const reader =
+                new FileReader();
+
+            reader.onload =
+                function() {
+
+                    resolve(
+                        reader.result
+                    );
+
+                };
+
+            reader.onerror =
+                function() {
+
+                    reject(
+                        new Error(
+                            "Não foi possível ler a imagem."
+                        )
+                    );
+
+                };
+
+            reader.readAsDataURL(
+                arquivo
+            );
+
+        }
+    );
+
+}
+
+
+/*
+   Mostra a imagem selecionada.
+*/
+
+function selecionarImagem(
+    arquivo
+) {
+
+    if (!arquivo) {
+
+        return;
+
+    }
+
+
+    if (
+        !arquivo.type ||
+        !arquivo.type.startsWith("image/")
+    ) {
+
+        alert(
+            "Selecione uma imagem."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Limite de segurança para
+       evitar imagens gigantes.
+    */
+
+    if (
+        arquivo.size >
+        10 * 1024 * 1024
+    ) {
+
+        alert(
+            "Essa imagem é muito grande. Escolha uma imagem de até 10 MB."
+        );
+
+        return;
+
+    }
+
+
+    imagemSelecionada =
+        arquivo;
+
+
+    const url =
+        URL.createObjectURL(
+            arquivo
+        );
+
+
+    previewImage.src =
+        url;
+
+
+    imagePreview.classList.add(
+        "show"
+    );
+
+}
+
+
+/*
+   Botão para escolher imagem.
+*/
 
 imageButton.addEventListener(
     "click",
@@ -1368,6 +1541,10 @@ imageButton.addEventListener(
 );
 
 
+/*
+   Imagem escolhida pelo arquivo.
+*/
+
 imageInput.addEventListener(
     "change",
     function() {
@@ -1375,48 +1552,17 @@ imageInput.addEventListener(
         const arquivo =
             imageInput.files[0];
 
-        if (!arquivo) {
-
-            return;
-
-        }
-
-
-        if (!arquivo.type.startsWith("image/")) {
-
-            alert(
-                "Selecione uma imagem."
-            );
-
-            imageInput.value =
-                "";
-
-            return;
-
-        }
-
-
-        imagemSelecionada =
-            arquivo;
-
-
-        const url =
-            URL.createObjectURL(
-                arquivo
-            );
-
-
-        previewImage.src =
-            url;
-
-
-        imagePreview.classList.add(
-            "show"
+        selecionarImagem(
+            arquivo
         );
 
     }
 );
 
+
+/*
+   Remover imagem.
+*/
 
 removeImage.addEventListener(
     "click",
@@ -1434,6 +1580,70 @@ removeImage.addEventListener(
         imagePreview.classList.remove(
             "show"
         );
+
+    }
+);
+
+
+/*
+   COLAR PRINT COM CTRL + V
+*/
+
+document.addEventListener(
+    "paste",
+    function(event) {
+
+        const items =
+            event.clipboardData &&
+            event.clipboardData.items;
+
+        if (!items) {
+
+            return;
+
+        }
+
+
+        for (
+            let i = 0;
+            i < items.length;
+            i++
+        ) {
+
+            const item =
+                items[i];
+
+
+            if (
+                item.type &&
+                item.type.startsWith("image/")
+            ) {
+
+                const arquivo =
+                    item.getAsFile();
+
+
+                if (arquivo) {
+
+                    selecionarImagem(
+                        arquivo
+                    );
+
+                    /*
+                       Evita que o navegador
+                       faça algo estranho com
+                       a imagem colada.
+                    */
+
+                    event.preventDefault();
+
+                }
+
+                break;
+
+            }
+
+        }
 
     }
 );
@@ -1566,7 +1776,22 @@ prompt.addEventListener(
 );
 
 
+/* =========================================
+   CONVERSAR COM A VICOAI
+========================================= */
+
 async function enviarMensagem() {
+
+    if (!acessoAutorizado) {
+
+        alert(
+            "Seu acesso à VicoAI ainda não foi autorizado."
+        );
+
+        return;
+
+    }
+
 
     const texto =
         prompt.value.trim();
@@ -1582,23 +1807,37 @@ async function enviarMensagem() {
     }
 
 
-    let imagemURL = null;
+    /*
+       Guardamos o arquivo antes
+       de limpar a interface.
+    */
+
+    const arquivoImagem =
+        imagemSelecionada;
 
 
-    if (imagemSelecionada) {
+    let imagemPreviewURL =
+        null;
 
-        imagemURL =
+
+    if (arquivoImagem) {
+
+        imagemPreviewURL =
             URL.createObjectURL(
-                imagemSelecionada
+                arquivoImagem
             );
 
     }
 
 
+    /*
+       Mostra a mensagem do usuário.
+    */
+
     adicionarMensagem(
         texto,
         "user",
-        imagemURL
+        imagemPreviewURL
     );
 
 
@@ -1623,6 +1862,13 @@ async function enviarMensagem() {
     sendButton.disabled =
         true;
 
+    imageButton.disabled =
+        true;
+
+
+    /*
+       Loading da VicoAI.
+    */
 
     const loading =
         document.createElement("div");
@@ -1660,41 +1906,141 @@ async function enviarMensagem() {
         chat.scrollHeight;
 
 
-    /*
-       A imagem já é selecionada,
-       exibida e enviada junto
-       da mensagem na interface.
+    try {
 
-       A conexão com o modelo que
-       realmente analisa a imagem
-       será adicionada depois.
-    */
+        let imagemDataURL =
+            null;
 
 
-    setTimeout(
-        function() {
+        /*
+           Converte a imagem para
+           Data URL antes de enviar.
+        */
 
-            loading.remove();
+        if (arquivoImagem) {
+
+            imagemDataURL =
+                await arquivoParaDataURL(
+                    arquivoImagem
+                );
+
+        }
 
 
-            adicionarMensagem(
-                "Recebi sua mensagem" +
-                (
-                    imagemURL
-                        ? " e a imagem! 🖼️"
-                        : "!"
-                ) +
-                " Agora falta conectar o cérebro da VicoAI.",
-                "ai"
+        /*
+           Chamada para a Edge Function.
+        */
+
+        const response =
+            await fetch(
+                VICO_AI_FUNCTION,
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        "apikey":
+                            SUPABASE_KEY,
+
+                        "Authorization":
+                            "Bearer " +
+                            accessToken
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            mensagem:
+                                texto,
+
+                            imagem:
+                                imagemDataURL
+
+                        })
+
+                }
             );
 
 
-            sendButton.disabled =
-                false;
+        const data =
+            await response.json();
 
-        },
-        1000
-    );
+
+        loading.remove();
+
+
+        if (!response.ok) {
+
+            console.error(
+                "Erro da VicoAI:",
+                data
+            );
+
+
+            adicionarMensagem(
+
+                data.error ||
+                "Não consegui falar com a VicoAI agora. 😕",
+
+                "ai"
+
+            );
+
+            return;
+
+        }
+
+
+        /*
+           Resposta real da IA.
+        */
+
+        adicionarMensagem(
+
+            data.resposta ||
+            "A VicoAI não retornou uma resposta.",
+
+            "ai"
+
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Erro ao conectar com a VicoAI:",
+            error
+        );
+
+
+        loading.remove();
+
+
+        adicionarMensagem(
+
+            "Não consegui me conectar à VicoAI. Verifique sua conexão e tente novamente. 😕",
+
+            "ai"
+
+        );
+
+    }
+
+    finally {
+
+        sendButton.disabled =
+            false;
+
+        imageButton.disabled =
+            false;
+
+    }
 
 }
 
@@ -1703,4 +2049,3 @@ async function enviarMensagem() {
 </body>
 
 </html>
-```
