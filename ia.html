@@ -1,599 +1,753 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 
 <head>
 
-    <meta charset="UTF-8">
+```
+<meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <title>VicoAI | Geral</title>
+<title>VicoAI | Geral</title>
 
-    <link
-        rel="icon"
-        type="image/png"
-        href="favicon.png"
-    >
+<link
+    rel="icon"
+    type="image/jpeg"
+    href="vico-comunity.jpeg"
+>
 
-    <style>
+<style>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        min-height: 100%;
+    }
+
+    body {
+
+        min-height: 100vh;
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        color: white;
+
+        background:
+            linear-gradient(
+                rgba(16, 9, 28, 0.74),
+                rgba(16, 9, 28, 0.94)
+            ),
+            url("FF186E10-B115-4C11-8BCA-DB22C5F2B07A.png");
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+
+        display: flex;
+        flex-direction: column;
+
+    }
+
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+
+        height: 72px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        padding:
+            0 24px;
+
+        background:
+            rgba(20, 10, 34, 0.90);
+
+        backdrop-filter:
+            blur(16px);
+
+        -webkit-backdrop-filter:
+            blur(16px);
+
+        border-bottom:
+            1px solid
+            rgba(192, 132, 252, 0.25);
+
+        box-shadow:
+            0 8px 30px
+            rgba(0, 0, 0, 0.20);
+
+    }
+
+
+    .brand {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+    }
+
+
+    .brand img {
+
+        width: 46px;
+        height: 46px;
+
+        border-radius: 50%;
+
+        object-fit: cover;
+
+        border:
+            2px solid
+            rgba(216, 180, 254, 0.65);
+
+        box-shadow:
+            0 0 18px
+            rgba(192, 132, 252, 0.25);
+
+    }
+
+
+    .brand-text {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 2px;
+
+    }
+
+
+    .brand-title {
+
+        font-size: 19px;
+
+        font-weight: bold;
+
+        color: #e9b6ff;
+
+    }
+
+
+    .brand-subtitle {
+
+        font-size: 11px;
+
+        color: #888;
+
+    }
+
+
+    #userEmail {
+
+        color: #aaa;
+
+        font-size: 13px;
+
+        max-width: 280px;
+
+        overflow: hidden;
+
+        text-overflow: ellipsis;
+
+        white-space: nowrap;
+
+    }
+
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+
+        width: 100%;
+
+        max-width: 1000px;
+
+        margin: auto;
+
+        padding:
+            35px 18px 25px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        flex: 1;
+
+    }
+
+
+    .welcome {
+
+        text-align: center;
+
+        margin-bottom: 22px;
+
+    }
+
+
+    .welcome h1 {
+
+        font-size:
+            clamp(
+                30px,
+                6vw,
+                46px
+            );
+
+        color: #e9b6ff;
+
+        margin-bottom: 8px;
+
+        text-shadow:
+            0 0 25px
+            rgba(192, 132, 252, 0.30);
+
+    }
+
+
+    .welcome p {
+
+        color: #aaa;
+
+        line-height: 1.6;
+
+    }
+
+
+    /* =========================
+       CHAT
+    ========================= */
+
+    #chat {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 14px;
+
+        min-height: 300px;
+
+        max-height: 58vh;
+
+        overflow-y: auto;
+
+        padding:
+            8px 5px 20px;
+
+        scrollbar-width: thin;
+
+    }
+
+
+    .message {
+
+        max-width: 78%;
+
+        padding:
+            14px 17px;
+
+        border-radius: 17px;
+
+        line-height: 1.6;
+
+        word-break: break-word;
+
+    }
+
+
+    .ai-message {
+
+        align-self: flex-start;
+
+        background:
+            rgba(35, 20, 54, 0.92);
+
+        border:
+            1px solid
+            rgba(192, 132, 252, 0.22);
+
+        box-shadow:
+            0 8px 25px
+            rgba(0, 0, 0, 0.12);
+
+    }
+
+
+    .user-message {
+
+        align-self: flex-end;
+
+        background:
+            linear-gradient(
+                135deg,
+                #7c3aed,
+                #9333ea
+            );
+
+        box-shadow:
+            0 8px 25px
+            rgba(124, 58, 237, 0.20);
+
+    }
+
+
+    .message-label {
+
+        font-size: 11px;
+
+        font-weight: bold;
+
+        color: #c9a7df;
+
+        margin-bottom: 5px;
+
+    }
+
+
+    .user-message .message-label {
+
+        color: #eee;
+
+    }
+
+
+    /* =========================
+       INPUT
+    ========================= */
+
+    .input-area {
+
+        display: flex;
+
+        align-items: flex-end;
+
+        gap: 10px;
+
+        margin-top: 10px;
+
+    }
+
+
+    #prompt {
+
+        flex: 1;
+
+        min-height: 55px;
+
+        max-height: 150px;
+
+        resize: vertical;
+
+        padding:
+            15px 16px;
+
+        border:
+            1px solid
+            rgba(139, 92, 246, 0.30);
+
+        border-radius: 15px;
+
+        background:
+            rgba(27, 17, 43, 0.92);
+
+        color: white;
+
+        outline: none;
+
+        font-family: inherit;
+
+        font-size: 15px;
+
+    }
+
+
+    #prompt:focus {
+
+        border-color:
+            #9b6cff;
+
+        box-shadow:
+            0 0 0 3px
+            rgba(124, 58, 237, 0.12);
+
+    }
+
+
+    #prompt::placeholder {
+
+        color: #888;
+
+    }
+
+
+    #sendButton {
+
+        width: 58px;
+
+        height: 55px;
+
+        min-width: 58px;
+
+        border: none;
+
+        border-radius: 15px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #7c3aed,
+                #9333ea
+            );
+
+        color: white;
+
+        font-size: 20px;
+
+        cursor: pointer;
+
+        transition:
+            0.2s ease;
+
+    }
+
+
+    #sendButton:hover {
+
+        transform:
+            translateY(-2px);
+
+        filter:
+            brightness(1.12);
+
+    }
+
+
+    #sendButton:disabled {
+
+        opacity: 0.55;
+
+        cursor:
+            not-allowed;
+
+        transform:
+            none;
+
+    }
+
+
+    .bottom-info {
+
+        text-align: center;
+
+        color: #666;
+
+        font-size: 11px;
+
+        margin-top: 9px;
+
+    }
+
+
+    /* =========================
+       LOADING
+    ========================= */
+
+    .loading {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 7px;
+
+        color: #c9a7df;
+
+    }
+
+
+    .loading-dot {
+
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background:
+            #c084fc;
+
+        animation:
+            loadingPulse
+            0.9s infinite;
+
+    }
+
+
+    @keyframes loadingPulse {
+
+        0% {
+            opacity: 1;
         }
 
-        body {
-
-            min-height: 100vh;
-
-            font-family:
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    rgba(16, 9, 28, 0.75),
-                    rgba(16, 9, 28, 0.92)
-                ),
-                url("FF186E10-B115-4C11-8BCA-DB22C5F2B07A.png");
-
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-
-            display: flex;
-            flex-direction: column;
-
+        50% {
+            opacity: 0.15;
         }
 
+        100% {
+            opacity: 1;
+        }
 
-        /* =========================
-           HEADER
-        ========================= */
+    }
+
+
+    /* =========================
+       BLOQUEADO / ERRO
+    ========================= */
+
+    .blocked {
+
+        width: 100%;
+
+        max-width: 550px;
+
+        margin: auto;
+
+        padding:
+            38px 28px;
+
+        text-align: center;
+
+        background:
+            rgba(27, 17, 43, 0.92);
+
+        border:
+            1px solid
+            rgba(248, 113, 113, 0.35);
+
+        border-radius: 22px;
+
+        box-shadow:
+            0 20px 60px
+            rgba(0, 0, 0, 0.30);
+
+    }
+
+
+    .blocked-icon {
+
+        font-size: 50px;
+
+        margin-bottom: 15px;
+
+    }
+
+
+    .blocked h2 {
+
+        color: #fca5a5;
+
+        margin-bottom: 12px;
+
+    }
+
+
+    .blocked p {
+
+        color: #bbb;
+
+        line-height: 1.6;
+
+    }
+
+
+    .error-detail {
+
+        margin-top: 18px;
+
+        padding: 12px;
+
+        border-radius: 10px;
+
+        background:
+            rgba(0, 0, 0, 0.25);
+
+        color: #888;
+
+        font-size: 11px;
+
+        word-break: break-word;
+
+        text-align: left;
+
+    }
+
+
+    @media (max-width: 600px) {
 
         header {
 
-            height: 70px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            padding: 0 25px;
-
-            background:
-                rgba(20, 10, 34, 0.88);
-
-            backdrop-filter: blur(15px);
-
-            border-bottom:
-                1px solid
-                rgba(192, 132, 252, 0.25);
+            padding:
+                0 14px;
 
         }
 
+        .brand-subtitle {
 
-        .brand {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 12px;
-
-            font-weight: bold;
+            display: none;
 
         }
-
-
-        .brand img {
-
-            width: 43px;
-            height: 43px;
-
-            border-radius: 50%;
-
-            object-fit: cover;
-
-            border:
-                2px solid
-                rgba(216, 180, 254, 0.6);
-
-        }
-
-
-        .brand span {
-
-            color: #e9b6ff;
-
-            font-size: 20px;
-
-        }
-
 
         #userEmail {
 
-            color: #aaa;
-
-            font-size: 13px;
+            display: none;
 
         }
-
-
-        /* =========================
-           CHAT
-        ========================= */
 
         main {
 
-            flex: 1;
-
-            width: 100%;
-
-            max-width: 1000px;
-
-            margin: auto;
-
-            display: flex;
-
-            flex-direction: column;
-
-            padding: 30px 18px 20px;
+            padding:
+                25px 12px 18px;
 
         }
-
-
-        .welcome {
-
-            text-align: center;
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .welcome h1 {
-
-            font-size:
-                clamp(
-                    30px,
-                    6vw,
-                    48px
-                );
-
-            color: #e9b6ff;
-
-            margin-bottom: 10px;
-
-            text-shadow:
-                0 0 25px
-                rgba(192, 132, 252, 0.3);
-
-        }
-
-
-        .welcome p {
-
-            color: #bbb;
-
-            line-height: 1.6;
-
-        }
-
-
-        #chat {
-
-            flex: 1;
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 15px;
-
-            overflow-y: auto;
-
-            padding: 10px 5px 20px;
-
-            min-height: 250px;
-
-        }
-
 
         .message {
 
-            max-width: 78%;
-
-            padding: 15px 17px;
-
-            border-radius: 17px;
-
-            line-height: 1.6;
-
-            word-wrap: break-word;
+            max-width: 90%;
 
         }
 
+        #chat {
 
-        .ai-message {
-
-            align-self: flex-start;
-
-            background:
-                rgba(35, 20, 54, 0.9);
-
-            border:
-                1px solid
-                rgba(192, 132, 252, 0.2);
+            max-height: 55vh;
 
         }
 
+    }
 
-        .user-message {
-
-            align-self: flex-end;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #7c3aed,
-                    #9333ea
-                );
-
-        }
-
-
-        .message-label {
-
-            font-size: 12px;
-
-            color: #c9a7df;
-
-            margin-bottom: 5px;
-
-            font-weight: bold;
-
-        }
-
-
-        .user-message .message-label {
-
-            color: #eee;
-
-        }
-
-
-        /* =========================
-           INPUT
-        ========================= */
-
-        .input-area {
-
-            width: 100%;
-
-            display: flex;
-
-            gap: 10px;
-
-            padding-top: 10px;
-
-        }
-
-
-        #prompt {
-
-            flex: 1;
-
-            min-height: 55px;
-
-            max-height: 150px;
-
-            resize: vertical;
-
-            padding: 16px;
-
-            border-radius: 15px;
-
-            border:
-                1px solid
-                rgba(139, 92, 246, 0.3);
-
-            background:
-                rgba(27, 17, 43, 0.9);
-
-            color: white;
-
-            outline: none;
-
-            font-family: inherit;
-
-            font-size: 15px;
-
-        }
-
-
-        #prompt:focus {
-
-            border-color: #9b6cff;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(124, 58, 237, 0.12);
-
-        }
-
-
-        #sendButton {
-
-            width: 58px;
-
-            min-width: 58px;
-
-            border: none;
-
-            border-radius: 15px;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #7c3aed,
-                    #9333ea
-                );
-
-            color: white;
-
-            font-size: 21px;
-
-            cursor: pointer;
-
-            transition: 0.2s;
-
-        }
-
-
-        #sendButton:hover {
-
-            transform: translateY(-2px);
-
-            filter: brightness(1.12);
-
-        }
-
-
-        #sendButton:disabled {
-
-            opacity: 0.5;
-
-            cursor: not-allowed;
-
-            transform: none;
-
-        }
-
-
-        .bottom-info {
-
-            text-align: center;
-
-            color: #777;
-
-            font-size: 12px;
-
-            margin-top: 10px;
-
-        }
-
-
-        .loading {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            gap: 6px;
-
-            color: #c9a7df;
-
-        }
-
-
-        .loading-dot {
-
-            width: 7px;
-            height: 7px;
-
-            border-radius: 50%;
-
-            background: #c084fc;
-
-            animation:
-                loadingPulse
-                0.9s infinite;
-
-        }
-
-
-        @keyframes loadingPulse {
-
-            0% {
-                opacity: 1;
-            }
-
-            50% {
-                opacity: 0.15;
-            }
-
-            100% {
-                opacity: 1;
-            }
-
-        }
-
-
-        .blocked {
-
-            text-align: center;
-
-            margin: auto;
-
-            max-width: 500px;
-
-            padding: 35px;
-
-            background:
-                rgba(27, 17, 43, 0.9);
-
-            border:
-                1px solid
-                rgba(248, 113, 113, 0.35);
-
-            border-radius: 20px;
-
-        }
-
-
-        .blocked h2 {
-
-            color: #fca5a5;
-
-            margin-bottom: 12px;
-
-        }
-
-
-        .blocked p {
-
-            color: #bbb;
-
-            line-height: 1.6;
-
-        }
-
-
-        @media (max-width: 600px) {
-
-            header {
-
-                padding: 0 15px;
-
-            }
-
-            #userEmail {
-
-                display: none;
-
-            }
-
-            .message {
-
-                max-width: 90%;
-
-            }
-
-        }
-
-    </style>
+</style>
+```
 
 </head>
 
-
 <body>
-
 
 <header>
 
-    <div class="brand">
+```
+<div class="brand">
 
-        <img
-            src="FF186E10-B115-4C11-8BCA-DB22C5F2B07A.png"
-            alt="Vico"
-        >
+    <img
+        src="vico-comunity.jpeg"
+        alt="Vico"
+    >
 
-        <span>
+    <div class="brand-text">
+
+        <span class="brand-title">
             🤖 VicoAI
+        </span>
+
+        <span class="brand-subtitle">
+            Inteligência artificial
         </span>
 
     </div>
 
+</div>
 
-    <span id="userEmail"></span>
+
+<span id="userEmail"></span>
+```
 
 </header>
 
-
 <main id="main">
 
+```
+<div class="welcome">
 
-    <div class="welcome">
+    <h1>
+        💜 VicoAI Geral
+    </h1>
 
-        <h1>
-            💜 VicoAI Geral
-        </h1>
+    <p>
+        Uma IA para ajudar você a aprender,
+        criar e tirar dúvidas.
+    </p>
 
-        <p>
-            Uma IA para ajudar você a aprender,
-            criar e tirar dúvidas.
-        </p>
-
-    </div>
+</div>
 
 
-    <div id="chat">
+<div id="chat">
 
-        <div class="message ai-message">
+    <div class="message ai-message">
 
-            <div class="message-label">
-                🤖 VicoAI
-            </div>
-
-            Olá! 👋
-
-            <br><br>
-
-            Sou a VicoAI Geral.
-            Como posso ajudar você hoje?
-
+        <div class="message-label">
+            🤖 VicoAI
         </div>
 
-    </div>
+        Olá! 👋
 
+        <br><br>
 
-    <div class="input-area">
-
-        <textarea
-            id="prompt"
-            placeholder="Digite sua pergunta..."
-            rows="1"
-        ></textarea>
-
-
-        <button
-            id="sendButton"
-            type="button"
-        >
-            ➤
-        </button>
+        Sou a VicoAI Geral.
+        Como posso ajudar você hoje?
 
     </div>
 
+</div>
 
-    <div class="bottom-info">
 
-        VicoAI • Área autorizada
+<div class="input-area">
 
-    </div>
+    <textarea
+        id="prompt"
+        placeholder="Digite sua pergunta..."
+        rows="1"
+    ></textarea>
+
+
+    <button
+        id="sendButton"
+        type="button"
+    >
+        ➤
+    </button>
+
+</div>
+
+
+<div class="bottom-info">
+    VicoAI • Área autorizada
+</div>
+```
 
 </main>
-
 
 <script>
 
@@ -630,7 +784,7 @@ const userEmail =
 
 
 /* =========================================
-   TOKEN
+   SESSÃO
 ========================================= */
 
 const accessToken =
@@ -638,10 +792,9 @@ const accessToken =
         "vico_access_token"
     );
 
-    console.log("TOKEN:", accessToken);
 
 /* =========================================
-   VERIFICAR LOGIN
+   VERIFICAR ACESSO
 ========================================= */
 
 async function verificarAcesso() {
@@ -658,11 +811,13 @@ async function verificarAcesso() {
 
     try {
 
-        const response =
+        const userResponse =
             await fetch(
                 SUPABASE_URL +
                 "/auth/v1/user",
                 {
+                    method: "GET",
+
                     headers: {
 
                         "apikey":
@@ -678,7 +833,7 @@ async function verificarAcesso() {
             );
 
 
-        if (!response.ok) {
+        if (!userResponse.ok) {
 
             localStorage.removeItem(
                 "vico_access_token"
@@ -697,20 +852,29 @@ async function verificarAcesso() {
 
 
         const user =
-            await response.json();
+            await userResponse.json();
 
 
         userEmail.textContent =
             user.email || "";
 
 
+        /* =========================
+           CONSULTAR IA_ACESSOS
+        ========================= */
+
         const acessoResponse =
             await fetch(
+
                 SUPABASE_URL +
                 "/rest/v1/ia_acessos?user_id=eq." +
-                user.id +
+                encodeURIComponent(user.id) +
                 "&select=autorizado",
+
                 {
+
+                    method: "GET",
+
                     headers: {
 
                         "apikey":
@@ -718,19 +882,54 @@ async function verificarAcesso() {
 
                         "Authorization":
                             "Bearer " +
-                            accessToken
+                            accessToken,
+
+                        "Accept":
+                            "application/json"
 
                     }
 
                 }
+
             );
 
 
         if (!acessoResponse.ok) {
 
-            throw new Error(
-                "Não foi possível verificar o acesso."
+            const erroTexto =
+                await acessoResponse.text();
+
+            console.error(
+                "ERRO REAL DO SUPABASE:",
+                erroTexto
             );
+
+            main.innerHTML = `
+
+                <div class="blocked">
+
+                    <div class="blocked-icon">
+                        ⚠️
+                    </div>
+
+                    <h2>
+                        Não foi possível verificar o acesso
+                    </h2>
+
+                    <p>
+                        O servidor recusou a consulta
+                        da autorização da sua conta.
+                    </p>
+
+                    <div class="error-detail">
+                        Erro ${acessoResponse.status}: ${erroTexto}
+                    </div>
+
+                </div>
+
+            `;
+
+            return;
 
         }
 
@@ -748,8 +947,12 @@ async function verificarAcesso() {
 
                 <div class="blocked">
 
+                    <div class="blocked-icon">
+                        🔒
+                    </div>
+
                     <h2>
-                        🔒 Acesso restrito
+                        Acesso restrito
                     </h2>
 
                     <p>
@@ -766,23 +969,35 @@ async function verificarAcesso() {
 
         }
 
+
+        console.log(
+            "VicoAI: acesso autorizado."
+        );
+
     }
 
     catch (error) {
 
-        console.error(error);
+        console.error(
+            "Erro ao verificar acesso:",
+            error
+        );
 
         main.innerHTML = `
 
             <div class="blocked">
 
+                <div class="blocked-icon">
+                    ❌
+                </div>
+
                 <h2>
-                    ❌ Erro
+                    Erro de conexão
                 </h2>
 
                 <p>
                     Não foi possível verificar
-                    seu acesso.
+                    sua autorização.
                 </p>
 
             </div>
@@ -898,7 +1113,9 @@ async function enviarMensagem() {
     );
 
 
-    prompt.value = "";
+    prompt.value =
+        "";
+
 
     sendButton.disabled =
         true;
@@ -932,13 +1149,14 @@ async function enviarMensagem() {
 
     chat.appendChild(loading);
 
+
     chat.scrollTop =
         chat.scrollHeight;
 
 
     /*
-       AQUI VAI ENTRAR
-       O BACKEND DA IA.
+       A CONEXÃO COM O MODELO
+       SERÁ ADICIONADA NA PRÓXIMA ETAPA.
     */
 
     setTimeout(
@@ -947,7 +1165,7 @@ async function enviarMensagem() {
             loading.remove();
 
             adicionarMensagem(
-                "A conexão com o cérebro da VicoAI ainda será configurada. 🧠",
+                "A interface está funcionando! 🧠 Agora vamos conectar o cérebro da VicoAI.",
                 "ai"
             );
 
