@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 
 <html lang="pt-BR">
@@ -19,651 +20,709 @@
     href="vico-comunity.jpeg"
 >
 
-<link
-    rel="icon"
-    type="image/jpeg"
-    href="vico-comunity.jpeg"
->
-
 <style>
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            rgba(16, 9, 28, 0.74),
+            rgba(16, 9, 28, 0.94)
+        ),
+        url("FF186E10-B115-4C11-8BCA-DB22C5F2B07A.png");
+
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+
+    min-height: 72px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding:
+        10px 24px;
+
+    background:
+        rgba(20, 10, 34, 0.90);
+
+    backdrop-filter:
+        blur(16px);
+
+    -webkit-backdrop-filter:
+        blur(16px);
+
+    border-bottom:
+        1px solid
+        rgba(192, 132, 252, 0.25);
+
+    box-shadow:
+        0 8px 30px
+        rgba(0, 0, 0, 0.20);
+
+}
+
+
+.header-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+.brand img {
+
+    width: 46px;
+    height: 46px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border:
+        2px solid
+        rgba(216, 180, 254, 0.65);
+
+    box-shadow:
+        0 0 18px
+        rgba(192, 132, 252, 0.25);
+
+}
+
+
+.brand-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+
+}
+
+
+.brand-title {
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    color: #e9b6ff;
+
+}
+
+
+.brand-subtitle {
+
+    font-size: 11px;
+
+    color: #888;
+
+}
+
+
+#userEmail {
+
+    color: #aaa;
+
+    font-size: 13px;
+
+    max-width: 220px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+
+}
+
+
+/* =========================
+   BOTÃO DESCONECTAR
+========================= */
+
+#logoutButton {
+
+    border: 1px solid
+        rgba(248, 113, 113, 0.35);
+
+    background:
+        rgba(120, 30, 30, 0.30);
+
+    color: #ffb4b4;
+
+    padding:
+        9px 13px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    transition:
+        0.2s ease;
+
+}
+
+
+#logoutButton:hover {
+
+    background:
+        rgba(180, 40, 40, 0.45);
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+main {
+
+    width: 100%;
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding:
+        35px 18px 25px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+}
+
+
+.welcome {
+
+    text-align: center;
+
+    margin-bottom: 22px;
+
+}
+
+
+.welcome h1 {
+
+    font-size:
+        clamp(
+            30px,
+            6vw,
+            46px
+        );
+
+    color: #e9b6ff;
+
+    margin-bottom: 8px;
+
+    text-shadow:
+        0 0 25px
+        rgba(192, 132, 252, 0.30);
+
+}
+
+
+.welcome p {
+
+    color: #aaa;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================
+   CHAT
+========================= */
+
+#chat {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+
+    min-height: 300px;
+
+    max-height: 58vh;
+
+    overflow-y: auto;
+
+    padding:
+        8px 5px 20px;
+
+    scrollbar-width: thin;
+
+}
+
+
+.message {
+
+    max-width: 78%;
+
+    padding:
+        14px 17px;
+
+    border-radius: 17px;
+
+    line-height: 1.6;
+
+    word-break: break-word;
+
+}
+
+
+.ai-message {
+
+    align-self: flex-start;
+
+    background:
+        rgba(35, 20, 54, 0.92);
+
+    border:
+        1px solid
+        rgba(192, 132, 252, 0.22);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0, 0, 0, 0.12);
+
+}
+
+
+.user-message {
+
+    align-self: flex-end;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #9333ea
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(124, 58, 237, 0.20);
+
+}
+
+
+.message-label {
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    color: #c9a7df;
+
+    margin-bottom: 5px;
+
+}
+
+
+.user-message .message-label {
+
+    color: #eee;
+
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-area {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 10px;
+
+    margin-top: 10px;
+
+}
+
+
+#prompt {
+
+    flex: 1;
+
+    min-height: 55px;
+
+    max-height: 150px;
+
+    resize: vertical;
+
+    padding:
+        15px 16px;
+
+    border:
+        1px solid
+        rgba(139, 92, 246, 0.30);
+
+    border-radius: 15px;
+
+    background:
+        rgba(27, 17, 43, 0.92);
+
+    color: white;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+}
+
+
+#prompt:focus {
+
+    border-color:
+        #9b6cff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(124, 58, 237, 0.12);
+
+}
+
+
+#prompt::placeholder {
+
+    color: #888;
+
+}
+
+
+#sendButton {
+
+    width: 58px;
+
+    height: 55px;
+
+    min-width: 58px;
+
+    border: none;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #9333ea
+        );
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition:
+        0.2s ease;
+
+}
+
+
+#sendButton:hover {
+
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.12);
+
+}
+
+
+#sendButton:disabled {
+
+    opacity: 0.55;
+
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
+
+}
+
+
+.bottom-info {
+
+    text-align: center;
+
+    color: #666;
+
+    font-size: 11px;
+
+    margin-top: 9px;
+
+}
+
+
+/* =========================
+   LOADING
+========================= */
+
+.loading {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    color: #c9a7df;
+
+}
+
+
+.loading-dot {
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        #c084fc;
+
+    animation:
+        loadingPulse
+        0.9s infinite;
+
+}
+
+
+@keyframes loadingPulse {
+
+    0% {
+        opacity: 1;
     }
 
-    html,
-    body {
-        min-height: 100%;
+    50% {
+        opacity: 0.15;
     }
 
-    body {
-
-        min-height: 100vh;
-
-        font-family:
-            Arial,
-            Helvetica,
-            sans-serif;
-
-        color: white;
-
-        background:
-            linear-gradient(
-                rgba(16, 9, 28, 0.74),
-                rgba(16, 9, 28, 0.94)
-            ),
-            url("FF186E10-B115-4C11-8BCA-DB22C5F2B07A.png");
-
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-
-        display: flex;
-        flex-direction: column;
-
+    100% {
+        opacity: 1;
     }
 
+}
 
-    /* =========================
-       HEADER
-    ========================= */
+
+/* =========================
+   BLOQUEADO / ERRO
+========================= */
+
+.blocked {
+
+    width: 100%;
+
+    max-width: 550px;
+
+    margin: auto;
+
+    padding:
+        38px 28px;
+
+    text-align: center;
+
+    background:
+        rgba(27, 17, 43, 0.92);
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.35);
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.30);
+
+}
+
+
+.blocked-icon {
+
+    font-size: 50px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.blocked h2 {
+
+    color: #fca5a5;
+
+    margin-bottom: 12px;
+
+}
+
+
+.blocked p {
+
+    color: #bbb;
+
+    line-height: 1.6;
+
+}
+
+
+.error-detail {
+
+    margin-top: 18px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(0, 0, 0, 0.25);
+
+    color: #888;
+
+    font-size: 11px;
+
+    word-break: break-word;
+
+    text-align: left;
+
+}
+
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 600px) {
 
     header {
 
-        height: 72px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
         padding:
-            0 24px;
-
-        background:
-            rgba(20, 10, 34, 0.90);
-
-        backdrop-filter:
-            blur(16px);
-
-        -webkit-backdrop-filter:
-            blur(16px);
-
-        border-bottom:
-            1px solid
-            rgba(192, 132, 252, 0.25);
-
-        box-shadow:
-            0 8px 30px
-            rgba(0, 0, 0, 0.20);
+            10px 14px;
 
     }
-
-
-    .brand {
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 12px;
-
-    }
-
-
-    .brand img {
-
-        width: 46px;
-        height: 46px;
-
-        border-radius: 50%;
-
-        object-fit: cover;
-
-        border:
-            2px solid
-            rgba(216, 180, 254, 0.65);
-
-        box-shadow:
-            0 0 18px
-            rgba(192, 132, 252, 0.25);
-
-    }
-
-
-    .brand-text {
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 2px;
-
-    }
-
-
-    .brand-title {
-
-        font-size: 19px;
-
-        font-weight: bold;
-
-        color: #e9b6ff;
-
-    }
-
 
     .brand-subtitle {
 
-        font-size: 11px;
-
-        color: #888;
+        display: none;
 
     }
-
 
     #userEmail {
 
-        color: #aaa;
-
-        font-size: 13px;
-
-        max-width: 280px;
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-
-        white-space: nowrap;
+        display: none;
 
     }
 
+    #logoutButton {
 
-    /* =========================
-       MAIN
-    ========================= */
+        padding:
+            8px 10px;
+
+        font-size: 12px;
+
+    }
 
     main {
 
-        width: 100%;
-
-        max-width: 1000px;
-
-        margin: auto;
-
         padding:
-            35px 18px 25px;
-
-        display: flex;
-
-        flex-direction: column;
-
-        flex: 1;
+            25px 12px 18px;
 
     }
-
-
-    .welcome {
-
-        text-align: center;
-
-        margin-bottom: 22px;
-
-    }
-
-
-    .welcome h1 {
-
-        font-size:
-            clamp(
-                30px,
-                6vw,
-                46px
-            );
-
-        color: #e9b6ff;
-
-        margin-bottom: 8px;
-
-        text-shadow:
-            0 0 25px
-            rgba(192, 132, 252, 0.30);
-
-    }
-
-
-    .welcome p {
-
-        color: #aaa;
-
-        line-height: 1.6;
-
-    }
-
-
-    /* =========================
-       CHAT
-    ========================= */
-
-    #chat {
-
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 14px;
-
-        min-height: 300px;
-
-        max-height: 58vh;
-
-        overflow-y: auto;
-
-        padding:
-            8px 5px 20px;
-
-        scrollbar-width: thin;
-
-    }
-
 
     .message {
 
-        max-width: 78%;
-
-        padding:
-            14px 17px;
-
-        border-radius: 17px;
-
-        line-height: 1.6;
-
-        word-break: break-word;
+        max-width: 90%;
 
     }
 
+    #chat {
 
-    .ai-message {
-
-        align-self: flex-start;
-
-        background:
-            rgba(35, 20, 54, 0.92);
-
-        border:
-            1px solid
-            rgba(192, 132, 252, 0.22);
-
-        box-shadow:
-            0 8px 25px
-            rgba(0, 0, 0, 0.12);
+        max-height: 55vh;
 
     }
 
-
-    .user-message {
-
-        align-self: flex-end;
-
-        background:
-            linear-gradient(
-                135deg,
-                #7c3aed,
-                #9333ea
-            );
-
-        box-shadow:
-            0 8px 25px
-            rgba(124, 58, 237, 0.20);
-
-    }
-
-
-    .message-label {
-
-        font-size: 11px;
-
-        font-weight: bold;
-
-        color: #c9a7df;
-
-        margin-bottom: 5px;
-
-    }
-
-
-    .user-message .message-label {
-
-        color: #eee;
-
-    }
-
-
-    /* =========================
-       INPUT
-    ========================= */
-
-    .input-area {
-
-        display: flex;
-
-        align-items: flex-end;
-
-        gap: 10px;
-
-        margin-top: 10px;
-
-    }
-
-
-    #prompt {
-
-        flex: 1;
-
-        min-height: 55px;
-
-        max-height: 150px;
-
-        resize: vertical;
-
-        padding:
-            15px 16px;
-
-        border:
-            1px solid
-            rgba(139, 92, 246, 0.30);
-
-        border-radius: 15px;
-
-        background:
-            rgba(27, 17, 43, 0.92);
-
-        color: white;
-
-        outline: none;
-
-        font-family: inherit;
-
-        font-size: 15px;
-
-    }
-
-
-    #prompt:focus {
-
-        border-color:
-            #9b6cff;
-
-        box-shadow:
-            0 0 0 3px
-            rgba(124, 58, 237, 0.12);
-
-    }
-
-
-    #prompt::placeholder {
-
-        color: #888;
-
-    }
-
-
-    #sendButton {
-
-        width: 58px;
-
-        height: 55px;
-
-        min-width: 58px;
-
-        border: none;
-
-        border-radius: 15px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #7c3aed,
-                #9333ea
-            );
-
-        color: white;
-
-        font-size: 20px;
-
-        cursor: pointer;
-
-        transition:
-            0.2s ease;
-
-    }
-
-
-    #sendButton:hover {
-
-        transform:
-            translateY(-2px);
-
-        filter:
-            brightness(1.12);
-
-    }
-
-
-    #sendButton:disabled {
-
-        opacity: 0.55;
-
-        cursor:
-            not-allowed;
-
-        transform:
-            none;
-
-    }
-
-
-    .bottom-info {
-
-        text-align: center;
-
-        color: #666;
-
-        font-size: 11px;
-
-        margin-top: 9px;
-
-    }
-
-
-    /* =========================
-       LOADING
-    ========================= */
-
-    .loading {
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 7px;
-
-        color: #c9a7df;
-
-    }
-
-
-    .loading-dot {
-
-        width: 7px;
-        height: 7px;
-
-        border-radius: 50%;
-
-        background:
-            #c084fc;
-
-        animation:
-            loadingPulse
-            0.9s infinite;
-
-    }
-
-
-    @keyframes loadingPulse {
-
-        0% {
-            opacity: 1;
-        }
-
-        50% {
-            opacity: 0.15;
-        }
-
-        100% {
-            opacity: 1;
-        }
-
-    }
-
-
-    /* =========================
-       BLOQUEADO / ERRO
-    ========================= */
-
-    .blocked {
-
-        width: 100%;
-
-        max-width: 550px;
-
-        margin: auto;
-
-        padding:
-            38px 28px;
-
-        text-align: center;
-
-        background:
-            rgba(27, 17, 43, 0.92);
-
-        border:
-            1px solid
-            rgba(248, 113, 113, 0.35);
-
-        border-radius: 22px;
-
-        box-shadow:
-            0 20px 60px
-            rgba(0, 0, 0, 0.30);
-
-    }
-
-
-    .blocked-icon {
-
-        font-size: 50px;
-
-        margin-bottom: 15px;
-
-    }
-
-
-    .blocked h2 {
-
-        color: #fca5a5;
-
-        margin-bottom: 12px;
-
-    }
-
-
-    .blocked p {
-
-        color: #bbb;
-
-        line-height: 1.6;
-
-    }
-
-
-    .error-detail {
-
-        margin-top: 18px;
-
-        padding: 12px;
-
-        border-radius: 10px;
-
-        background:
-            rgba(0, 0, 0, 0.25);
-
-        color: #888;
-
-        font-size: 11px;
-
-        word-break: break-word;
-
-        text-align: left;
-
-    }
-
-
-    @media (max-width: 600px) {
-
-        header {
-
-            padding:
-                0 14px;
-
-        }
-
-        .brand-subtitle {
-
-            display: none;
-
-        }
-
-        #userEmail {
-
-            display: none;
-
-        }
-
-        main {
-
-            padding:
-                25px 12px 18px;
-
-        }
-
-        .message {
-
-            max-width: 90%;
-
-        }
-
-        #chat {
-
-            max-height: 55vh;
-
-        }
-
-    }
+}
 
 </style>
-```
 
 </head>
 
+
 <body>
+
 
 <header>
 
-```
 <div class="brand">
 
     <img
@@ -686,14 +745,25 @@
 </div>
 
 
-<span id="userEmail"></span>
-```
+<div class="header-right">
+
+    <span id="userEmail"></span>
+
+    <button
+        id="logoutButton"
+        type="button"
+    >
+        🚪 Sair
+    </button>
+
+</div>
 
 </header>
 
+
 <main id="main">
 
-```
+
 <div class="welcome">
 
     <h1>
@@ -750,9 +820,10 @@
 <div class="bottom-info">
     VicoAI • Área autorizada
 </div>
-```
+
 
 </main>
+
 
 <script>
 
@@ -787,15 +858,110 @@ const sendButton =
 const userEmail =
     document.getElementById("userEmail");
 
+const logoutButton =
+    document.getElementById("logoutButton");
+
 
 /* =========================================
    SESSÃO
 ========================================= */
 
-const accessToken =
+let accessToken =
     localStorage.getItem(
         "vico_access_token"
     );
+
+
+/* =========================================
+   DESCONECTAR
+========================================= */
+
+function desconectar() {
+
+    localStorage.removeItem(
+        "vico_access_token"
+    );
+
+    localStorage.removeItem(
+        "vico_refresh_token"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+logoutButton.addEventListener(
+    "click",
+    function() {
+
+        desconectar();
+
+    }
+);
+
+
+/* =========================================
+   INATIVIDADE
+========================================= */
+
+const TEMPO_INATIVIDADE =
+    10 * 60 * 1000;
+
+let temporizadorInatividade;
+
+
+function reiniciarTemporizador() {
+
+    clearTimeout(
+        temporizadorInatividade
+    );
+
+    temporizadorInatividade =
+        setTimeout(
+            function() {
+
+                alert(
+                    "⏱️ Sua sessão foi encerrada por inatividade."
+                );
+
+                desconectar();
+
+            },
+            TEMPO_INATIVIDADE
+        );
+
+}
+
+
+/* Eventos considerados atividade */
+
+[
+    "mousemove",
+    "mousedown",
+    "keydown",
+    "scroll",
+    "touchstart",
+    "click"
+].forEach(
+    function(evento) {
+
+        document.addEventListener(
+            evento,
+            reiniciarTemporizador,
+            {
+                passive: true
+            }
+        );
+
+    }
+);
+
+
+/* Começa o contador */
+
+reiniciarTemporizador();
 
 
 /* =========================================
@@ -821,6 +987,7 @@ async function verificarAcesso() {
                 SUPABASE_URL +
                 "/auth/v1/user",
                 {
+
                     method: "GET",
 
                     headers: {
@@ -840,16 +1007,7 @@ async function verificarAcesso() {
 
         if (!userResponse.ok) {
 
-            localStorage.removeItem(
-                "vico_access_token"
-            );
-
-            localStorage.removeItem(
-                "vico_refresh_token"
-            );
-
-            window.location.href =
-                "login.html";
+            desconectar();
 
             return;
 
@@ -908,6 +1066,7 @@ async function verificarAcesso() {
                 "ERRO REAL DO SUPABASE:",
                 erroTexto
             );
+
 
             main.innerHTML = `
 
@@ -988,6 +1147,7 @@ async function verificarAcesso() {
             error
         );
 
+
         main.innerHTML = `
 
             <div class="blocked">
@@ -1029,6 +1189,7 @@ function adicionarMensagem(
     const message =
         document.createElement("div");
 
+
     message.className =
         "message " +
         (
@@ -1040,6 +1201,7 @@ function adicionarMensagem(
 
     const label =
         document.createElement("div");
+
 
     label.className =
         "message-label";
@@ -1059,11 +1221,19 @@ function adicionarMensagem(
         texto;
 
 
-    message.appendChild(label);
+    message.appendChild(
+        label
+    );
 
-    message.appendChild(content);
 
-    chat.appendChild(message);
+    message.appendChild(
+        content
+    );
+
+
+    chat.appendChild(
+        message
+    );
 
 
     chat.scrollTop =
@@ -1108,7 +1278,9 @@ async function enviarMensagem() {
 
 
     if (!texto) {
+
         return;
+
     }
 
 
@@ -1128,6 +1300,7 @@ async function enviarMensagem() {
 
     const loading =
         document.createElement("div");
+
 
     loading.className =
         "message ai-message";
@@ -1152,7 +1325,9 @@ async function enviarMensagem() {
     `;
 
 
-    chat.appendChild(loading);
+    chat.appendChild(
+        loading
+    );
 
 
     chat.scrollTop =
@@ -1164,15 +1339,18 @@ async function enviarMensagem() {
        SERÁ ADICIONADA NA PRÓXIMA ETAPA.
     */
 
+
     setTimeout(
         function() {
 
             loading.remove();
 
+
             adicionarMensagem(
                 "A interface está funcionando! 🧠 Agora vamos conectar o cérebro da VicoAI.",
                 "ai"
             );
+
 
             sendButton.disabled =
                 false;
@@ -1188,3 +1366,4 @@ async function enviarMensagem() {
 </body>
 
 </html>
+```
