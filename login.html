@@ -1,298 +1,538 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VicoAI | Entrar</title>
-    <link rel="icon" type="image/png" href="vico-comunity.jpeg">
+<meta charset="UTF-8">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-        body {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
+<title>VicoAI | Entrar</title>
 
-            font-family: Arial, Helvetica, sans-serif;
-            color: white;
+<link
+    rel="icon"
+    type="image/jpeg"
+    href="vico-comunity.jpeg"
+>
 
-            background:
-                linear-gradient(
-                    rgba(16, 9, 28, 0.72),
-                    rgba(16, 9, 28, 0.88)
-                ),
-                url("FF186E10-B115-4C11-8BCA-DB22C5F2B07A.png");
+<style>
 
-            background-size: cover;
-            background-position: center;
-        }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        .login-box {
-            width: 100%;
-            max-width: 430px;
+body {
 
-            padding: 35px 28px;
+    min-height: 100vh;
 
-            text-align: center;
+    display: flex;
 
-            background: rgba(27, 17, 43, 0.88);
+    justify-content: center;
 
-            border: 1px solid rgba(192, 132, 252, 0.35);
-            border-radius: 24px;
+    align-items: center;
 
-            backdrop-filter: blur(15px);
+    padding: 20px;
 
-            box-shadow:
-                0 20px 60px rgba(0, 0, 0, 0.45),
-                0 0 40px rgba(124, 58, 237, 0.15);
-        }
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
 
-        .logo {
-            width: 90px;
-            height: 90px;
+    color: white;
 
-            object-fit: cover;
+    background:
+        linear-gradient(
+            rgba(16, 9, 28, 0.72),
+            rgba(16, 9, 28, 0.88)
+        ),
+        url("FF186E10-B115-4C11-8BCA-DB22C5F2B07A.png");
 
-            border-radius: 50%;
+    background-size: cover;
 
-            border: 3px solid rgba(216, 180, 254, 0.65);
+    background-position: center;
 
-            box-shadow:
-                0 0 25px rgba(192, 132, 252, 0.35);
+}
 
-            margin-bottom: 18px;
-        }
 
-        h1 {
-            color: #e9b6ff;
-            margin-bottom: 8px;
-        }
+/* =========================
+   LOGIN
+========================= */
 
-        .subtitle {
-            color: #bbb;
-            margin-bottom: 28px;
-        }
+.login-box {
 
-        input {
-            width: 100%;
+    width: 100%;
 
-            padding: 15px;
+    max-width: 430px;
 
-            margin-bottom: 12px;
+    padding: 35px 28px;
 
-            border: 1px solid rgba(139, 92, 246, 0.25);
-            border-radius: 11px;
+    text-align: center;
 
-            background: rgba(40, 24, 61, 0.85);
+    background:
+        rgba(27, 17, 43, 0.88);
 
-            color: white;
+    border:
+        1px solid
+        rgba(192, 132, 252, 0.35);
 
-            outline: none;
+    border-radius: 24px;
 
-            font-size: 15px;
-        }
+    backdrop-filter:
+        blur(15px);
 
-        input:focus {
-            border-color: #9b6cff;
+    -webkit-backdrop-filter:
+        blur(15px);
 
-            box-shadow:
-                0 0 0 3px rgba(124, 58, 237, 0.15);
-        }
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.45),
 
-        input::placeholder {
-            color: #aaa;
-        }
+        0 0 40px
+        rgba(124, 58, 237, 0.15);
 
-        button {
-            width: 100%;
+}
 
-            padding: 14px;
 
-            margin-top: 8px;
+/* =========================
+   LOGO
+========================= */
 
-            border: none;
-            border-radius: 11px;
+.logo {
 
-            color: white;
+    width: 90px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    #7c3aed,
-                    #9333ea
-                );
+    height: 90px;
 
-            font-weight: bold;
-            font-size: 16px;
+    object-fit: cover;
 
-            cursor: pointer;
+    border-radius: 50%;
 
-            transition: 0.25s;
-        }
+    border:
+        3px solid
+        rgba(216, 180, 254, 0.65);
 
-        button:hover {
-            transform: translateY(-2px);
-            filter: brightness(1.12);
-        }
+    box-shadow:
+        0 0 25px
+        rgba(192, 132, 252, 0.35);
 
-        button:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
+    margin-bottom: 18px;
 
-        .switch {
-            margin-top: 20px;
+}
 
-            color: #aaa;
 
-            font-size: 14px;
-        }
+h1 {
 
-        .switch button {
-            width: auto;
+    color: #e9b6ff;
 
-            padding: 0;
+    margin-bottom: 8px;
 
-            margin: 0;
+}
 
-            background: none;
 
-            color: #d8b4fe;
+.subtitle {
 
-            font-size: 14px;
-        }
+    color: #bbb;
 
-        .message {
-            display: none;
+    margin-bottom: 28px;
 
-            margin-top: 15px;
+    line-height: 1.5;
 
-            padding: 12px;
+}
 
-            border-radius: 10px;
 
-            font-size: 14px;
+/* =========================
+   INPUTS
+========================= */
 
-            line-height: 1.5;
-        }
+.input-group {
 
-        .message.show {
-            display: block;
-        }
+    position: relative;
 
-        .message.error {
-            background: rgba(120, 30, 30, 0.35);
-            border: 1px solid rgba(248, 113, 113, 0.5);
-            color: #ffaaa2;
-        }
+    margin-bottom: 12px;
 
-        .message.success {
-            background: rgba(30, 100, 60, 0.35);
-            border: 1px solid rgba(74, 222, 128, 0.5);
-            color: #8ff0b2;
-        }
+}
 
-        .back {
-            display: block;
+input {
 
-            margin-top: 22px;
+    width: 100%;
 
-            color: #999;
+    padding: 15px;
 
-            text-decoration: none;
+    border:
+        1px solid
+        rgba(139, 92, 246, 0.25);
 
-            font-size: 14px;
-        }
+    border-radius: 11px;
 
-        .back:hover {
-            color: white;
-        }
-    </style>
+    background:
+        rgba(40, 24, 61, 0.85);
+
+    color: white;
+
+    outline: none;
+
+    font-size: 15px;
+
+    transition:
+        0.2s ease;
+
+}
+
+input:focus {
+
+    border-color:
+        #9b6cff;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(124, 58, 237, 0.15);
+
+}
+
+input::placeholder {
+
+    color: #aaa;
+
+}
+
+
+/* =========================
+   BOTÃO
+========================= */
+
+#submitButton {
+
+    width: 100%;
+
+    padding: 14px;
+
+    margin-top: 8px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #9333ea
+        );
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        0.25s;
+
+}
+
+#submitButton:hover {
+
+    transform:
+        translateY(-2px);
+
+    filter:
+        brightness(1.12);
+
+}
+
+#submitButton:disabled {
+
+    opacity: 0.6;
+
+    cursor:
+        not-allowed;
+
+    transform:
+        none;
+
+}
+
+
+/* =========================
+   TROCAR LOGIN/CADASTRO
+========================= */
+
+.switch {
+
+    margin-top: 20px;
+
+    color: #aaa;
+
+    font-size: 14px;
+
+}
+
+#switchButton {
+
+    width: auto;
+
+    padding: 0;
+
+    margin: 0;
+
+    border: none;
+
+    background: none;
+
+    color: #d8b4fe;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+}
+
+#switchButton:hover {
+
+    color: #eee;
+
+    transform: none;
+
+    filter: none;
+
+}
+
+
+/* =========================
+   MENSAGEM
+========================= */
+
+.message {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+.message.show {
+
+    display: block;
+
+}
+
+.message.error {
+
+    background:
+        rgba(120, 30, 30, 0.35);
+
+    border:
+        1px solid
+        rgba(248, 113, 113, 0.5);
+
+    color: #ffaaa2;
+
+}
+
+.message.success {
+
+    background:
+        rgba(30, 100, 60, 0.35);
+
+    border:
+        1px solid
+        rgba(74, 222, 128, 0.5);
+
+    color: #8ff0b2;
+
+}
+
+
+/* =========================
+   VOLTAR
+========================= */
+
+.back {
+
+    display: block;
+
+    margin-top: 22px;
+
+    color: #999;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+}
+
+.back:hover {
+
+    color: white;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .login-box {
+
+        padding:
+            30px 20px;
+
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-    <div class="login-box">
 
-        <img
-            class="logo"
-            src="vico-comunity.jpeg"
-            alt="Vico"
-        >
+<div class="login-box">
 
-        <h1>🤖 VicoAI</h1>
 
-        <p class="subtitle">
-            Acesse sua conta para continuar
-        </p>
+<img
+    class="logo"
+    src="vico-comunity.jpeg"
+    alt="Vico"
+>
 
-        <form id="authForm">
 
-            <input
-                type="email"
-                id="email"
-                placeholder="Seu e-mail"
-                required
-            >
+<h1>
+    🤖 VicoAI
+</h1>
 
-            <input
-                type="password"
-                id="password"
-                placeholder="Sua senha"
-                minlength="6"
-                required
-            >
 
-            <button
-                type="submit"
-                id="submitButton"
-            >
-                Entrar
-            </button>
+<p
+    class="subtitle"
+    id="subtitle"
+>
+    Acesse sua conta para continuar
+</p>
 
-        </form>
 
-        <div
-            id="message"
-            class="message"
-        ></div>
+<form id="authForm">
 
-        <div class="switch">
 
-            <span id="switchText">
-                Ainda não tem uma conta?
-            </span>
+<!-- APELIDO -->
 
-            <button
-                type="button"
-                id="switchButton"
-            >
-                Criar conta
-            </button>
+<div
+    class="input-group"
+    id="nicknameGroup"
+    style="display: none;"
+>
 
-        </div>
+    <input
+        type="text"
+        id="nickname"
+        placeholder="Seu apelido"
+        maxlength="20"
+        autocomplete="nickname"
+    >
 
-        <a
-            href="index.html"
-            class="back"
-        >
-            ← Voltar para o Cantinho do Vico
-        </a>
+</div>
 
-    </div>
+
+<!-- EMAIL -->
+
+<div class="input-group">
+
+    <input
+        type="email"
+        id="email"
+        placeholder="Seu e-mail"
+        autocomplete="email"
+        required
+    >
+
+</div>
+
+
+<!-- SENHA -->
+
+<div class="input-group">
+
+    <input
+        type="password"
+        id="password"
+        placeholder="Sua senha"
+        minlength="6"
+        autocomplete="current-password"
+        required
+    >
+
+</div>
+
+
+<button
+    type="submit"
+    id="submitButton"
+>
+    Entrar
+</button>
+
+
+</form>
+
+
+<div
+    id="message"
+    class="message"
+></div>
+
+
+<div class="switch">
+
+    <span id="switchText">
+        Ainda não tem uma conta?
+    </span>
+
+    <button
+        type="button"
+        id="switchButton"
+    >
+        Criar conta
+    </button>
+
+</div>
+
+
+<a
+    href="index.html"
+    class="back"
+>
+    ← Voltar para o Cantinho do Vico
+</a>
+
+
+</div>
 
 
 <script>
+
+
+/* =========================================
+   SUPABASE
+========================================= */
 
 const SUPABASE_URL =
     "https://fqalhymfpiexyrbyxnka.supabase.co";
@@ -301,40 +541,90 @@ const SUPABASE_KEY =
     "sb_publishable_PkDk3a1iNC76ez4Uvqc4Kg_6A7DuTgy";
 
 
+/* =========================================
+   ELEMENTOS
+========================================= */
+
 const form =
-    document.getElementById("authForm");
+    document.getElementById(
+        "authForm"
+    );
+
+const nicknameInput =
+    document.getElementById(
+        "nickname"
+    );
+
+const nicknameGroup =
+    document.getElementById(
+        "nicknameGroup"
+    );
 
 const emailInput =
-    document.getElementById("email");
+    document.getElementById(
+        "email"
+    );
 
 const passwordInput =
-    document.getElementById("password");
+    document.getElementById(
+        "password"
+    );
 
 const submitButton =
-    document.getElementById("submitButton");
+    document.getElementById(
+        "submitButton"
+    );
 
 const message =
-    document.getElementById("message");
+    document.getElementById(
+        "message"
+    );
 
 const switchButton =
-    document.getElementById("switchButton");
+    document.getElementById(
+        "switchButton"
+    );
 
 const switchText =
-    document.getElementById("switchText");
+    document.getElementById(
+        "switchText"
+    );
 
+const subtitle =
+    document.getElementById(
+        "subtitle"
+    );
+
+
+/* =========================================
+   MODO
+========================================= */
 
 let modoCadastro = false;
 
 
-function mostrarMensagem(texto, tipo) {
+/* =========================================
+   MENSAGEM
+========================================= */
 
-    message.textContent = texto;
+function mostrarMensagem(
+    texto,
+    tipo
+) {
+
+    message.textContent =
+        texto;
 
     message.className =
-        "message show " + tipo;
+        "message show " +
+        tipo;
 
 }
 
+
+/* =========================================
+   TROCAR LOGIN / CADASTRO
+========================================= */
 
 switchButton.addEventListener(
     "click",
@@ -346,35 +636,72 @@ switchButton.addEventListener(
 
         if (modoCadastro) {
 
+            nicknameGroup.style.display =
+                "block";
+
+            nicknameInput.required =
+                true;
+
+            nicknameInput.focus();
+
+
             switchText.textContent =
                 "Já tem uma conta?";
+
 
             switchButton.textContent =
                 "Entrar";
 
+
             submitButton.textContent =
                 "Criar conta";
+
+
+            subtitle.textContent =
+                "Crie sua conta para usar a VicoAI";
 
         }
 
         else {
 
+            nicknameGroup.style.display =
+                "none";
+
+            nicknameInput.required =
+                false;
+
+            nicknameInput.value =
+                "";
+
+
             switchText.textContent =
                 "Ainda não tem uma conta?";
+
 
             switchButton.textContent =
                 "Criar conta";
 
+
             submitButton.textContent =
                 "Entrar";
 
+
+            subtitle.textContent =
+                "Acesse sua conta para continuar";
+
         }
 
-        mostrarMensagem("", "");
+
+        message.className =
+            "message";
 
     }
 );
 
+
+/* =========================================
+   ENVIO
+========================================= */
 
 form.addEventListener(
     "submit",
@@ -389,6 +716,47 @@ form.addEventListener(
         const password =
             passwordInput.value;
 
+        const nickname =
+            nicknameInput.value.trim();
+
+
+        /* =========================
+           VALIDAÇÃO DO APELIDO
+        ========================= */
+
+        if (
+            modoCadastro &&
+            !nickname
+        ) {
+
+            mostrarMensagem(
+                "Digite um apelido para continuar.",
+                "error"
+            );
+
+            nicknameInput.focus();
+
+            return;
+
+        }
+
+
+        if (
+            modoCadastro &&
+            nickname.length < 2
+        ) {
+
+            mostrarMensagem(
+                "Seu apelido precisa ter pelo menos 2 caracteres.",
+                "error"
+            );
+
+            nicknameInput.focus();
+
+            return;
+
+        }
+
 
         submitButton.disabled =
             true;
@@ -402,41 +770,178 @@ form.addEventListener(
 
         try {
 
-            const endpoint =
-                modoCadastro
-                    ? "/auth/v1/signup"
-                    : "/auth/v1/token?grant_type=password";
+
+            /* =========================
+               CADASTRO
+            ========================= */
+
+            if (modoCadastro) {
 
 
-            const body =
-                modoCadastro
-                    ? {
-                        email: email,
-                        password: password
-                    }
-                    : {
-                        email: email,
-                        password: password
-                    };
+                const response =
+                    await fetch(
 
+                        SUPABASE_URL +
+                        "/auth/v1/signup",
+
+                        {
+
+                            method: "POST",
+
+                            headers: {
+
+                                "Content-Type":
+                                    "application/json",
+
+                                "apikey":
+                                    SUPABASE_KEY
+
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    email:
+                                        email,
+
+                                    password:
+                                        password,
+
+                                    data: {
+
+                                        nickname:
+                                            nickname
+
+                                    }
+
+                                })
+
+                        }
+
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    console.error(
+                        "Erro no cadastro:",
+                        data
+                    );
+
+
+                    mostrarMensagem(
+
+                        data.msg ||
+                        data.message ||
+                        "Não foi possível criar a conta.",
+
+                        "error"
+
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                   Salva também localmente para
+                   a VicoAI conseguir mostrar
+                   o apelido imediatamente.
+                */
+
+                localStorage.setItem(
+                    "vico_nickname",
+                    nickname
+                );
+
+
+                mostrarMensagem(
+                    "✅ Conta criada! Agora você já pode entrar.",
+                    "success"
+                );
+
+
+                modoCadastro =
+                    false;
+
+
+                nicknameGroup.style.display =
+                    "none";
+
+                nicknameInput.required =
+                    false;
+
+                nicknameInput.value =
+                    "";
+
+
+                switchText.textContent =
+                    "Ainda não tem uma conta?";
+
+
+                switchButton.textContent =
+                    "Criar conta";
+
+
+                submitButton.textContent =
+                    "Entrar";
+
+
+                subtitle.textContent =
+                    "Acesse sua conta para continuar";
+
+
+                passwordInput.value =
+                    "";
+
+
+                return;
+
+            }
+
+
+            /* =========================
+               LOGIN
+            ========================= */
 
             const response =
                 await fetch(
-                    SUPABASE_URL + endpoint,
+
+                    SUPABASE_URL +
+                    "/auth/v1/token?grant_type=password",
+
                     {
+
                         method: "POST",
 
                         headers: {
+
                             "Content-Type":
                                 "application/json",
 
                             "apikey":
                                 SUPABASE_KEY
+
                         },
 
                         body:
-                            JSON.stringify(body)
+                            JSON.stringify({
+
+                                email:
+                                    email,
+
+                                password:
+                                    password
+
+                            })
+
                     }
+
                 );
 
 
@@ -447,15 +952,19 @@ form.addEventListener(
             if (!response.ok) {
 
                 console.error(
-                    "Erro:",
+                    "Erro no login:",
                     data
                 );
 
+
                 mostrarMensagem(
+
                     data.msg ||
                     data.message ||
-                    "Não foi possível realizar a operação.",
+                    "E-mail ou senha incorretos.",
+
                     "error"
+
                 );
 
                 return;
@@ -463,42 +972,53 @@ form.addEventListener(
             }
 
 
-            if (modoCadastro) {
-
-                mostrarMensagem(
-                    "✅ Conta criada! Agora você já pode entrar.",
-                    "success"
-                );
-
-                modoCadastro =
-                    false;
-
-                switchText.textContent =
-                    "Ainda não tem uma conta?";
-
-                switchButton.textContent =
-                    "Criar conta";
-
-                submitButton.textContent =
-                    "Entrar";
-
-                passwordInput.value =
-                    "";
-
-                return;
-
-            }
-
+            /* =========================
+               TOKEN
+            ========================= */
 
             localStorage.setItem(
                 "vico_access_token",
                 data.access_token
             );
 
+
             localStorage.setItem(
                 "vico_refresh_token",
                 data.refresh_token
             );
+
+
+            /* =========================
+               APELIDO
+            ========================= */
+
+            /*
+               Se o Supabase devolver os dados
+               do usuário no login, usamos
+               o nickname salvo nele.
+            */
+
+            const nicknameFromSupabase =
+                data.user &&
+                data.user.user_metadata &&
+                data.user.user_metadata.nickname;
+
+
+            if (nicknameFromSupabase) {
+
+                localStorage.setItem(
+                    "vico_nickname",
+                    nicknameFromSupabase
+                );
+
+            }
+
+
+            /*
+               Se já existir apelido salvo
+               localmente, ele continua.
+            */
+
 
             window.location.href =
                 "ia.html";
@@ -508,11 +1028,13 @@ form.addEventListener(
         catch (error) {
 
             console.error(
+                "Erro de conexão:",
                 error
             );
 
+
             mostrarMensagem(
-                "❌ Erro de conexão. Tente novamente.",
+                "❌ Não foi possível conectar ao servidor. Tente novamente.",
                 "error"
             );
 
@@ -522,6 +1044,7 @@ form.addEventListener(
 
             submitButton.disabled =
                 false;
+
 
             if (!modoCadastro) {
 
@@ -540,3 +1063,4 @@ form.addEventListener(
 </body>
 
 </html>
+```
